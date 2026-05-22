@@ -29,52 +29,206 @@
         }
 
         .seccion { display: none; }
-        .seccion.activa { display: block; animation: fadeIn 0.2s ease-out; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+        .seccion.activa { 
+            display: block; 
+            animation: fadeIn 0.3s ease-out; 
+        }
         
-        .h-title { font-weight: 800; text-transform: uppercase; letter-spacing: -0.5px; color: var(--brand-dark); }
-
-        .nav-btn { color: #94a3b8; background-color: transparent; transition: all 0.2s ease; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
-        .nav-btn:hover { color: white; background-color: rgba(31, 191, 184, 0.15); }
-        .nav-btn.active { background-color: var(--brand-main); color: white; font-weight: 700; box-shadow: 0 4px 10px rgba(31, 191, 184, 0.3); }
-
-        #v-sugerencias, #p-sugerencias { position: absolute; z-index: 100; width: 100%; max-height: 250px; overflow-y: auto; background: white; border-radius: 1rem; box-shadow: 0 10px 25px -5px rgba(36, 48, 58, 0.1); margin-top: 5px; border: 1px solid var(--brand-main); }
-        .sugerencia-item:hover { background-color: var(--brand-light); cursor: pointer; }
-
-        .btn-brand { background-color: var(--brand-main); color: white; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; transition: all 0.2s ease; border-radius: 0.75rem; border: none; cursor: pointer; }
-        .btn-brand:hover { background-color: var(--brand-main-hover); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(31, 191, 184, 0.3); }
+        @keyframes fadeIn { 
+            from { opacity: 0; transform: translateY(5px); } 
+            to { opacity: 1; transform: translateY(0); } 
+        }
         
-        .btn-excel { background-color: white; color: var(--brand-dark); padding: 8px 14px; border-radius: 8px; font-size: 11px; font-weight: 700; text-transform: uppercase; transition: all 0.2s; display: flex; align-items: center; gap: 6px; border: 1px solid #cbd5e1; cursor: pointer; letter-spacing: 0.5px; }
-        .btn-excel:hover { background-color: var(--brand-light); border-color: var(--brand-main); color: var(--brand-main); }
+        .h-title { 
+            font-weight: 800; 
+            text-transform: uppercase; 
+            letter-spacing: -0.5px; 
+            color: var(--brand-dark); 
+        }
+
+        .nav-btn { 
+            color: #94a3b8; 
+            background-color: transparent; 
+            transition: all 0.2s ease; 
+            font-weight: 600; 
+            text-transform: uppercase; 
+            letter-spacing: 0.5px; 
+        }
+        .nav-btn:hover { 
+            color: white; 
+            background-color: rgba(31, 191, 184, 0.15); 
+        }
+        .nav-btn.active { 
+            background-color: var(--brand-main); 
+            color: white; 
+            font-weight: 700; 
+            box-shadow: 0 4px 10px rgba(31, 191, 184, 0.3); 
+        }
+
+        #v-sugerencias, #p-sugerencias { 
+            position: absolute; 
+            z-index: 100; 
+            width: 100%; 
+            max-height: 250px; 
+            overflow-y: auto; 
+            background: white; 
+            border-radius: 1rem; 
+            box-shadow: 0 10px 25px -5px rgba(36, 48, 58, 0.1); 
+            margin-top: 5px; 
+            border: 1px solid var(--brand-main); 
+        }
+        .sugerencia-item:hover { 
+            background-color: var(--brand-light); 
+            cursor: pointer; 
+        }
+
+        .btn-brand { 
+            background-color: var(--brand-main); 
+            color: white; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            transition: all 0.2s ease; 
+            border-radius: 0.75rem; 
+            border: none; 
+            cursor: pointer; 
+        }
+        .btn-brand:hover { 
+            background-color: var(--brand-main-hover); 
+            transform: translateY(-1px); 
+            box-shadow: 0 4px 12px rgba(31, 191, 184, 0.3); 
+        }
         
-        .input-cant-carrito { width: 55px !important; height: 38px !important; text-align: center !important; font-weight: 600 !important; font-size: 15px !important; border: 1px solid var(--brand-main) !important; border-radius: 8px !important; background: var(--brand-light) !important; color: var(--brand-main) !important; }
-        .input-cant-carrito:focus { outline: none !important; border-color: var(--brand-main) !important; background: white !important; }
-
-        .card-solid { background-color: white; border-radius: 1.25rem; border: 1px solid #e2e8f0; box-shadow: 0 4px 15px rgba(36, 48, 58, 0.05); padding: 2rem; }
-
-        input, select { border-radius: 0.75rem !important; padding: 0.7rem 1rem !important; border: 1px solid #cbd5e1 !important; font-size: 13px !important; font-weight: 600 !important; color: var(--brand-dark) !important; background-color: #f8fafc; transition: all 0.2s; appearance: none; }
-        select { background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e"); background-position: right 0.5rem center; background-repeat: no-repeat; background-size: 1.5em 1.5em; padding-right: 2.5rem !important; }
-        input:focus, select:focus { border-color: var(--brand-main) !important; background-color: white !important; outline: none !important; box-shadow: 0 0 0 3px var(--brand-light) !important; }
+        .btn-excel { 
+            background-color: white; 
+            color: var(--brand-dark); 
+            padding: 8px 14px; 
+            border-radius: 8px; 
+            font-size: 11px; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            transition: all 0.2s; 
+            display: flex; 
+            align-items: center; 
+            gap: 6px; 
+            border: 1px solid #cbd5e1; 
+            cursor: pointer; 
+            letter-spacing: 0.5px; 
+        }
+        .btn-excel:hover { 
+            background-color: var(--brand-light); 
+            border-color: var(--brand-main); 
+            color: var(--brand-main); 
+        }
         
-        .logo-text { font-weight: 800; font-size: 1.5rem; color: white; text-transform: uppercase; letter-spacing: -0.5px; }
-        .logo-text span { color: var(--brand-main); }
+        .input-cant-carrito { 
+            width: 55px !important; 
+            height: 38px !important; 
+            text-align: center !important; 
+            font-weight: 600 !important; 
+            font-size: 15px !important; 
+            border: 1px solid var(--brand-main) !important; 
+            border-radius: 8px !important; 
+            background: var(--brand-light) !important; 
+            color: var(--brand-main) !important; 
+        }
+        .input-cant-carrito:focus { 
+            outline: none !important; 
+            border-color: var(--brand-main) !important; 
+            background: white !important; 
+        }
 
-        .table-custom thead { background-color: var(--brand-light); color: var(--brand-dark); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; font-size: 11px; }
+        .card-solid { 
+            background-color: white; 
+            border-radius: 1.25rem; 
+            border: 1px solid #e2e8f0; 
+            box-shadow: 0 4px 15px rgba(36, 48, 58, 0.05); 
+            padding: 2rem; 
+        }
+
+        input, select { 
+            border-radius: 0.75rem !important; 
+            padding: 0.7rem 1rem !important; 
+            border: 1px solid #cbd5e1 !important; 
+            font-size: 13px !important; 
+            font-weight: 600 !important; 
+            color: var(--brand-dark) !important; 
+            background-color: #f8fafc; 
+            transition: all 0.2s; 
+            appearance: none; 
+        }
+        select { 
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e"); 
+            background-position: right 0.5rem center; 
+            background-repeat: no-repeat; 
+            background-size: 1.5em 1.5em; 
+            padding-right: 2.5rem !important; 
+        }
+        input:focus, select:focus { 
+            border-color: var(--brand-main) !important; 
+            background-color: white !important; 
+            outline: none !important; 
+            box-shadow: 0 0 0 3px var(--brand-light) !important; 
+        }
+        
+        .logo-text { 
+            font-weight: 800; 
+            font-size: 1.5rem; 
+            color: white; 
+            text-transform: uppercase; 
+            letter-spacing: -0.5px; 
+        }
+        .logo-text span { 
+            color: var(--brand-main); 
+        }
+
+        .table-custom thead { 
+            background-color: var(--brand-light); 
+            color: var(--brand-dark); 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            letter-spacing: 0.5px; 
+            font-size: 11px; 
+        }
         .table-custom th { padding: 0.75rem 1rem; }
         .table-custom td { padding: 0.75rem 1rem; border-bottom: 1px solid #f1f5f9; }
 
-        .table-mayor thead { background-color: var(--brand-main); color: white; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-size: 11px; }
+        .table-mayor thead { 
+            background-color: var(--brand-main); 
+            color: white; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            font-size: 11px; 
+        }
         .table-mayor th { padding: 1rem; border-bottom: none; }
         .table-mayor td { padding: 0.8rem 1rem; border-bottom: 1px solid var(--brand-light); }
         
-        label { font-size: 11px; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; display: block; }
+        label { 
+            font-size: 11px; 
+            font-weight: 700; 
+            color: #64748b; 
+            text-transform: uppercase; 
+            letter-spacing: 0.5px; 
+            margin-bottom: 4px; 
+            display: block; 
+        }
+
         .text-haber { color: var(--brand-accent-light); }
         .text-debe { color: var(--brand-dark); }
 
         @media print {
             body > nav, body > main, body > div[id^="modal"] { display: none !important; }
             body { background-color: white; color: black; }
-            #ticket-print { display: block !important; position: absolute; top: 0; left: 0; width: 100%; margin: 0; padding: 0; }
+            #ticket-print { 
+                display: block !important; 
+                position: absolute; 
+                top: 0; 
+                left: 0; 
+                width: 100%; 
+                margin: 0; 
+                padding: 0; 
+            }
             @page { margin: 0; }
         }
     </style>
@@ -146,7 +300,14 @@
             <div class="overflow-x-auto min-h-[180px] mb-6 rounded-xl border border-slate-200">
                 <table class="w-full text-left table-custom">
                     <thead>
-                        <tr><th class="pl-6">Producto / Detalle</th><th>Talle</th><th class="text-center">Cant.</th><th>P. Unit</th><th>Subtotal</th><th class="text-right pr-6">Acción</th></tr>
+                        <tr>
+                            <th class="pl-6">Producto / Detalle</th>
+                            <th>Talle</th>
+                            <th class="text-center">Cant.</th>
+                            <th>P. Unit</th>
+                            <th>Subtotal</th>
+                            <th class="text-right pr-6">Acción</th>
+                        </tr>
                     </thead>
                     <tbody id="v-t" class="divide-y text-[var(--brand-dark)] uppercase font-semibold"></tbody>
                 </table>
@@ -166,7 +327,13 @@
             <div class="overflow-x-auto rounded-xl border border-slate-100 shadow-sm">
                 <table class="w-full text-left text-xs table-custom bg-white">
                     <thead>
-                        <tr><th class="pl-4">Hora</th><th>Cliente</th><th>Productos</th><th>Medio</th><th class="text-right pr-4">Monto</th></tr>
+                        <tr>
+                            <th class="pl-4">Hora</th>
+                            <th>Cliente</th>
+                            <th>Productos</th>
+                            <th>Medio</th>
+                            <th class="text-right pr-4">Monto</th>
+                        </tr>
                     </thead>
                     <tbody id="v-historial" class="divide-y uppercase text-[var(--brand-dark)] font-medium"></tbody>
                 </table>
@@ -175,18 +342,41 @@
     </div>
 
     <div id="p" class="seccion space-y-8">
+        
         <div class="card-solid border-t-4 border-indigo-500">
             <div class="flex justify-between items-center mb-6">
                 <h2 class="h-title text-2xl text-[var(--brand-dark)]">Directorio de Proveedores</h2>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-6 bg-slate-50 p-5 rounded-2xl border border-slate-200">
                 <input type="hidden" id="prov-key">
-                <div class="lg:col-span-2"><label class="text-indigo-600">Razón Social / Proveedor</label><input type="text" id="prov-nom" class="w-full uppercase bg-white border-indigo-300"></div>
-                <div class="lg:col-span-1"><label class="text-indigo-600">CUIT</label><input type="text" id="prov-cuit" class="w-full bg-white border-indigo-300"></div>
-                <div class="lg:col-span-1"><label class="text-indigo-600">Condición Fiscal</label><select id="prov-cond" class="w-full bg-white border-indigo-300"><option value="IVA RESPONSABLE INSCRIPTO">RESP. INSCRIPTO</option><option value="MONOTRIBUTO">MONOTRIBUTO</option><option value="EXENTO">EXENTO</option><option value="CONSUMIDOR FINAL">CONSUMIDOR FINAL</option></select></div>
-                <div class="lg:col-span-1"><label class="text-indigo-600">Teléfono</label><input type="text" id="prov-tel" class="w-full bg-white border-indigo-300"></div>
-                <div class="lg:col-span-1"><label class="text-indigo-600">Dirección</label><input type="text" id="prov-dir" class="w-full uppercase bg-white border-indigo-300"></div>
-                <div class="lg:col-span-6 flex items-end"><button onclick="window.pushProv()" class="btn-brand bg-indigo-600 hover:bg-indigo-700 w-full py-3 text-xs shadow-md">Guardar Proveedor</button></div>
+                <div class="lg:col-span-2">
+                    <label class="text-indigo-600">Razón Social / Proveedor</label>
+                    <input type="text" id="prov-nom" class="w-full uppercase bg-white border-indigo-300">
+                </div>
+                <div class="lg:col-span-1">
+                    <label class="text-indigo-600">CUIT</label>
+                    <input type="text" id="prov-cuit" class="w-full bg-white border-indigo-300">
+                </div>
+                <div class="lg:col-span-1">
+                    <label class="text-indigo-600">Condición Fiscal</label>
+                    <select id="prov-cond" class="w-full bg-white border-indigo-300">
+                        <option value="IVA RESPONSABLE INSCRIPTO">RESP. INSCRIPTO</option>
+                        <option value="MONOTRIBUTO">MONOTRIBUTO</option>
+                        <option value="EXENTO">EXENTO</option>
+                        <option value="CONSUMIDOR FINAL">CONSUMIDOR FINAL</option>
+                    </select>
+                </div>
+                <div class="lg:col-span-1">
+                    <label class="text-indigo-600">Teléfono</label>
+                    <input type="text" id="prov-tel" class="w-full bg-white border-indigo-300">
+                </div>
+                <div class="lg:col-span-1">
+                    <label class="text-indigo-600">Dirección</label>
+                    <input type="text" id="prov-dir" class="w-full uppercase bg-white border-indigo-300">
+                </div>
+                <div class="lg:col-span-6 flex items-end">
+                    <button onclick="window.pushProv()" class="btn-brand bg-indigo-600 hover:bg-indigo-700 w-full py-3 text-xs shadow-md">Guardar Proveedor</button>
+                </div>
             </div>
             <div class="mb-6">
                 <label>Buscador de Proveedores</label>
@@ -221,7 +411,14 @@
             <div class="overflow-x-auto min-h-[150px] mb-6 rounded-xl border border-slate-200">
                 <table class="w-full text-left table-custom">
                     <thead class="bg-slate-100 text-slate-600">
-                        <tr><th class="pl-6">Producto</th><th>Talle</th><th class="text-center">Cant.</th><th>Costo Unit.</th><th>Subtotal</th><th class="text-right pr-6">Acción</th></tr>
+                        <tr>
+                            <th class="pl-6">Producto</th>
+                            <th>Talle</th>
+                            <th class="text-center">Cant.</th>
+                            <th>Costo Unit.</th>
+                            <th>Subtotal</th>
+                            <th class="text-right pr-6">Acción</th>
+                        </tr>
                     </thead>
                     <tbody id="p-t" class="divide-y text-[var(--brand-dark)] uppercase font-semibold"></tbody>
                 </table>
@@ -266,6 +463,7 @@
                 <div class="card-solid border-t-4 border-[var(--brand-main)]">
                     <div class="flex justify-between items-center mb-6">
                         <h2 class="h-title text-2xl text-[var(--brand-dark)]">Control de Stock</h2>
+                        
                         <div class="flex gap-2">
                             <input type="file" id="s-import-file" class="hidden" accept=".xlsx, .xls" onchange="window.importarExcelStock(this)">
                             <button onclick="document.getElementById('s-import-file').click()" class="btn-excel text-[var(--brand-main)] border-[var(--brand-main)]">📂 Importar Excel</button>
@@ -295,7 +493,16 @@
                     <div class="overflow-x-auto border border-slate-200 rounded-xl">
                         <table class="w-full text-left text-sm table-custom bg-white">
                             <thead>
-                                <tr><th class="pl-4">Cod.</th><th>Producto</th><th>Marca</th><th class="text-center">Cant.</th><th>Costo</th><th class="text-[var(--brand-main)]">% Gan.</th><th>Venta</th><th class="text-right pr-4">Acción</th></tr>
+                                <tr>
+                                    <th class="pl-4">Cod.</th>
+                                    <th>Producto</th>
+                                    <th>Marca</th>
+                                    <th class="text-center">Cant.</th>
+                                    <th>Costo</th>
+                                    <th class="text-[var(--brand-main)]">% Gan.</th>
+                                    <th>Venta</th>
+                                    <th class="text-right pr-4">Acción</th>
+                                </tr>
                             </thead>
                             <tbody id="s-t" class="divide-y uppercase text-[var(--brand-dark)] font-semibold"></tbody>
                         </table>
@@ -363,7 +570,14 @@
             <div class="overflow-x-auto border border-slate-200 rounded-xl">
                 <table class="w-full text-sm text-left table-custom">
                     <thead>
-                        <tr><th class="pl-4">Fecha / Hora</th><th>Involucrado</th><th>Concepto</th><th>Medio</th><th class="text-right">Monto</th><th class="text-right pr-4">Acción</th></tr>
+                        <tr>
+                            <th class="pl-4">Fecha / Hora</th>
+                            <th>Involucrado</th>
+                            <th>Concepto</th>
+                            <th>Medio</th>
+                            <th class="text-right">Monto</th>
+                            <th class="text-right pr-4">Acción</th>
+                        </tr>
                     </thead>
                     <tbody id="x-t" class="divide-y text-[var(--brand-dark)] font-medium bg-white"></tbody>
                 </table>
@@ -517,7 +731,9 @@
                     <h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest pl-1">Historial de Movimientos</h4>
                     <div class="max-h-[280px] overflow-y-auto bg-white p-3 rounded-xl border border-slate-200">
                         <table class="w-full text-xs table-custom !border-none">
-                            <thead class="!bg-white !text-slate-400"><tr><th class="pl-2">Fecha</th><th>Detalle</th><th class="text-right pr-2">Monto</th></tr></thead>
+                            <thead class="!bg-white !text-slate-400">
+                                <tr><th class="pl-2">Fecha</th><th>Detalle</th><th class="text-right pr-2">Monto</th></tr>
+                            </thead>
                             <tbody id="ficha-movimientos" class="divide-y divide-slate-100 text-[var(--brand-dark)] font-medium"></tbody>
                         </table>
                     </div>
@@ -577,7 +793,9 @@
                     <h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest pl-1">Historial de Compras/Pagos</h4>
                     <div class="max-h-[280px] overflow-y-auto bg-white p-3 rounded-xl border border-slate-200">
                         <table class="w-full text-xs table-custom !border-none">
-                            <thead class="!bg-white !text-slate-400"><tr><th class="pl-2">Fecha</th><th>Detalle</th><th class="text-right pr-2">Monto</th></tr></thead>
+                            <thead class="!bg-white !text-slate-400">
+                                <tr><th class="pl-2">Fecha</th><th>Detalle</th><th class="text-right pr-2">Monto</th></tr>
+                            </thead>
                             <tbody id="ficha-movimientos-prov" class="divide-y divide-slate-100 text-[var(--brand-dark)] font-medium"></tbody>
                         </table>
                     </div>
@@ -594,8 +812,11 @@
     import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
     import { getDatabase, ref, set, get } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
 
+    // -------------------------------------------------------------
+    // CONFIGURACIÓN DE FIREBASE (Datos exactos de tu imagen)
+    // -------------------------------------------------------------
     const firebaseConfig = {
-        apiKey: "AIzaSyAmLDbh-XZrihJg5Z7j4VxSdcbch6t-pIw",
+        apiKey: "AIzaSyAmlDbh-XZrihJg5Z7j4VxSdcbch6t-pIw",
         authDomain: "sofia-sistema.firebaseapp.com",
         databaseURL: "https://sofia-sistema-default-rtdb.firebaseio.com",
         projectId: "sofia-sistema",
@@ -612,16 +833,16 @@
     const usuarioAdmin = "rociolive040@gmail.com"; 
     const contraseniaAdmin = "41143006Rocio";
 
-    window.db = { stock: {}, clientes: {}, caja: {}, medios: { transferencia: ["MERCADO PAGO", "UALA", "BRUBANK"], tarjeta: ["DEBITO", "CREDITO"] }, proveedores: {} };
-    window.carro = []; window.carroCompra = []; window.clienteActualKey = null; window.proveedorActualKey = null; window.STOCK_PASS = "427936";
-
     // SINCRONIZACIÓN DE BASE DE DATOS
     window.syncDB = async function(path, data) { 
         try { 
             const dbRef = path === "" ? ref(database) : ref(database, path); 
             await set(dbRef, data); 
             await window.loadDB_internal(); 
-        } catch(e) { console.error(e); alert("Error de escritura en BD. Verifique su conexión y permisos."); } 
+        } catch(e) { 
+            console.error("Error sincronizando:", e);
+            alert("Error de conexión a la base de datos de Firebase."); 
+        } 
     };
 
     window.loadDB_internal = async function() { 
@@ -638,46 +859,89 @@
             window.render(); 
             if(window.clienteActualKey) window.verFicha(window.clienteActualKey); 
             if(window.proveedorActualKey) window.verFichaProv(window.proveedorActualKey); 
-        } catch (e) { console.error("Error leyendo de Firebase:", e); } 
+        } catch (e) { 
+            console.error("Error leyendo DB:", e); 
+        } 
     };
 
-    window.loadDB = function() { 
-        if (auth.currentUser) window.loadDB_internal(); 
+    window.loadDB = function() {
+        if (auth.currentUser) {
+            window.loadDB_internal();
+        } else {
+            // Si las reglas son ".read: true", esto cargará igual.
+            window.loadDB_internal();
+        }
     };
 
-    // INICIO DE SESIÓN SILENCIOSO
+    // LOGIN AUTOMÁTICO SILENCIOSO
     signInWithEmailAndPassword(auth, usuarioAdmin, contraseniaAdmin)
-        .then(() => { 
-            console.log("Conectado de forma segura a Firebase."); 
-            window.loadDB_internal(); 
+        .then(() => {
+            console.log("¡Autenticación exitosa con Firebase!");
+            window.loadDB_internal();
         })
-        .catch((error) => { 
-            console.warn("Aviso de seguridad (Ignorar si estás trabajando en file:// local): ", error.message);
-            window.loadDB_internal(); // Forzamos carga por si las reglas son '.read: true' temporalmente.
+        .catch((error) => {
+            console.warn("No se pudo iniciar sesión. (Si abriste el archivo desde la PC sin servidor, esto es normal por seguridad).", error.message);
+            window.loadDB_internal(); // Intenta cargar igual si la BD está en true
         });
-
-    window.render = function() { 
-        window.renderVUI(); window.renderStock(); window.renderClientes(); window.renderProveedores(); 
-        window.renderCaja(); window.actualizarSubcuentasBalance(); window.renderMedios(); 
-        window.renderV(); window.renderPCarro(); window.renderVentasHoy(); 
-    };
-    
 </script>
+
 <script>
-    // IMPORTACIÓN MASIVA EXCEL STOCK
+    // -------------------------------------------------------------
+    // VARIABLES GLOBALES
+    // -------------------------------------------------------------
+    window.db = { 
+        stock: {}, 
+        clientes: {}, 
+        caja: {}, 
+        medios: { transferencia: ["MERCADO PAGO", "UALA", "BRUBANK"], tarjeta: ["DEBITO", "CREDITO"] }, 
+        proveedores: {} 
+    };
+    window.carro = [];
+    window.carroCompra = [];
+    window.clienteActualKey = null;
+    window.proveedorActualKey = null;
+    window.STOCK_PASS = "427936";
+
+    // -------------------------------------------------------------
+    // FUNCIÓN DE RENDERIZADO GENERAL
+    // -------------------------------------------------------------
+    window.render = function() { 
+        window.renderVUI(); 
+        window.renderStock(); 
+        window.renderClientes(); 
+        window.renderProveedores();
+        window.renderCaja(); 
+        window.actualizarSubcuentasBalance(); 
+        window.renderMedios(); 
+        window.renderV(); 
+        window.renderPCarro();
+        window.renderVentasHoy(); 
+    };
+
+    // -------------------------------------------------------------
+    // FUNCIONES DE EXCEL (IMPORTAR)
+    // -------------------------------------------------------------
     window.importarExcelStock = async function(input) {
         if (!input.files || !input.files[0]) return;
-        const file = input.files[0]; const reader = new FileReader();
+        const file = input.files[0]; 
+        const reader = new FileReader();
+        
         reader.onload = async function(e) {
-            const data = new Uint8Array(e.target.result); const workbook = XLSX.read(data, { type: 'array' });
-            const worksheet = workbook.Sheets[workbook.SheetNames[0]]; const jsonData = XLSX.utils.sheet_to_json(worksheet);
+            const data = new Uint8Array(e.target.result);
+            const workbook = XLSX.read(data, { type: 'array' });
+            const firstSheetName = workbook.SheetNames[0];
+            const worksheet = workbook.Sheets[firstSheetName];
+            const jsonData = XLSX.utils.sheet_to_json(worksheet);
+            
             if (jsonData.length === 0) { alert("El archivo está vacío."); return; }
-            if (prompt("Ingrese contraseña para importar stock:") !== window.STOCK_PASS) { alert("Incorrecta."); input.value = ""; return; }
+            
+            const pass = prompt("Ingrese contraseña para importar stock:");
+            if (pass !== window.STOCK_PASS) { alert("Incorrecta."); input.value = ""; return; }
             
             if (confirm(`¿Importar o actualizar ${jsonData.length} productos en el inventario?`)) {
                 jsonData.forEach(row => {
-                    let cod = String(row["CODIGO"] || row["Código"] || "").trim().toUpperCase();
-                    let nom = String(row["PRENDA"] || row["Prenda"] || "").trim().toUpperCase();
+                    let cod = String(row["CODIGO"] || row["Código"] || row["codigo"] || "").trim().toUpperCase();
+                    let nom = String(row["PRENDA"] || row["Prenda"] || row["prenda"] || "").trim().toUpperCase();
                     if (!cod || !nom) return; 
                     
                     let mar = String(row["MARCA"] || row["Marca"] || "").trim().toUpperCase();
@@ -685,63 +949,203 @@
                     let col = String(row["COLOR"] || row["Color"] || "").trim().toUpperCase();
                     let can = parseInt(row["CANTIDAD"] || row["Cantidad"]) || 0;
                     let cos = parseFloat(row["COSTO"] || row["Costo"]) || 0;
-                    let pre = parseFloat(row["PRECIO VENTA"] || row["Venta"]) || 0;
+                    let pre = parseFloat(row["PRECIO VENTA"] || row["Precio Venta"] || row["PRECIO_VENTA"] || row["Venta"]) || 0;
                     
                     let k = Object.keys(window.db.stock).find(key => window.db.stock[key].cod === cod);
                     if (!k) k = "S" + Date.now() + Math.floor(Math.random() * 10000); 
                     window.db.stock[k] = { cod, nom, mar, tal, col, can, cos, pre };
                 });
-                await window.syncDB("stock", window.db.stock); alert("¡Importación completada con éxito!");
+                await window.syncDB("stock", window.db.stock); 
+                alert("¡Importación completada con éxito!");
             }
             input.value = ""; 
         };
         reader.readAsArrayBuffer(file);
     };
 
-    // LOGICA STOCK
-    window.calcularPrecioDesdeMargen = function() { const c = parseFloat(document.getElementById('s-cos').value) || 0; const m = parseFloat(document.getElementById('s-margen').value) || 0; if(c > 0 && m > 0) document.getElementById('s-pre').value = Math.round(c * (1 + (m / 100))); };
-    window.calcularMargenDesdePrecio = function() { const c = parseFloat(document.getElementById('s-cos').value) || 0; const v = parseFloat(document.getElementById('s-pre').value) || 0; if(c > 0 && v > 0) document.getElementById('s-margen').value = Math.round(((v - c) / c) * 100); };
-    window.pushStock = async function() { const pass = prompt("Contraseña:"); if (pass !== window.STOCK_PASS) return; const k = document.getElementById('s-key').value || "S" + Date.now(); window.db.stock[k] = { cod: document.getElementById('s-cod').value.toUpperCase(), nom: document.getElementById('s-nom').value.toUpperCase(), mar: document.getElementById('s-mar').value.toUpperCase(), tal: document.getElementById('s-tal').value.toUpperCase(), col: document.getElementById('s-col').value.toUpperCase(), can: parseInt(document.getElementById('s-can').value) || 0, cos: parseFloat(document.getElementById('s-cos').value) || 0, pre: parseFloat(document.getElementById('s-pre').value) || 0 }; await window.syncDB("stock", window.db.stock); document.getElementById('s-key').value = ""; document.getElementById('s-margen').value = ""; window.limpiarInputs('s'); };
+    // -------------------------------------------------------------
+    // FUNCIONES DE STOCK
+    // -------------------------------------------------------------
+    window.calcularPrecioDesdeMargen = function() { 
+        const c = parseFloat(document.getElementById('s-cos').value) || 0; 
+        const m = parseFloat(document.getElementById('s-margen').value) || 0; 
+        if(c > 0 && m > 0) document.getElementById('s-pre').value = Math.round(c * (1 + (m / 100))); 
+    };
+
+    window.calcularMargenDesdePrecio = function() { 
+        const c = parseFloat(document.getElementById('s-cos').value) || 0; 
+        const v = parseFloat(document.getElementById('s-pre').value) || 0; 
+        if(c > 0 && v > 0) document.getElementById('s-margen').value = Math.round(((v - c) / c) * 100); 
+    };
+
+    window.pushStock = async function() { 
+        const pass = prompt("Contraseña:"); 
+        if (pass !== window.STOCK_PASS) return; 
+        
+        const k = document.getElementById('s-key').value || "S" + Date.now(); 
+        window.db.stock[k] = { 
+            cod: document.getElementById('s-cod').value.toUpperCase(), 
+            nom: document.getElementById('s-nom').value.toUpperCase(), 
+            mar: document.getElementById('s-mar').value.toUpperCase(), 
+            tal: document.getElementById('s-tal').value.toUpperCase(), 
+            col: document.getElementById('s-col').value.toUpperCase(), 
+            can: parseInt(document.getElementById('s-can').value) || 0, 
+            cos: parseFloat(document.getElementById('s-cos').value) || 0, 
+            pre: parseFloat(document.getElementById('s-pre').value) || 0 
+        }; 
+        await window.syncDB("stock", window.db.stock); 
+        document.getElementById('s-key').value = ""; 
+        document.getElementById('s-margen').value = ""; 
+        window.limpiarInputs('s'); 
+    };
+
     window.renderStock = function() {
-        const bus = document.getElementById('s-search').value.toLowerCase(); let htmlTabla = ""; let htmlAlertas = "";
+        const bus = document.getElementById('s-search').value.toLowerCase(); 
+        let htmlTabla = ""; 
+        let htmlAlertas = "";
+        
         Object.entries(window.db.stock).forEach(([k, s]) => {
-            const gan = s.cos > 0 ? Math.round(((s.pre - s.cos)/s.cos)*100) : 0; const esBajo = s.can <= 3;
-            if(esBajo) { htmlAlertas += `<div class="bg-white p-4 rounded-xl shadow-sm border border-[var(--brand-accent-light)] flex justify-between items-center"><div><p class="text-xs font-bold text-[var(--brand-dark)] uppercase">${s.nom||''}</p><p class="text-[9px] font-bold text-slate-500 font-mono">${s.cod||''} | T: ${s.tal||''}</p></div><div class="bg-[var(--brand-accent)] text-white px-3 py-1 rounded-md font-bold text-sm">${s.can||0}</div></div>`; }
+            const gan = s.cos > 0 ? Math.round(((s.pre - s.cos)/s.cos)*100) : 0; 
+            const esBajo = s.can <= 3;
+            
+            if(esBajo) { 
+                htmlAlertas += `<div class="bg-white p-4 rounded-xl shadow-sm border border-[var(--brand-accent-light)] flex justify-between items-center"><div><p class="text-xs font-bold text-[var(--brand-dark)] uppercase">${s.nom||''}</p><p class="text-[9px] font-bold text-slate-500 font-mono">${s.cod||''} | T: ${s.tal||''}</p></div><div class="bg-[var(--brand-accent)] text-white px-3 py-1 rounded-md font-bold text-sm">${s.can||0}</div></div>`; 
+            }
+            
             if((s.nom||'').toLowerCase().includes(bus) || (s.cod||'').toLowerCase().includes(bus)) {
                 htmlTabla += `<tr class="hover:bg-slate-50"><td class="text-[var(--brand-main)] font-mono font-bold pl-4 py-3">${s.cod||''}</td><td class="font-semibold text-[var(--brand-dark)]">${s.nom||''}</td><td class="text-slate-500 text-[10px]">${s.mar||''}</td><td class="text-center font-bold text-sm ${esBajo?'text-[var(--brand-accent)]':''}">${s.can||0}</td><td class="text-slate-500 font-medium">$${s.cos||0}</td><td class="text-[var(--brand-main)] font-bold text-[11px]">${gan}%</td><td class="text-[var(--brand-dark)] font-bold text-sm">$${s.pre||0}</td><td class="text-right pr-4 flex justify-end gap-3"><button onclick="window.editarStock('${k}')" class="text-slate-400 hover:text-[var(--brand-main)]">✏️</button><button onclick="window.elimStock('${k}')" class="text-slate-300 hover:text-[var(--brand-accent)]">✕</button></td></tr>`;
             }
         });
-        document.getElementById('s-t').innerHTML = htmlTabla; document.getElementById('s-alertas-lista').innerHTML = htmlAlertas || '<p class="text-[10px] text-slate-400 font-medium text-center py-4 bg-white rounded-lg border border-slate-100">Stock Saludable ✅</p>';
+        document.getElementById('s-t').innerHTML = htmlTabla; 
+        document.getElementById('s-alertas-lista').innerHTML = htmlAlertas || '<p class="text-[10px] text-slate-400 font-medium text-center py-4 bg-white rounded-lg border border-slate-100">Stock Saludable ✅</p>';
     };
-    window.editarStock = function(k) { let s = window.db.stock[k]; document.getElementById('s-key').value = k; document.getElementById('s-cod').value = s.cod || ''; document.getElementById('s-nom').value = s.nom || ''; document.getElementById('s-mar').value = s.mar || ''; document.getElementById('s-tal').value = s.tal || ''; document.getElementById('s-col').value = s.col || ''; document.getElementById('s-can').value = s.can || 0; document.getElementById('s-cos').value = s.cos || 0; document.getElementById('s-pre').value = s.pre || 0; window.calcularMargenDesdePrecio(); window.scrollTo(0,0); };
-    window.elimStock = async function(k) { const pass = prompt("Contraseña:"); if (pass !== window.STOCK_PASS) return; if(confirm("¿Eliminar producto?")) { delete window.db.stock[k]; await window.syncDB("stock", window.db.stock); } };
 
-    // VENTAS Y CARRITO
-    window.buscarProductosVenta = function(val) { const div = document.getElementById('v-sugerencias'); if (val.length < 1) { div.classList.add('hidden'); return; } const matches = Object.entries(window.db.stock).filter(([k, s]) => (s.nom||'').toUpperCase().includes(val.toUpperCase()) || (s.cod||'').toUpperCase().includes(val.toUpperCase())); div.innerHTML = matches.map(([k, s]) => `<div class="sugerencia-item p-3 border-b border-gray-100" onclick="window.seleccionarProdVenta('${s.cod}')"><div class="text-[9px] font-bold text-[var(--brand-main)] font-mono">${s.cod}</div><div class="text-xs font-semibold text-[var(--brand-dark)]">${s.nom}</div><div class="text-[var(--brand-main)] font-bold text-sm">$${s.pre}</div></div>`).join(''); div.classList.remove('hidden'); };
-    window.seleccionarProdVenta = function(cod) { document.getElementById('v-scan').value = cod; document.getElementById('v-sugerencias').classList.add('hidden'); window.addCarro(); };
+    window.editarStock = function(k) { 
+        let s = window.db.stock[k]; 
+        document.getElementById('s-key').value = k; 
+        document.getElementById('s-cod').value = s.cod || ''; 
+        document.getElementById('s-nom').value = s.nom || ''; 
+        document.getElementById('s-mar').value = s.mar || ''; 
+        document.getElementById('s-tal').value = s.tal || ''; 
+        document.getElementById('s-col').value = s.col || ''; 
+        document.getElementById('s-can').value = s.can || 0; 
+        document.getElementById('s-cos').value = s.cos || 0; 
+        document.getElementById('s-pre').value = s.pre || 0; 
+        window.calcularMargenDesdePrecio(); 
+        window.scrollTo(0,0); 
+    };
+
+    window.elimStock = async function(k) { 
+        const pass = prompt("Contraseña:"); 
+        if (pass !== window.STOCK_PASS) return; 
+        if(confirm("¿Eliminar producto?")) { 
+            delete window.db.stock[k]; 
+            await window.syncDB("stock", window.db.stock); 
+        } 
+    };
+
+    // -------------------------------------------------------------
+    // FUNCIONES DE VENTAS Y CARRITO
+    // -------------------------------------------------------------
+    window.buscarProductosVenta = function(val) { 
+        const div = document.getElementById('v-sugerencias'); 
+        if (val.length < 1) { div.classList.add('hidden'); return; } 
+        const matches = Object.entries(window.db.stock).filter(([k, s]) => (s.nom||'').toUpperCase().includes(val.toUpperCase()) || (s.cod||'').toUpperCase().includes(val.toUpperCase())); 
+        div.innerHTML = matches.map(([k, s]) => `<div class="sugerencia-item p-3 border-b border-gray-100" onclick="window.seleccionarProdVenta('${s.cod}')"><div class="text-[9px] font-bold text-[var(--brand-main)] font-mono">${s.cod}</div><div class="text-xs font-semibold text-[var(--brand-dark)]">${s.nom}</div><div class="text-[var(--brand-main)] font-bold text-sm">$${s.pre}</div></div>`).join(''); 
+        div.classList.remove('hidden'); 
+    };
+
+    window.seleccionarProdVenta = function(cod) { 
+        document.getElementById('v-scan').value = cod; 
+        document.getElementById('v-sugerencias').classList.add('hidden'); 
+        window.addCarro(); 
+    };
+
     window.addCarro = function() {
-        let cod = document.getElementById('v-scan').value.toUpperCase(); let cant = parseInt(document.getElementById('v-cant-v').value) || 1; let k = Object.keys(window.db.stock).find(key => window.db.stock[key].cod === cod);
+        let cod = document.getElementById('v-scan').value.toUpperCase(); 
+        let cant = parseInt(document.getElementById('v-cant-v').value) || 1; 
+        let k = Object.keys(window.db.stock).find(key => window.db.stock[key].cod === cod);
         if(k) {
-            let stockDisp = window.db.stock[k].can; let indexE = window.carro.findIndex(item => item.k === k);
-            if (indexE !== -1) { let nuevaC = window.carro[indexE].cant + cant; if (nuevaC <= stockDisp) window.carro[indexE].cant = nuevaC; else { alert("Stock insuficiente"); return; } } 
-            else { if (stockDisp >= cant) window.carro.push({ k, nom: window.db.stock[k].nom, pre: window.db.stock[k].pre, cant: cant, tal: window.db.stock[k].tal }); else { alert("Stock insuficiente"); return; } }
-            document.getElementById('v-scan').value = ''; document.getElementById('v-cant-v').value = 1; window.renderV(); 
+            let stockDisp = window.db.stock[k].can; 
+            let indexE = window.carro.findIndex(item => item.k === k);
+            if (indexE !== -1) { 
+                let nuevaC = window.carro[indexE].cant + cant; 
+                if (nuevaC <= stockDisp) window.carro[indexE].cant = nuevaC; 
+                else { alert("Stock insuficiente"); return; } 
+            } 
+            else { 
+                if (stockDisp >= cant) window.carro.push({ k, nom: window.db.stock[k].nom, pre: window.db.stock[k].pre, cant: cant, tal: window.db.stock[k].tal }); 
+                else { alert("Stock insuficiente"); return; } 
+            }
+            document.getElementById('v-scan').value = ''; 
+            document.getElementById('v-cant-v').value = 1; 
+            window.renderV(); 
         }
     };
-    window.calcularTotalCarro = function() { return window.carro.reduce((suma, item) => suma + (item.pre * item.cant), 0); };
+
+    window.calcularTotalCarro = function() { 
+        return window.carro.reduce((suma, item) => suma + (item.pre * item.cant), 0); 
+    };
+
     window.renderV = function() {
-        let t = 0; document.getElementById('v-t').innerHTML = window.carro.map((i, idx) => { let sub = i.pre * i.cant; t += sub; return `<tr class="border-b hover:bg-[var(--brand-light)] transition-colors"><td class="p-4 font-semibold text-[var(--brand-dark)] text-sm pl-6">${i.nom}</td><td class="text-slate-500 text-[11px] font-medium">T: ${i.tal}</td><td class="text-center"><input type="number" value="${i.cant}" min="1" class="input-cant-carrito" onchange="window.actualizarCantidad(${idx}, this.value)"></td><td class="font-mono text-slate-500 font-semibold text-xs">$${i.pre.toLocaleString('es-AR')}</td><td class="text-[var(--brand-main)] font-bold text-lg">$${sub.toLocaleString('es-AR')}</td><td class="text-right pr-6"><button onclick="window.quitarDelCarro(${idx})" class="text-slate-300 hover:text-[var(--brand-accent)] font-bold text-xl transition-all">✕</button></td></tr>`; }).join('');
-        document.getElementById('v-tot').innerText = t.toLocaleString('es-AR'); if(!document.getElementById('v-multi-pago-container').classList.contains('hidden')) { document.getElementById('v-monto-1').value = t; document.getElementById('v-monto-2').value = 0; }
+        let t = 0; 
+        document.getElementById('v-t').innerHTML = window.carro.map((i, idx) => { 
+            let sub = i.pre * i.cant; t += sub; 
+            return `<tr class="border-b hover:bg-[var(--brand-light)] transition-colors"><td class="p-4 font-semibold text-[var(--brand-dark)] text-sm pl-6">${i.nom}</td><td class="text-slate-500 text-[11px] font-medium">T: ${i.tal}</td><td class="text-center"><input type="number" value="${i.cant}" min="1" class="input-cant-carrito" onchange="window.actualizarCantidad(${idx}, this.value)"></td><td class="font-mono text-slate-500 font-semibold text-xs">$${i.pre.toLocaleString('es-AR')}</td><td class="text-[var(--brand-main)] font-bold text-lg">$${sub.toLocaleString('es-AR')}</td><td class="text-right pr-6"><button onclick="window.quitarDelCarro(${idx})" class="text-slate-300 hover:text-[var(--brand-accent)] font-bold text-xl transition-all">✕</button></td></tr>`; 
+        }).join('');
+        
+        document.getElementById('v-tot').innerText = t.toLocaleString('es-AR'); 
+        
+        if(!document.getElementById('v-multi-pago-container').classList.contains('hidden')) { 
+            document.getElementById('v-monto-1').value = t; 
+            document.getElementById('v-monto-2').value = 0; 
+        }
     };
-    window.actualizarCantidad = function(idx, nuevaC) { nuevaC = parseInt(nuevaC); if (isNaN(nuevaC) || nuevaC < 1) nuevaC = 1; window.carro[idx].cant = nuevaC; window.renderV(); };
-    window.quitarDelCarro = function(idx) { window.carro.splice(idx, 1); window.renderV(); };
+
+    window.actualizarCantidad = function(idx, nuevaC) { 
+        nuevaC = parseInt(nuevaC); 
+        if (isNaN(nuevaC) || nuevaC < 1) nuevaC = 1; 
+        window.carro[idx].cant = nuevaC; 
+        window.renderV(); 
+    };
+
+    window.quitarDelCarro = function(idx) { 
+        window.carro.splice(idx, 1); 
+        window.renderV(); 
+    };
+
     window.toggleMultiPago = function() {
-        const met = document.getElementById('v-pago').value; const multiC = document.getElementById('v-multi-pago-container'); const detS = document.getElementById('v-pago-detalle'); const total = window.calcularTotalCarro();
-        if (met === 'DIVIDIDO') { multiC.classList.remove('hidden'); detS.classList.add('hidden'); document.getElementById('v-monto-1').value = total; document.getElementById('v-monto-2').value = 0; } else { multiC.classList.add('hidden'); window.toggleDetallePago(); }
+        const met = document.getElementById('v-pago').value; 
+        const multiC = document.getElementById('v-multi-pago-container'); 
+        const detS = document.getElementById('v-pago-detalle'); 
+        const total = window.calcularTotalCarro();
+        
+        if (met === 'DIVIDIDO') { 
+            multiC.classList.remove('hidden'); 
+            detS.classList.add('hidden'); 
+            document.getElementById('v-monto-1').value = total; 
+            document.getElementById('v-monto-2').value = 0; 
+        } else { 
+            multiC.classList.add('hidden'); 
+            window.toggleDetallePago(); 
+        }
     };
-    window.toggleDetallePago = function() { const m = document.getElementById('v-pago').value; const s = document.getElementById('v-pago-detalle'); const DET = { "TRANSFERENCIA": window.db.medios.transferencia, "TARJETA": window.db.medios.tarjeta }; if(DET[m] && DET[m].length > 0){ s.classList.remove('hidden'); s.innerHTML = DET[m].map(o=>`<option value="${o}">${o}</option>`).join(''); } else s.classList.add('hidden'); };
+
+    window.toggleDetallePago = function() { 
+        const m = document.getElementById('v-pago').value; 
+        const s = document.getElementById('v-pago-detalle'); 
+        const DET = { "TRANSFERENCIA": window.db.medios.transferencia, "TARJETA": window.db.medios.tarjeta }; 
+        if(DET[m] && DET[m].length > 0){ 
+            s.classList.remove('hidden'); 
+            s.innerHTML = DET[m].map(o=>`<option value="${o}">${o}</option>`).join(''); 
+        } else {
+            s.classList.add('hidden'); 
+        }
+    };
     
-    // TICKETS E IMPRESIONES
+    // -------------------------------------------------------------
+    // FUNCIONES DE TICKETS
+    // -------------------------------------------------------------
     window.imprimirTicketVenta = function(tot, items, met, cliNom) {
         let fecha = new Date().toLocaleString();
         let html = `<div style="width:300px; padding:10px; font-family:monospace; margin:0 auto; font-size:12px; color:black;">
@@ -758,7 +1162,8 @@
             <h3 style="text-align:right; font-size:16px; font-weight:bold;">TOTAL: $${tot.toLocaleString('es-AR')}</h3>
             <p style="text-align:center; margin-top:20px; font-size:11px;">¡Gracias por su compra!</p>
         </div>`;
-        document.getElementById('ticket-print').innerHTML = html; window.print();
+        document.getElementById('ticket-print').innerHTML = html; 
+        window.print();
     };
 
     window.imprimirTicketCobro = function(monto, cliNom, medio, detalleInfo) {
@@ -775,182 +1180,637 @@
             <h3 style="text-align:right; font-size:16px; font-weight:bold;">ABONADO: $${monto.toLocaleString('es-AR')}</h3>
             <p style="text-align:center; margin-top:20px; font-size:11px;">¡Muchas gracias!</p>
         </div>`;
-        document.getElementById('ticket-print').innerHTML = html; window.print();
+        document.getElementById('ticket-print').innerHTML = html; 
+        window.print();
     };
 
     window.finalizarVenta = async function() {
-        if(!window.carro.length) return; let tot = window.calcularTotalCarro(); let met = document.getElementById('v-pago').value; let cliK = document.getElementById('v-cli').value; let cliNom = cliK !== "null" ? window.db.clientes[cliK].nom : "C. FINAL"; let detC = "VENTA: " + window.carro.map(c => `(${c.cant}) ${c.nom}`).join(', '); const fHoy = new Date().toISOString().split('T')[0]; const hHoy = new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'}); let medioF = met;
+        if(!window.carro.length) return; 
+        let tot = window.calcularTotalCarro(); 
+        let met = document.getElementById('v-pago').value; 
+        let cliK = document.getElementById('v-cli').value; 
+        let cliNom = cliK !== "null" ? window.db.clientes[cliK].nom : "C. FINAL"; 
+        let detC = "VENTA: " + window.carro.map(c => `(${c.cant}) ${c.nom}`).join(', '); 
+        const fHoy = new Date().toISOString().split('T')[0]; 
+        const hHoy = new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'}); 
+        let medioF = met;
         let pDet = document.getElementById('v-pago-detalle').value;
-        if (met === "DIVIDIDO") { let m1 = parseInt(document.getElementById('v-monto-1').value); let t1 = document.getElementById('v-medio-1').value; let m2 = parseInt(document.getElementById('v-monto-2').value); let t2 = document.getElementById('v-medio-2').value; if ((m1 + m2) !== tot) return; medioF = `DIV. (${t1} $${m1} + ${t2} $${m2})`; } else medioF = (met === 'TRANSFERENCIA' || met === 'TARJETA') && pDet ? `${met} (${pDet})` : met;
         
-        window.carro.forEach(c => { if(window.db.stock[c.k]) window.db.stock[c.k].can -= c.cant; });
-        if(met === "CUENTA CORRIENTE" && cliK !== "null") { if(!window.db.clientes[cliK].deudas) window.db.clientes[cliK].deudas = []; window.db.clientes[cliK].deudas.push({ id: Date.now(), f: fHoy, c: detC, v: tot, saldo: tot }); window.db.clientes[cliK].saldo = (window.db.clientes[cliK].saldo || 0) + tot; }
+        if (met === "DIVIDIDO") { 
+            let m1 = parseInt(document.getElementById('v-monto-1').value); 
+            let t1 = document.getElementById('v-medio-1').value; 
+            let m2 = parseInt(document.getElementById('v-monto-2').value); 
+            let t2 = document.getElementById('v-medio-2').value; 
+            if ((m1 + m2) !== tot) { alert("Los montos divididos no suman el total de la venta."); return; }
+            medioF = `DIV. (${t1} $${m1} + ${t2} $${m2})`; 
+        } else {
+            medioF = (met === 'TRANSFERENCIA' || met === 'TARJETA') && pDet ? `${met} (${pDet})` : met;
+        }
+
+        // Actualiza Stock
+        window.carro.forEach(c => { 
+            if(window.db.stock[c.k]) window.db.stock[c.k].can -= c.cant; 
+        });
         
+        // Suma Deuda a Cuenta Corriente si aplica
+        if(met === "CUENTA CORRIENTE" && cliK !== "null") { 
+            if(!window.db.clientes[cliK].deudas) window.db.clientes[cliK].deudas = []; 
+            window.db.clientes[cliK].deudas.push({ id: Date.now(), f: fHoy, c: detC, v: tot, saldo: tot }); 
+            window.db.clientes[cliK].saldo = (window.db.clientes[cliK].saldo || 0) + tot; 
+        }
+        
+        // Registra en Caja
         window.db.caja["C" + Date.now()] = { f: fHoy, h: hHoy, c: detC, cli: cliNom, cliKey: cliK, v: tot, tp: "ING", m: medioF, items: window.carro.map(c => ({k:c.k, cant:c.cant, nom:c.nom, pre:c.pre})) }; 
-        let carroCopia = [...window.carro]; window.carro = []; document.getElementById('v-pago').value = "EFECTIVO"; window.toggleMultiPago(); window.renderV(); await window.syncDB("", window.db);
         
-        if(confirm("Venta Registrada ✅\n\n¿Deseas imprimir un comprobante?")) { window.imprimirTicketVenta(tot, carroCopia, medioF, cliNom); }
+        let carroCopia = [...window.carro]; 
+        window.carro = []; 
+        document.getElementById('v-pago').value = "EFECTIVO"; 
+        window.toggleMultiPago(); 
+        window.renderV(); 
+        await window.syncDB("", window.db);
+        
+        if(confirm("Venta Registrada ✅\n\n¿Deseas imprimir un comprobante?")) { 
+            window.imprimirTicketVenta(tot, carroCopia, medioF, cliNom); 
+        }
     };
 
-    window.renderVentasHoy = function() { const hoy = new Date().toISOString().split('T')[0]; document.getElementById('v-historial').innerHTML = Object.values(window.db.caja).filter(x => x.f === hoy && x.tp === "ING").reverse().map(x => `<tr class="bg-white"><td class="text-slate-400 font-mono text-[10px] pl-4 py-3">${x.h}</td><td class="font-medium text-[var(--brand-dark)]">${x.cli}</td><td class="text-slate-500 italic text-[10px]">${x.c}</td><td class="text-slate-500 text-[10px]">${x.m||''}</td><td class="text-right font-semibold text-[var(--brand-dark)] text-[13px] pr-4">$${x.v.toLocaleString('es-AR')}</td></tr>`).join(''); };
+    window.renderVentasHoy = function() { 
+        const hoy = new Date().toISOString().split('T')[0]; 
+        document.getElementById('v-historial').innerHTML = Object.values(window.db.caja).filter(x => x.f === hoy && x.tp === "ING").reverse().map(x => `<tr class="bg-white"><td class="text-slate-400 font-mono text-[10px] pl-4 py-3">${x.h}</td><td class="font-medium text-[var(--brand-dark)]">${x.cli}</td><td class="text-slate-500 italic text-[10px]">${x.c}</td><td class="text-slate-500 text-[10px]">${x.m||''}</td><td class="text-right font-semibold text-[var(--brand-dark)] text-[13px] pr-4">$${x.v.toLocaleString('es-AR')}</td></tr>`).join(''); 
+    };
 
-    // PROVEEDORES
+    // -------------------------------------------------------------
+    // MÓDULO PROVEEDORES Y COMPRAS
+    // -------------------------------------------------------------
     window.pushProv = async function() {
         const k = document.getElementById('prov-key').value || "PR" + Date.now();
-        window.db.proveedores[k] = { nom: document.getElementById('prov-nom').value.toUpperCase(), tel: document.getElementById('prov-tel').value, cuit: document.getElementById('prov-cuit').value, dir: document.getElementById('prov-dir').value.toUpperCase(), cond: document.getElementById('prov-cond').value, saldo: window.db.proveedores[k] ? window.db.proveedores[k].saldo : 0 };
+        window.db.proveedores[k] = {
+            nom: document.getElementById('prov-nom').value.toUpperCase(),
+            tel: document.getElementById('prov-tel').value,
+            cuit: document.getElementById('prov-cuit').value,
+            dir: document.getElementById('prov-dir').value.toUpperCase(),
+            cond: document.getElementById('prov-cond').value,
+            saldo: window.db.proveedores[k] ? window.db.proveedores[k].saldo : 0
+        };
         await window.syncDB("proveedores", window.db.proveedores);
-        document.getElementById('prov-key').value = ""; document.getElementById('prov-nom').value = ""; document.getElementById('prov-tel').value = ""; document.getElementById('prov-cuit').value = ""; document.getElementById('prov-dir').value = ""; document.getElementById('prov-cond').value = "IVA RESPONSABLE INSCRIPTO";
+        document.getElementById('prov-key').value = "";
+        document.getElementById('prov-nom').value = "";
+        document.getElementById('prov-tel').value = "";
+        document.getElementById('prov-cuit').value = "";
+        document.getElementById('prov-dir').value = "";
+        document.getElementById('prov-cond').value = "IVA RESPONSABLE INSCRIPTO";
     };
 
     window.renderProveedores = function() {
         const txt = document.getElementById('prov-search').value.toLowerCase(); 
-        document.getElementById('prov-list').innerHTML = Object.entries(window.db.proveedores).filter(([k,v]) => (v.nom||'').toLowerCase().includes(txt) || (v.cuit||'').toLowerCase().includes(txt)).map(([k,v]) => `<div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm relative overflow-hidden group hover:border-indigo-500 transition-all"><div class="absolute top-0 left-0 w-1.5 h-full ${v.saldo>0?'bg-indigo-600':'bg-slate-300'} opacity-80"></div><div class="flex justify-between font-bold uppercase text-xs mb-4 pl-2"><span class="text-[var(--brand-dark)]">${v.nom||'--'}</span><div class="flex gap-2 text-sm opacity-0 group-hover:opacity-100 transition-opacity"><button onclick="window.editarProv('${k}')" class="text-slate-300 hover:text-indigo-600">✏️</button><button onclick="window.elimProv('${k}')" class="text-slate-300 hover:text-[var(--brand-accent)]">✕</button></div></div><div class="flex justify-between items-end pl-2"><div><p class="text-[9px] uppercase text-slate-400 font-bold tracking-widest">Saldo Deudor</p><p class="text-2xl font-bold ${v.saldo>0?'text-indigo-600':'text-slate-400'} tracking-tight">$${(v.saldo || 0).toLocaleString('es-AR')}</p></div><button onclick="window.verFichaProv('${k}')" class="bg-indigo-50 text-indigo-800 px-4 py-2 rounded-lg text-[10px] font-bold uppercase tracking-widest hover:bg-indigo-600 hover:text-white transition-colors border border-indigo-200 shadow-sm">Ver Ficha</button></div></div>`).join(''); 
-        let selectP = document.getElementById('p-prov'); if(selectP) { selectP.innerHTML = '<option value="null">PROVEEDOR OCASIONAL</option>' + Object.entries(window.db.proveedores).map(([k,v])=>`<option value="${k}">${v.nom}</option>`).join(''); }
+        document.getElementById('prov-list').innerHTML = Object.entries(window.db.proveedores)
+            .filter(([k,v]) => (v.nom||'').toLowerCase().includes(txt) || (v.cuit||'').toLowerCase().includes(txt)) 
+            .map(([k,v]) => `<div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm relative overflow-hidden group hover:border-indigo-500 transition-all"><div class="absolute top-0 left-0 w-1.5 h-full ${v.saldo>0?'bg-indigo-600':'bg-slate-300'} opacity-80"></div><div class="flex justify-between font-bold uppercase text-xs mb-4 pl-2"><span class="text-[var(--brand-dark)]">${v.nom||'--'}</span><div class="flex gap-2 text-sm opacity-0 group-hover:opacity-100 transition-opacity"><button onclick="window.editarProv('${k}')" class="text-slate-300 hover:text-indigo-600">✏️</button><button onclick="window.elimProv('${k}')" class="text-slate-300 hover:text-[var(--brand-accent)]">✕</button></div></div><div class="flex justify-between items-end pl-2"><div><p class="text-[9px] uppercase text-slate-400 font-bold tracking-widest">Saldo Deudor</p><p class="text-2xl font-bold ${v.saldo>0?'text-indigo-600':'text-slate-400'} tracking-tight">$${(v.saldo || 0).toLocaleString('es-AR')}</p></div><button onclick="window.verFichaProv('${k}')" class="bg-indigo-50 text-indigo-800 px-4 py-2 rounded-lg text-[10px] font-bold uppercase tracking-widest hover:bg-indigo-600 hover:text-white transition-colors border border-indigo-200 shadow-sm">Ver Ficha</button></div></div>`).join(''); 
+
+        let selectP = document.getElementById('p-prov');
+        if(selectP) {
+            selectP.innerHTML = '<option value="null">PROVEEDOR OCASIONAL</option>' + Object.entries(window.db.proveedores).map(([k,v])=>`<option value="${k}">${v.nom}</option>`).join('');
+        }
         if(document.getElementById('a').classList.contains('activa')) window.actualizarSubcuentasBalance();
     };
 
-    window.editarProv = function(k) { let p = window.db.proveedores[k]; document.getElementById('prov-key').value = k; document.getElementById('prov-nom').value = p.nom; document.getElementById('prov-tel').value = p.tel || ""; document.getElementById('prov-cuit').value = p.cuit || ""; document.getElementById('prov-dir').value = p.dir || ""; document.getElementById('prov-cond').value = p.cond || "IVA RESPONSABLE INSCRIPTO"; window.scrollTo(0,0); };
-    window.elimProv = async function(k) { if(confirm("¿Eliminar proveedor?")) { delete window.db.proveedores[k]; await window.syncDB("proveedores", window.db.proveedores); } };
+    window.editarProv = function(k) { 
+        let p = window.db.proveedores[k]; 
+        document.getElementById('prov-key').value = k; 
+        document.getElementById('prov-nom').value = p.nom; 
+        document.getElementById('prov-tel').value = p.tel || ""; 
+        document.getElementById('prov-cuit').value = p.cuit || "";
+        document.getElementById('prov-dir').value = p.dir || "";
+        document.getElementById('prov-cond').value = p.cond || "IVA RESPONSABLE INSCRIPTO";
+        window.scrollTo(0,0);
+    };
+
+    window.elimProv = async function(k) { 
+        if(confirm("¿Eliminar proveedor?")) { 
+            delete window.db.proveedores[k]; 
+            await window.syncDB("proveedores", window.db.proveedores); 
+        } 
+    };
 
     window.verFichaProv = function(k) {
-        window.proveedorActualKey = k; const p = window.db.proveedores[k]; if(!p) return; 
-        document.getElementById('ficha-prov-nom').innerText = p.nom; document.getElementById('ficha-prov-saldo').innerText = "$" + (p.saldo || 0).toLocaleString('es-AR'); document.getElementById('ficha-prov-datos').innerHTML = `<span>CUIT: ${p.cuit||'-'}</span><span>CEL: ${p.tel||'-'}</span><span>DIR: ${p.dir||'-'}</span>`; 
+        window.proveedorActualKey = k; 
+        const p = window.db.proveedores[k]; 
+        if(!p) return; 
+        
+        document.getElementById('ficha-prov-nom').innerText = p.nom; 
+        document.getElementById('ficha-prov-saldo').innerText = "$" + (p.saldo || 0).toLocaleString('es-AR'); 
+        document.getElementById('ficha-prov-datos').innerHTML = `<span>CUIT: ${p.cuit||'-'}</span><span>CEL: ${p.tel||'-'}</span><span>DIR: ${p.dir||'-'}</span>`; 
         
         const hoyTime = new Date().setHours(0,0,0,0);
-        document.getElementById('lista-deudas-prov').innerHTML = (p.deudas || []).filter(d => d.saldo > 0).map(d => { let fD = d.f ? new Date(d.f + 'T00:00:00').getTime() : hoyTime; let dR = 30 - Math.floor((hoyTime - fD) / 86400000); let tC = dR > 0 ? `Vence en ${dR} días` : dR === 0 ? "VENCE HOY" : `VENCIDO HACE ${Math.abs(dR)} DÍAS`; let cC = dR > 0 ? "text-amber-500" : "text-[var(--brand-accent)] font-bold animate-pulse"; return `<div class="bg-white p-3 rounded-xl border border-indigo-100 flex justify-between items-center text-[11px] uppercase font-bold shadow-sm"><div><p class="text-[var(--brand-dark)]">${d.c}</p><p class="text-[9px] text-slate-400 mt-0.5">${d.f} <span class="${cC} ml-1 font-bold">${tC}</span></p></div><p class="font-bold text-indigo-600 text-sm">$${d.saldo.toLocaleString('es-AR')}</p></div>`; }).join('') || '<p class="text-[10px] italic text-slate-400 text-center py-4 bg-white rounded-xl border border-dashed border-slate-200">Sin deudas registradas</p>';
-        const movs = Object.values(window.db.caja).filter(x => x.cliKey === k).reverse(); document.getElementById('ficha-movimientos-prov').innerHTML = movs.map(x => `<tr><td class="py-2.5 text-slate-400 font-mono text-[9px] border-b border-slate-100 pl-2">${x.f}</td><td class="py-2.5 text-[9px] uppercase font-semibold text-slate-700 border-b border-slate-100">${x.c}</td><td class="py-2.5 text-right font-bold text-xs ${x.c.includes('PAGO') ? 'text-indigo-600' : 'text-slate-800'} border-b border-slate-100 pr-2">$${x.v.toLocaleString('es-AR')}</td></tr>`).join(''); 
-        document.getElementById('ficha-prov-pago-monto').value = ""; document.getElementById('ficha-prov-pago-medio').value = "EFECTIVO"; document.getElementById('container-detalle-pago-prov').classList.add('hidden'); document.getElementById('modal-proveedor').classList.remove('hidden');
+        document.getElementById('lista-deudas-prov').innerHTML = (p.deudas || []).filter(d => d.saldo > 0).map(d => { 
+            let fD = d.f ? new Date(d.f + 'T00:00:00').getTime() : hoyTime; 
+            let dR = 30 - Math.floor((hoyTime - fD) / 86400000); 
+            let tC = dR > 0 ? `Vence en ${dR} días` : dR === 0 ? "VENCE HOY" : `VENCIDO HACE ${Math.abs(dR)} DÍAS`; 
+            let cC = dR > 0 ? "text-amber-500" : "text-[var(--brand-accent)] font-bold animate-pulse"; 
+            return `<div class="bg-white p-3 rounded-xl border border-indigo-100 flex justify-between items-center text-[11px] uppercase font-bold shadow-sm"><div><p class="text-[var(--brand-dark)]">${d.c}</p><p class="text-[9px] text-slate-400 mt-0.5">${d.f} <span class="${cC} ml-1 font-bold">${tC}</span></p></div><p class="font-bold text-indigo-600 text-sm">$${d.saldo.toLocaleString('es-AR')}</p></div>`; 
+        }).join('') || '<p class="text-[10px] italic text-slate-400 text-center py-4 bg-white rounded-xl border border-dashed border-slate-200">Sin deudas registradas</p>';
+        
+        const movs = Object.values(window.db.caja).filter(x => x.cliKey === k).reverse(); 
+        document.getElementById('ficha-movimientos-prov').innerHTML = movs.map(x => `<tr><td class="py-2.5 text-slate-400 font-mono text-[9px] border-b border-slate-100 pl-2">${x.f}</td><td class="py-2.5 text-[9px] uppercase font-semibold text-slate-700 border-b border-slate-100">${x.c}</td><td class="py-2.5 text-right font-bold text-xs ${x.c.includes('PAGO') ? 'text-indigo-600' : 'text-slate-800'} border-b border-slate-100 pr-2">$${x.v.toLocaleString('es-AR')}</td></tr>`).join(''); 
+        
+        document.getElementById('ficha-prov-pago-monto').value = ""; 
+        document.getElementById('ficha-prov-pago-medio').value = "EFECTIVO"; 
+        document.getElementById('container-detalle-pago-prov').classList.add('hidden'); 
+        document.getElementById('modal-proveedor').classList.remove('hidden');
     };
 
-    window.toggleDetallePagoProvFicha = function() { const m = document.getElementById('ficha-prov-pago-medio').value; const s = document.getElementById('ficha-prov-pago-detalle'); const container = document.getElementById('container-detalle-pago-prov'); const DET = { "TRANSFERENCIA": window.db.medios.transferencia, "TARJETA": window.db.medios.tarjeta }; if(DET[m] && DET[m].length > 0){ container.classList.remove('hidden'); s.innerHTML = DET[m].map(o=>`<option value="${o}">${o}</option>`).join(''); } else container.classList.add('hidden'); };
+    window.toggleDetallePagoProvFicha = function() { 
+        const m = document.getElementById('ficha-prov-pago-medio').value; 
+        const s = document.getElementById('ficha-prov-pago-detalle'); 
+        const container = document.getElementById('container-detalle-pago-prov'); 
+        const DET = { "TRANSFERENCIA": window.db.medios.transferencia, "TARJETA": window.db.medios.tarjeta }; 
+        if(DET[m] && DET[m].length > 0){ 
+            container.classList.remove('hidden'); 
+            s.innerHTML = DET[m].map(o=>`<option value="${o}">${o}</option>`).join(''); 
+        } else {
+            container.classList.add('hidden'); 
+        }
+    };
 
-    window.deudaManualProv = async function() { const c = prompt("Concepto de la deuda (Compra libre):"); const m = parseInt(prompt("Monto adeudado:")); if(c && m > 0) { const fH = new Date().toISOString().split('T')[0]; if(!window.db.proveedores[window.proveedorActualKey].deudas) window.db.proveedores[window.proveedorActualKey].deudas = []; window.db.proveedores[window.proveedorActualKey].deudas.push({ id: Date.now(), f: fH, c: "DEUDA MANUAL PROV: " + c.toUpperCase(), v: m, saldo: m }); window.db.proveedores[window.proveedorActualKey].saldo = (window.db.proveedores[window.proveedorActualKey].saldo || 0) + m; window.db.caja["D"+Date.now()] = { f: fH, h: new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'}), c: "DEUDA MANUAL PROV: "+c.toUpperCase(), cli: window.db.proveedores[window.proveedorActualKey].nom, cliKey: window.proveedorActualKey, v: m, tp: "EGR", m: "CTA CTE PROVEEDOR" }; await window.syncDB("", window.db); } };
+    window.deudaManualProv = async function() { 
+        const c = prompt("Concepto de la deuda (Compra libre):"); 
+        const m = parseInt(prompt("Monto adeudado:")); 
+        if(c && m > 0) { 
+            const fH = new Date().toISOString().split('T')[0]; 
+            if(!window.db.proveedores[window.proveedorActualKey].deudas) window.db.proveedores[window.proveedorActualKey].deudas = []; 
+            window.db.proveedores[window.proveedorActualKey].deudas.push({ id: Date.now(), f: fH, c: "DEUDA MANUAL PROV: " + c.toUpperCase(), v: m, saldo: m }); 
+            window.db.proveedores[window.proveedorActualKey].saldo = (window.db.proveedores[window.proveedorActualKey].saldo || 0) + m; 
+            window.db.caja["D"+Date.now()] = { f: fH, h: new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'}), c: "DEUDA MANUAL PROV: "+c.toUpperCase(), cli: window.db.proveedores[window.proveedorActualKey].nom, cliKey: window.proveedorActualKey, v: m, tp: "EGR", m: "CTA CTE PROVEEDOR" }; 
+            await window.syncDB("", window.db); 
+        } 
+    };
 
     window.pagarFichaProv = async function() { 
-        let iM = document.getElementById('ficha-prov-pago-monto'); let sM = document.getElementById('ficha-prov-pago-medio'); let sD = document.getElementById('ficha-prov-pago-detalle'); 
-        let montoP = parseInt(iM.value); let medioB = sM.value; let medioE = (medioB === 'TRANSFERENCIA' || medioB === 'TARJETA') && sD.value ? `${medioB} (${sD.value})` : medioB; 
-        if(isNaN(montoP) || montoP <= 0) return; let pagoO = montoP; const p = window.db.proveedores[window.proveedorActualKey]; 
-        p.saldo -= montoP; if(p.deudas) { p.deudas.sort((a,b) => new Date(a.f||0) - new Date(b.f||0)); for(let d of p.deudas) { if(d.saldo > 0) { if(montoP >= d.saldo) { montoP -= d.saldo; d.saldo = 0; } else { d.saldo -= montoP; montoP = 0; break; } } } } 
+        let iM = document.getElementById('ficha-prov-pago-monto'); 
+        let sM = document.getElementById('ficha-prov-pago-medio'); 
+        let sD = document.getElementById('ficha-prov-pago-detalle'); 
+        let montoP = parseInt(iM.value); 
+        let medioB = sM.value; 
+        let medioE = (medioB === 'TRANSFERENCIA' || medioB === 'TARJETA') && sD.value ? `${medioB} (${sD.value})` : medioB; 
+        
+        if(isNaN(montoP) || montoP <= 0) return; 
+        
+        let pagoO = montoP; 
+        const p = window.db.proveedores[window.proveedorActualKey]; 
+        
+        p.saldo -= montoP; 
+        if(p.deudas) { 
+            p.deudas.sort((a,b) => new Date(a.f||0) - new Date(b.f||0)); 
+            for(let d of p.deudas) { 
+                if(d.saldo > 0) { 
+                    if(montoP >= d.saldo) { montoP -= d.saldo; d.saldo = 0; } 
+                    else { d.saldo -= montoP; montoP = 0; break; } 
+                } 
+            } 
+        } 
+        
         window.db.caja["E"+Date.now()] = { f: new Date().toISOString().split('T')[0], h: new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'}), c: "PAGO A PROVEEDOR", cli: p.nom, cliKey: window.proveedorActualKey, v: pagoO, tp: "EGR", m: medioE }; 
-        iM.value = ""; await window.syncDB("", window.db); 
-        if(confirm("Pago registrado ✅\n\n¿Deseas imprimir un recibo?")) { window.imprimirTicketCobro(pagoO, p.nom, medioE, "Abono / Pago a Proveedor"); }
-    };
-    window.cerrarFichaProv = function() { document.getElementById('modal-proveedor').classList.add('hidden'); window.proveedorActualKey = null; };
+        iM.value = ""; 
+        await window.syncDB("", window.db); 
 
-    // COMPRAS STOCK
-    window.buscarProductosCompra = function(val) { const div = document.getElementById('p-sugerencias'); if (val.length < 1) { div.classList.add('hidden'); return; } const matches = Object.entries(window.db.stock).filter(([k, s]) => (s.nom||'').toUpperCase().includes(val.toUpperCase()) || (s.cod||'').toUpperCase().includes(val.toUpperCase())); div.innerHTML = matches.map(([k, s]) => `<div class="sugerencia-item p-3 border-b border-indigo-100" onclick="window.seleccionarProdCompra('${s.cod}', ${s.cos})"><div class="text-[9px] font-bold text-indigo-500 font-mono">${s.cod}</div><div class="text-xs font-semibold text-slate-800">${s.nom}</div><div class="text-slate-500 text-[10px]">Costo actual: $${s.cos}</div></div>`).join(''); div.classList.remove('hidden'); };
-    window.seleccionarProdCompra = function(cod, costoActual) { document.getElementById('p-scan').value = cod; document.getElementById('p-costo').value = costoActual || ""; document.getElementById('p-sugerencias').classList.add('hidden'); };
-    window.addCarroCompra = function() {
-        let cod = document.getElementById('p-scan').value.toUpperCase(); let cant = parseInt(document.getElementById('p-cant').value) || 1; let costo = parseFloat(document.getElementById('p-costo').value) || 0;
-        if(!cod || costo <= 0) { alert("Debe seleccionar un producto e ingresar el costo."); return; } let k = Object.keys(window.db.stock).find(key => window.db.stock[key].cod === cod); if(!k) { alert("El producto no existe. Créelo primero en Stock."); return; }
-        let indexE = window.carroCompra.findIndex(item => item.k === k); if (indexE !== -1) { window.carroCompra[indexE].cant += cant; window.carroCompra[indexE].costo = costo; } else { window.carroCompra.push({ k, nom: window.db.stock[k].nom, costo: costo, cant: cant, tal: window.db.stock[k].tal }); }
-        document.getElementById('p-scan').value = ''; document.getElementById('p-cant').value = 1; document.getElementById('p-costo').value = ''; window.renderPCarro(); 
+        if(confirm("Pago a proveedor registrado ✅\n\n¿Deseas imprimir un recibo de entrega?")) { 
+            window.imprimirTicketCobro(pagoO, p.nom, medioE, "Abono / Pago a Proveedor"); 
+        }
     };
-    window.calcularTotalCompra = function() { return window.carroCompra.reduce((suma, item) => suma + (item.costo * item.cant), 0); };
+
+    window.cerrarFichaProv = function() { 
+        document.getElementById('modal-proveedor').classList.add('hidden'); 
+        window.proveedorActualKey = null; 
+    };
+
+    window.buscarProductosCompra = function(val) {
+        const div = document.getElementById('p-sugerencias');
+        if (val.length < 1) { div.classList.add('hidden'); return; }
+        const matches = Object.entries(window.db.stock).filter(([k, s]) => (s.nom||'').toUpperCase().includes(val.toUpperCase()) || (s.cod||'').toUpperCase().includes(val.toUpperCase()));
+        div.innerHTML = matches.map(([k, s]) => `<div class="sugerencia-item p-3 border-b border-indigo-100" onclick="window.seleccionarProdCompra('${s.cod}', ${s.cos})"><div class="text-[9px] font-bold text-indigo-500 font-mono">${s.cod}</div><div class="text-xs font-semibold text-slate-800">${s.nom}</div><div class="text-slate-500 text-[10px]">Costo actual: $${s.cos}</div></div>`).join('');
+        div.classList.remove('hidden');
+    };
+
+    window.seleccionarProdCompra = function(cod, costoActual) {
+        document.getElementById('p-scan').value = cod;
+        document.getElementById('p-costo').value = costoActual || "";
+        document.getElementById('p-sugerencias').classList.add('hidden');
+    };
+
+    window.addCarroCompra = function() {
+        let cod = document.getElementById('p-scan').value.toUpperCase();
+        let cant = parseInt(document.getElementById('p-cant').value) || 1;
+        let costo = parseFloat(document.getElementById('p-costo').value) || 0;
+        
+        if(!cod || costo <= 0) { alert("Debe seleccionar un producto e ingresar el costo."); return; }
+        
+        let k = Object.keys(window.db.stock).find(key => window.db.stock[key].cod === cod);
+        if(!k) { alert("El producto no existe en el stock. Créelo primero en la pestaña Stock."); return; }
+
+        let indexE = window.carroCompra.findIndex(item => item.k === k);
+        if (indexE !== -1) {
+            window.carroCompra[indexE].cant += cant;
+            window.carroCompra[indexE].costo = costo;
+        } else {
+            window.carroCompra.push({ k, nom: window.db.stock[k].nom, costo: costo, cant: cant, tal: window.db.stock[k].tal });
+        }
+        
+        document.getElementById('p-scan').value = ''; 
+        document.getElementById('p-cant').value = 1; 
+        document.getElementById('p-costo').value = '';
+        window.renderPCarro(); 
+    };
+
+    window.calcularTotalCompra = function() { 
+        return window.carroCompra.reduce((suma, item) => suma + (item.costo * item.cant), 0); 
+    };
+
     window.renderPCarro = function() {
-        let t = 0; document.getElementById('p-t').innerHTML = window.carroCompra.map((i, idx) => { let sub = i.costo * i.cant; t += sub; return `<tr class="border-b hover:bg-indigo-50 transition-colors"><td class="p-4 font-semibold text-[var(--brand-dark)] text-sm pl-6">${i.nom}</td><td class="text-slate-500 text-[11px] font-medium">T: ${i.tal}</td><td class="text-center font-bold">${i.cant}</td><td class="font-mono text-slate-500 font-semibold text-xs">$${i.costo.toLocaleString('es-AR')}</td><td class="text-indigo-600 font-bold text-lg">$${sub.toLocaleString('es-AR')}</td><td class="text-right pr-6"><button onclick="window.quitarDelCarroCompra(${idx})" class="text-slate-300 hover:text-rose-500 font-bold text-xl transition-all">✕</button></td></tr>`; }).join('');
+        let t = 0;
+        document.getElementById('p-t').innerHTML = window.carroCompra.map((i, idx) => { 
+            let sub = i.costo * i.cant; t += sub; 
+            return `<tr class="border-b hover:bg-indigo-50 transition-colors"><td class="p-4 font-semibold text-[var(--brand-dark)] text-sm pl-6">${i.nom}</td><td class="text-slate-500 text-[11px] font-medium">T: ${i.tal}</td><td class="text-center font-bold">${i.cant}</td><td class="font-mono text-slate-500 font-semibold text-xs">$${i.costo.toLocaleString('es-AR')}</td><td class="text-indigo-600 font-bold text-lg">$${sub.toLocaleString('es-AR')}</td><td class="text-right pr-6"><button onclick="window.quitarDelCarroCompra(${idx})" class="text-slate-300 hover:text-rose-500 font-bold text-xl transition-all">✕</button></td></tr>`; 
+        }).join('');
         document.getElementById('p-tot').innerText = t.toLocaleString('es-AR');
     };
-    window.quitarDelCarroCompra = function(idx) { window.carroCompra.splice(idx, 1); window.renderPCarro(); };
-    window.toggleDetallePagoCompra = function() { const m = document.getElementById('p-pago').value; const s = document.getElementById('p-pago-detalle'); const container = document.getElementById('container-detalle-pago-compra'); const DET = { "TRANSFERENCIA": window.db.medios.transferencia, "TARJETA": window.db.medios.tarjeta }; if(DET[m] && DET[m].length > 0){ container.classList.remove('hidden'); s.innerHTML = DET[m].map(o=>`<option value="${o}">${o}</option>`).join(''); } else container.classList.add('hidden'); };
-    window.finalizarCompra = async function() {
-        if(!window.carroCompra.length) return; let tot = window.calcularTotalCompra(); let metBase = document.getElementById('p-pago').value; let pDet = document.getElementById('p-pago-detalle').value; let met = (metBase === 'TRANSFERENCIA' || metBase === 'TARJETA') && pDet ? `${metBase} (${pDet})` : metBase;
-        let provK = document.getElementById('p-prov').value; let provNom = provK !== "null" ? window.db.proveedores[provK].nom : "PROV. OCASIONAL"; let detC = "COMPRA DE STOCK: " + window.carroCompra.map(c => `(${c.cant}) ${c.nom}`).join(', '); const fHoy = new Date().toISOString().split('T')[0]; const hHoy = new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
-        window.carroCompra.forEach(c => { if(window.db.stock[c.k]) { window.db.stock[c.k].can += c.cant; window.db.stock[c.k].cos = c.costo; if(window.db.stock[c.k].pre > 0) { window.db.stock[c.k].margen = Math.round(((window.db.stock[c.k].pre - c.costo) / c.costo) * 100); } } });
-        if(metBase === "CTA CTE PROVEEDOR") { if(provK === "null") { alert("Debe seleccionar un Proveedor específico para fiado."); return; } if(!window.db.proveedores[provK].deudas) window.db.proveedores[provK].deudas = []; window.db.proveedores[provK].deudas.push({ id: Date.now(), f: fHoy, c: detC, v: tot, saldo: tot }); window.db.proveedores[provK].saldo = (window.db.proveedores[provK].saldo || 0) + tot; }
-        window.db.caja["E" + Date.now()] = { f: fHoy, h: hHoy, c: detC, cli: provNom, cliKey: provK, v: tot, tp: "EGR", m: met, items: window.carroCompra.map(c => ({k:c.k, cant:c.cant, costo:c.costo})) };
-        window.carroCompra = []; document.getElementById('p-pago').value = "EFECTIVO"; window.toggleDetallePagoCompra(); window.renderPCarro(); await window.syncDB("", window.db); alert("¡Compra registrada correctamente!");
+
+    window.quitarDelCarroCompra = function(idx) { 
+        window.carroCompra.splice(idx, 1); 
+        window.renderPCarro(); 
     };
 
+    window.toggleDetallePagoCompra = function() { 
+        const m = document.getElementById('p-pago').value; 
+        const s = document.getElementById('p-pago-detalle'); 
+        const container = document.getElementById('container-detalle-pago-compra'); 
+        const DET = { "TRANSFERENCIA": window.db.medios.transferencia, "TARJETA": window.db.medios.tarjeta }; 
+        if(DET[m] && DET[m].length > 0){ 
+            container.classList.remove('hidden'); 
+            s.innerHTML = DET[m].map(o=>`<option value="${o}">${o}</option>`).join(''); 
+        } else {
+            container.classList.add('hidden'); 
+        }
+    };
+
+    window.finalizarCompra = async function() {
+        if(!window.carroCompra.length) return;
+        
+        let tot = window.calcularTotalCompra();
+        let metBase = document.getElementById('p-pago').value;
+        let pDet = document.getElementById('p-pago-detalle').value;
+        let met = (metBase === 'TRANSFERENCIA' || metBase === 'TARJETA') && pDet ? `${metBase} (${pDet})` : metBase;
+        
+        let provK = document.getElementById('p-prov').value;
+        let provNom = provK !== "null" ? window.db.proveedores[provK].nom : "PROV. OCASIONAL";
+        let detC = "COMPRA DE STOCK: " + window.carroCompra.map(c => `(${c.cant}) ${c.nom}`).join(', ');
+        
+        const fHoy = new Date().toISOString().split('T')[0];
+        const hHoy = new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
+
+        window.carroCompra.forEach(c => {
+            if(window.db.stock[c.k]) {
+                window.db.stock[c.k].can += c.cant;
+                window.db.stock[c.k].cos = c.costo; 
+                if(window.db.stock[c.k].pre > 0) {
+                    window.db.stock[c.k].margen = Math.round(((window.db.stock[c.k].pre - c.costo) / c.costo) * 100);
+                }
+            }
+        });
+
+        if(metBase === "CTA CTE PROVEEDOR") {
+            if(provK === "null") { alert("Debe seleccionar un Proveedor específico para usar la cuenta corriente."); return; }
+            if(!window.db.proveedores[provK].deudas) window.db.proveedores[provK].deudas = [];
+            window.db.proveedores[provK].deudas.push({ id: Date.now(), f: fHoy, c: detC, v: tot, saldo: tot });
+            window.db.proveedores[provK].saldo = (window.db.proveedores[provK].saldo || 0) + tot;
+        }
+
+        window.db.caja["E" + Date.now()] = { f: fHoy, h: hHoy, c: detC, cli: provNom, cliKey: provK, v: tot, tp: "EGR", m: met, items: window.carroCompra.map(c => ({k:c.k, cant:c.cant, costo:c.costo})) };
+        
+        window.carroCompra = [];
+        document.getElementById('p-pago').value = "EFECTIVO";
+        window.toggleDetallePagoCompra();
+        window.renderPCarro();
+        await window.syncDB("", window.db);
+        
+        alert("¡Compra registrada correctamente!\nSe actualizó el inventario y se registró el gasto en caja.");
+    };
+
+    // -------------------------------------------------------------
     // CLIENTES
-    window.pushCli = async function() { const k = document.getElementById('c-key').value || "L" + Date.now(); window.db.clientes[k] = { ...window.db.clientes[k], nom: document.getElementById('c-nom').value.toUpperCase(), dni: document.getElementById('c-dni').value, cel: document.getElementById('c-cel').value, dir: document.getElementById('c-dir').value, rec: document.getElementById('c-rec').value, saldo: window.db.clientes[k] ? window.db.clientes[k].saldo : 0 }; await window.syncDB("clientes", window.db.clientes); window.limpiarInputs('c'); };
+    // -------------------------------------------------------------
+    window.pushCli = async function() { 
+        const k = document.getElementById('c-key').value || "L" + Date.now(); 
+        window.db.clientes[k] = { 
+            ...window.db.clientes[k], 
+            nom: document.getElementById('c-nom').value.toUpperCase(), 
+            dni: document.getElementById('c-dni').value, 
+            cel: document.getElementById('c-cel').value, 
+            dir: document.getElementById('c-dir').value, 
+            rec: document.getElementById('c-rec').value, 
+            saldo: window.db.clientes[k] ? window.db.clientes[k].saldo : 0 
+        }; 
+        await window.syncDB("clientes", window.db.clientes); 
+        window.limpiarInputs('c'); 
+    };
+
     window.renderClientes = function() { 
         const txt = document.getElementById('c-search').value.toLowerCase(); 
-        document.getElementById('c-list').innerHTML = Object.entries(window.db.clientes).filter(([k,v]) => (v.nom||'').toLowerCase().includes(txt) || (v.dni||'').toLowerCase().includes(txt)).map(([k,v]) => `<div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm relative overflow-hidden group hover:border-[var(--brand-main)] transition-all"><div class="absolute top-0 left-0 w-1.5 h-full ${v.saldo>0?'bg-[var(--brand-accent)]':'bg-[var(--brand-main)]'} opacity-80"></div><div class="flex justify-between font-bold uppercase text-xs mb-4 pl-2"><span class="text-[var(--brand-dark)]">${v.nom||'--'}</span><div class="flex gap-2 text-sm opacity-0 group-hover:opacity-100 transition-opacity"><button onclick="window.editarCli('${k}')" class="text-slate-300 hover:text-[var(--brand-dark)]">✏️</button><button onclick="window.elimCli('${k}')" class="text-slate-300 hover:text-[var(--brand-accent)]">✕</button></div></div><div class="flex justify-between items-end pl-2"><div><p class="text-[9px] uppercase text-slate-400 font-bold tracking-widest">Deuda Total</p><p class="text-2xl font-bold ${v.saldo>0?'text-[var(--brand-accent)]':'text-slate-400'} tracking-tight">$${(v.saldo || 0).toLocaleString('es-AR')}</p></div><button onclick="window.verFicha('${k}')" class="bg-slate-50 text-[var(--brand-dark)] px-4 py-2 rounded-lg text-[10px] font-bold uppercase tracking-widest hover:bg-[var(--brand-dark)] hover:text-white transition-colors border border-slate-200 shadow-sm">Ver Ficha</button></div></div>`).join(''); 
+        document.getElementById('c-list').innerHTML = Object.entries(window.db.clientes)
+            .filter(([k,v]) => (v.nom||'').toLowerCase().includes(txt) || (v.dni||'').toLowerCase().includes(txt)) 
+            .map(([k,v]) => `<div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm relative overflow-hidden group hover:border-[var(--brand-main)] transition-all"><div class="absolute top-0 left-0 w-1.5 h-full ${v.saldo>0?'bg-[var(--brand-accent)]':'bg-[var(--brand-main)]'} opacity-80"></div><div class="flex justify-between font-bold uppercase text-xs mb-4 pl-2"><span class="text-[var(--brand-dark)]">${v.nom||'--'}</span><div class="flex gap-2 text-sm opacity-0 group-hover:opacity-100 transition-opacity"><button onclick="window.editarCli('${k}')" class="text-slate-300 hover:text-[var(--brand-dark)]">✏️</button><button onclick="window.elimCli('${k}')" class="text-slate-300 hover:text-[var(--brand-accent)]">✕</button></div></div><div class="flex justify-between items-end pl-2"><div><p class="text-[9px] uppercase text-slate-400 font-bold tracking-widest">Deuda Total</p><p class="text-2xl font-bold ${v.saldo>0?'text-[var(--brand-accent)]':'text-slate-400'} tracking-tight">$${(v.saldo || 0).toLocaleString('es-AR')}</p></div><button onclick="window.verFicha('${k}')" class="bg-slate-50 text-[var(--brand-dark)] px-4 py-2 rounded-lg text-[10px] font-bold uppercase tracking-widest hover:bg-[var(--brand-dark)] hover:text-white transition-colors border border-slate-200 shadow-sm">Ver Ficha</button></div></div>`).join(''); 
     };
+
     window.verFicha = function(k) {
-        window.clienteActualKey = k; const c = window.db.clientes[k]; if(!c) return; document.getElementById('ficha-nom').innerText = c.nom; document.getElementById('ficha-saldo').innerText = "$" + (c.saldo || 0).toLocaleString('es-AR'); document.getElementById('ficha-datos').innerHTML = `<span>DNI: ${c.dni||'-'}</span><span>CEL: ${c.cel||'-'}</span><span>DIR: ${c.dir||'-'}</span>`; const hoyTime = new Date().setHours(0,0,0,0);
-        document.getElementById('lista-deudas-individuales').innerHTML = (c.deudas || []).filter(d => d.saldo > 0).map(d => { let fD = d.f ? new Date(d.f + 'T00:00:00').getTime() : hoyTime; let dR = 30 - Math.floor((hoyTime - fD) / 86400000); let tC = dR > 0 ? `Quedan ${dR} días` : dR === 0 ? "VENCE HOY" : `VENCIDO HACE ${Math.abs(dR)} DÍAS`; let cC = dR > 0 ? "text-amber-500" : "text-[var(--brand-accent)] font-bold animate-pulse"; return `<div class="bg-white p-3 rounded-xl border border-slate-100 flex justify-between items-center text-[11px] uppercase font-bold shadow-sm"><div><p class="text-[var(--brand-dark)]">${d.c}</p><p class="text-[9px] text-slate-400 mt-0.5">${d.f} <span class="${cC} ml-1 font-bold">${tC}</span></p></div><p class="font-bold text-[var(--brand-accent)] text-sm">$${d.saldo.toLocaleString('es-AR')}</p></div>`; }).join('') || '<p class="text-[10px] italic text-slate-400 text-center py-4 bg-white rounded-xl border border-dashed border-slate-200">Sin deudas de plazo activo</p>';
-        const movs = Object.values(window.db.caja).filter(x => x.cliKey === k).reverse(); document.getElementById('ficha-movimientos').innerHTML = movs.map(x => `<tr><td class="py-2.5 text-slate-400 font-mono text-[9px] border-b border-slate-100 pl-2">${x.f}</td><td class="py-2.5 text-[9px] uppercase font-semibold text-slate-700 border-b border-slate-100">${x.c}</td><td class="py-2.5 text-right font-bold text-xs ${x.c.includes('PAGO') ? 'text-[var(--brand-main)]' : 'text-[var(--brand-dark)]'} border-b border-slate-100 pr-2">$${x.v.toLocaleString('es-AR')}</td></tr>`).join(''); document.getElementById('ficha-cobro-monto').value = ""; document.getElementById('ficha-cobro-medio').value = "EFECTIVO"; document.getElementById('container-detalle-cobro-ficha').classList.add('hidden'); document.getElementById('modal-cliente').classList.remove('hidden');
+        window.clienteActualKey = k; 
+        const c = window.db.clientes[k]; 
+        if(!c) return; 
+        
+        document.getElementById('ficha-nom').innerText = c.nom; 
+        document.getElementById('ficha-saldo').innerText = "$" + (c.saldo || 0).toLocaleString('es-AR'); 
+        document.getElementById('ficha-datos').innerHTML = `<span>DNI: ${c.dni||'-'}</span><span>CEL: ${c.cel||'-'}</span><span>DIR: ${c.dir||'-'}</span>`; 
+        
+        const hoyTime = new Date().setHours(0,0,0,0);
+        document.getElementById('lista-deudas-individuales').innerHTML = (c.deudas || []).filter(d => d.saldo > 0).map(d => { 
+            let fD = d.f ? new Date(d.f + 'T00:00:00').getTime() : hoyTime; 
+            let dR = 30 - Math.floor((hoyTime - fD) / 86400000); 
+            let tC = dR > 0 ? `Quedan ${dR} días` : dR === 0 ? "VENCE HOY" : `VENCIDO HACE ${Math.abs(dR)} DÍAS`; 
+            let cC = dR > 0 ? "text-amber-500" : "text-[var(--brand-accent)] font-bold animate-pulse"; 
+            return `<div class="bg-white p-3 rounded-xl border border-slate-100 flex justify-between items-center text-[11px] uppercase font-bold shadow-sm"><div><p class="text-[var(--brand-dark)]">${d.c}</p><p class="text-[9px] text-slate-400 mt-0.5">${d.f} <span class="${cC} ml-1 font-bold">${tC}</span></p></div><p class="font-bold text-[var(--brand-accent)] text-sm">$${d.saldo.toLocaleString('es-AR')}</p></div>`; 
+        }).join('') || '<p class="text-[10px] italic text-slate-400 text-center py-4 bg-white rounded-xl border border-dashed border-slate-200">Sin deudas de plazo activo</p>';
+        
+        const movs = Object.values(window.db.caja).filter(x => x.cliKey === k).reverse(); 
+        document.getElementById('ficha-movimientos').innerHTML = movs.map(x => `<tr><td class="py-2.5 text-slate-400 font-mono text-[9px] border-b border-slate-100 pl-2">${x.f}</td><td class="py-2.5 text-[9px] uppercase font-semibold text-slate-700 border-b border-slate-100">${x.c}</td><td class="py-2.5 text-right font-bold text-xs ${x.c.includes('PAGO') ? 'text-[var(--brand-main)]' : 'text-[var(--brand-dark)]'} border-b border-slate-100 pr-2">$${x.v.toLocaleString('es-AR')}</td></tr>`).join(''); 
+        
+        document.getElementById('ficha-cobro-monto').value = ""; 
+        document.getElementById('ficha-cobro-medio').value = "EFECTIVO"; 
+        document.getElementById('container-detalle-cobro-ficha').classList.add('hidden'); 
+        document.getElementById('modal-cliente').classList.remove('hidden');
     };
-    window.toggleDetalleCobroFicha = function() { const m = document.getElementById('ficha-cobro-medio').value; const s = document.getElementById('ficha-cobro-detalle'); const container = document.getElementById('container-detalle-cobro-ficha'); const DET = { "TRANSFERENCIA": window.db.medios.transferencia, "TARJETA": window.db.medios.tarjeta }; if(DET[m] && DET[m].length > 0){ container.classList.remove('hidden'); s.innerHTML = DET[m].map(o=>`<option value="${o}">${o}</option>`).join(''); } else container.classList.add('hidden'); };
-    window.deudaManual = async function() { const c = prompt("Concepto:"); const m = parseInt(prompt("Monto:")); if(c && m > 0) { const fH = new Date().toISOString().split('T')[0]; if(!window.db.clientes[window.clienteActualKey].deudas) window.db.clientes[window.clienteActualKey].deudas = []; window.db.clientes[window.clienteActualKey].deudas.push({ id: Date.now(), f: fH, c: "CARGA MANUAL: " + c.toUpperCase(), v: m, saldo: m }); window.db.clientes[window.clienteActualKey].saldo = (window.db.clientes[window.clienteActualKey].saldo || 0) + m; window.db.caja["D"+Date.now()] = { f: fH, h: new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'}), c: "DEUDA MANUAL: "+c.toUpperCase(), cli: window.db.clientes[window.clienteActualKey].nom, cliKey: window.clienteActualKey, v: m, tp: "ING", m: "CUENTA CORRIENTE" }; await window.syncDB("", window.db); } };
+
+    window.toggleDetalleCobroFicha = function() { 
+        const m = document.getElementById('ficha-cobro-medio').value; 
+        const s = document.getElementById('ficha-cobro-detalle'); 
+        const container = document.getElementById('container-detalle-cobro-ficha'); 
+        const DET = { "TRANSFERENCIA": window.db.medios.transferencia, "TARJETA": window.db.medios.tarjeta }; 
+        if(DET[m] && DET[m].length > 0){ 
+            container.classList.remove('hidden'); 
+            s.innerHTML = DET[m].map(o=>`<option value="${o}">${o}</option>`).join(''); 
+        } else {
+            container.classList.add('hidden'); 
+        }
+    };
+
+    window.deudaManual = async function() { 
+        const c = prompt("Concepto:"); 
+        const m = parseInt(prompt("Monto:")); 
+        if(c && m > 0) { 
+            const fH = new Date().toISOString().split('T')[0]; 
+            if(!window.db.clientes[window.clienteActualKey].deudas) window.db.clientes[window.clienteActualKey].deudas = []; 
+            window.db.clientes[window.clienteActualKey].deudas.push({ id: Date.now(), f: fH, c: "CARGA MANUAL: " + c.toUpperCase(), v: m, saldo: m }); 
+            window.db.clientes[window.clienteActualKey].saldo = (window.db.clientes[window.clienteActualKey].saldo || 0) + m; 
+            window.db.caja["D"+Date.now()] = { f: fH, h: new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'}), c: "DEUDA MANUAL: "+c.toUpperCase(), cli: window.db.clientes[window.clienteActualKey].nom, cliKey: window.clienteActualKey, v: m, tp: "ING", m: "CUENTA CORRIENTE" }; 
+            await window.syncDB("", window.db); 
+        } 
+    };
     
     window.cobrarFicha = async function() { 
-        let iM = document.getElementById('ficha-cobro-monto'); let sM = document.getElementById('ficha-cobro-medio'); let sD = document.getElementById('ficha-cobro-detalle'); 
-        let montoP = parseInt(iM.value); let medioB = sM.value; let medioE = (medioB === 'TRANSFERENCIA' || medioB === 'TARJETA') && sD.value ? `${medioB} (${sD.value})` : medioB; 
-        if(isNaN(montoP) || montoP <= 0) return; let pagoO = montoP; const c = window.db.clientes[window.clienteActualKey]; 
+        let iM = document.getElementById('ficha-cobro-monto'); 
+        let sM = document.getElementById('ficha-cobro-medio'); 
+        let sD = document.getElementById('ficha-cobro-detalle'); 
+        let montoP = parseInt(iM.value); 
+        let medioB = sM.value; 
+        let medioE = (medioB === 'TRANSFERENCIA' || medioB === 'TARJETA') && sD.value ? `${medioB} (${sD.value})` : medioB; 
+        
+        if(isNaN(montoP) || montoP <= 0) return; 
+        
+        let pagoO = montoP; 
+        const c = window.db.clientes[window.clienteActualKey]; 
+        
         c.saldo -= montoP; 
-        if(c.deudas) { c.deudas.sort((a,b) => new Date(a.f||0) - new Date(b.f||0)); for(let d of c.deudas) { if(d.saldo > 0) { if(montoP >= d.saldo) { montoP -= d.saldo; d.saldo = 0; } else { d.saldo -= montoP; montoP = 0; break; } } } } 
+        if(c.deudas) { 
+            c.deudas.sort((a,b) => new Date(a.f||0) - new Date(b.f||0)); 
+            for(let d of c.deudas) { 
+                if(d.saldo > 0) { 
+                    if(montoP >= d.saldo) { montoP -= d.saldo; d.saldo = 0; } 
+                    else { d.saldo -= montoP; montoP = 0; break; } 
+                } 
+            } 
+        } 
+        
         window.db.caja["P"+Date.now()] = { f: new Date().toISOString().split('T')[0], h: new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'}), c: "PAGO RECIBIDO A CTA", cli: c.nom, cliKey: window.clienteActualKey, v: pagoO, tp: "ING", m: medioE }; 
-        iM.value = ""; await window.syncDB("", window.db); 
-        if(confirm("Cobro Registrado ✅\n\n¿Deseas imprimir el recibo de pago?")) { window.imprimirTicketCobro(pagoO, c.nom, medioE, "Abono a Cuenta Corriente"); }
-    };
-    window.cerrarFicha = function() { document.getElementById('modal-cliente').classList.add('hidden'); window.clienteActualKey = null; };
-    window.editarCli = function(k) { let c = window.db.clientes[k]; document.getElementById('c-key').value = k; document.getElementById('c-nom').value = c.nom; document.getElementById('c-dni').value = c.dni; document.getElementById('c-cel').value = c.cel; document.getElementById('c-dir').value = c.dir; document.getElementById('c-rec').value = c.rec; window.scrollTo(0,0); };
-    window.elimCli = async function(k) { if(confirm("¿Eliminar?")) { delete window.db.clientes[k]; await window.syncDB("clientes", window.db.clientes); } };
+        iM.value = ""; 
+        await window.syncDB("", window.db); 
 
-    // CAJA Y BALANCE
-    window.pushEgreso = async function() { const c = document.getElementById('x-egr-concepto').value.toUpperCase(); const m = parseInt(document.getElementById('x-egr-monto').value); const med = document.getElementById('x-egr-medio').value; if (!c || isNaN(m) || m <= 0) return; const fH = new Date().toISOString().split('T')[0]; const hH = new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'}); window.db.caja["E" + Date.now()] = { f: fH, h: hH, c: "EGRESO: " + c, cli: "-", cliKey: null, v: m, tp: "EGR", m: med }; await window.syncDB("", window.db); document.getElementById('x-egr-concepto').value = ''; document.getElementById('x-egr-monto').value = ''; };
+        if(confirm("Cobro Registrado ✅\n\n¿Deseas imprimir el recibo de pago?")) { 
+            window.imprimirTicketCobro(pagoO, c.nom, medioE, "Abono a Cuenta Corriente"); 
+        }
+    };
+
+    window.cerrarFicha = function() { 
+        document.getElementById('modal-cliente').classList.add('hidden'); 
+        window.clienteActualKey = null; 
+    };
+
+    window.editarCli = function(k) { 
+        let c = window.db.clientes[k]; 
+        document.getElementById('c-key').value = k; 
+        document.getElementById('c-nom').value = c.nom; 
+        document.getElementById('c-dni').value = c.dni; 
+        document.getElementById('c-cel').value = c.cel; 
+        document.getElementById('c-dir').value = c.dir; 
+        document.getElementById('c-rec').value = c.rec; 
+        window.scrollTo(0,0); 
+    };
+
+    window.elimCli = async function(k) { 
+        if(confirm("¿Eliminar?")) { 
+            delete window.db.clientes[k]; 
+            await window.syncDB("clientes", window.db.clientes); 
+        } 
+    };
+
+    // -------------------------------------------------------------
+    // CAJA DIARIA
+    // -------------------------------------------------------------
+    window.pushEgreso = async function() { 
+        const c = document.getElementById('x-egr-concepto').value.toUpperCase(); 
+        const m = parseInt(document.getElementById('x-egr-monto').value); 
+        const med = document.getElementById('x-egr-medio').value; 
+        if (!c || isNaN(m) || m <= 0) return; 
+        
+        const fH = new Date().toISOString().split('T')[0]; 
+        const hH = new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'}); 
+        window.db.caja["E" + Date.now()] = { f: fH, h: hH, c: "EGRESO: " + c, cli: "-", cliKey: null, v: m, tp: "EGR", m: med }; 
+        await window.syncDB("", window.db); 
+        
+        document.getElementById('x-egr-concepto').value = ''; 
+        document.getElementById('x-egr-monto').value = ''; 
+    };
+
     window.renderCaja = function() {
-        let tI=0, tE=0, cH=""; const fF = document.getElementById('x-filtro-fecha').value; const fT = document.getElementById('x-filtro-tipo').value; const fM = document.getElementById('x-filtro-medio').value; const fX = document.getElementById('x-filtro-texto').value.toLowerCase();
-        let movsCaja = Object.entries(window.db.caja).sort((a,b) => { let dateA = a[1].f || ""; let dateB = b[1].f || ""; if (dateA !== dateB) return dateA.localeCompare(dateB); let timeA = a[1].h || ""; let timeB = b[1].h || ""; if (timeA !== timeB) return timeA.localeCompare(timeB); return a[0].localeCompare(b[0]); }).reverse(); 
-        movsCaja.filter(([id, x]) => { if(!x) return false; let mF = fF ? x.f === fF : true; let mT = fT === "TODOS" ? true : x.tp === fT; let mM = fM === "TODOS" ? true : (x.m && x.m.includes(fM)); let mX = (x.cli && x.cli.toLowerCase().includes(fX)) || (x.c && x.c.toLowerCase().includes(fX)); return mF && mT && mM && mX;
+        let tI=0, tE=0, cH=""; 
+        const fF = document.getElementById('x-filtro-fecha').value; 
+        const fT = document.getElementById('x-filtro-tipo').value; 
+        const fM = document.getElementById('x-filtro-medio').value; 
+        const fX = document.getElementById('x-filtro-texto').value.toLowerCase();
+        
+        let movsCaja = Object.entries(window.db.caja).sort((a,b) => { 
+            let dateA = a[1].f || ""; let dateB = b[1].f || ""; 
+            if (dateA !== dateB) return dateA.localeCompare(dateB); 
+            let timeA = a[1].h || ""; let timeB = b[1].h || ""; 
+            if (timeA !== timeB) return timeA.localeCompare(timeB); 
+            return a[0].localeCompare(b[0]); 
+        }).reverse(); 
+
+        movsCaja.filter(([id, x]) => { 
+            if(!x) return false; 
+            let mF = fF ? x.f === fF : true; 
+            let mT = fT === "TODOS" ? true : x.tp === fT; 
+            let mM = fM === "TODOS" ? true : (x.m && x.m.includes(fM)); 
+            let mX = (x.cli && x.cli.toLowerCase().includes(fX)) || (x.c && x.c.toLowerCase().includes(fX)); 
+            return mF && mT && mM && mX;
         }).forEach(([id, x]) => { 
             let montoMostrar = x.v || 0; let m = x.m || '';
-            if (fM !== "TODOS" && m.includes("DIVIDIDO")) { const regex = new RegExp(fM + "\\s*\\$(\\d+)"); const match = m.match(regex); if (match && match[1]) montoMostrar = parseInt(match[1]); }
+            if (fM !== "TODOS" && m.includes("DIVIDIDO")) { 
+                const regex = new RegExp(fM + "\\s*\\$(\\d+)"); 
+                const match = m.match(regex); 
+                if (match && match[1]) montoMostrar = parseInt(match[1]); 
+            }
             if(x.tp === 'ING') tI += montoMostrar; else tE += montoMostrar; 
             cH+=`<tr class="border-b border-slate-100 hover:bg-slate-50 transition-colors"><td class="p-3 pl-4 text-slate-400 font-mono text-[9px]">${x.f} <br> ${x.h}</td><td class="p-3 font-semibold text-[var(--brand-dark)] text-[11px]">${x.cli || '-'}</td><td class="p-3 text-slate-600 text-[10px]">${x.c}</td><td class="p-3 text-slate-500 font-medium text-[9px]">${x.m||'-'}</td><td class="p-3 text-right ${x.tp==='ING'?'text-[var(--brand-dark)]':'text-[var(--brand-accent)]'} font-bold text-sm pr-4">$${montoMostrar.toLocaleString('es-AR')}</td><td class="p-3 text-right pr-4"><button onclick="window.elimMov('${id}')" class="text-slate-300 hover:text-[var(--brand-accent)] font-light text-xl">✕</button></td></tr>`; 
         });
         document.getElementById('resumen-caja').innerHTML = `<div class="bg-white border border-slate-200 p-5 rounded-xl shadow-sm text-center"><p class="text-[9px] font-bold text-slate-400 uppercase tracking-widest">Ingresos</p><p class="text-3xl font-semibold text-[var(--brand-dark)] tracking-tight mt-1">$${tI.toLocaleString('es-AR')}</p></div><div class="bg-white border border-slate-200 p-5 rounded-xl shadow-sm text-center"><p class="text-[9px] font-bold text-slate-400 uppercase tracking-widest">Egresos</p><p class="text-3xl font-semibold text-[var(--brand-accent)] tracking-tight mt-1">$${tE.toLocaleString('es-AR')}</p></div><div class="bg-[var(--brand-dark)] p-5 rounded-xl shadow-md text-center"><p class="text-[9px] font-bold text-slate-400 uppercase tracking-widest">Neto</p><p class="text-3xl font-bold text-white tracking-tight mt-1">$${(tI-tE).toLocaleString('es-AR')}</p></div>`;
         document.getElementById('x-t').innerHTML = cH || '<tr><td colspan="6" class="text-center py-8 text-slate-400 italic font-medium text-xs bg-white rounded-lg">Sin movimientos registrados</td></tr>';
     };
-    window.elimMov = async function(id) { if(!confirm("¿Revertir?")) return; const m = window.db.caja[id]; if(m.items) m.items.forEach(i => { if(window.db.stock[i.k]) window.db.stock[i.k].can += i.cant; }); if((m.m||'').includes("CUENTA CORRIENTE") && m.cliKey && window.db.clientes[m.cliKey]) { window.db.clientes[m.cliKey].saldo -= m.v; window.db.clientes[m.cliKey].deudas = (window.db.clientes[m.cliKey].deudas||[]).filter(d => d.v !== m.v); } delete window.db.caja[id]; await window.syncDB("", window.db); };
-    window.formatMayorMoney = function(val) { if (val === 0) return ""; if (val < 0) return `<span class="text-haber">(${Math.abs(val).toLocaleString('es-AR')})</span>`; return val.toLocaleString('es-AR'); };
+
+    window.elimMov = async function(id) { 
+        if(!confirm("¿Revertir?")) return; 
+        const m = window.db.caja[id]; 
+        if(m.items) {
+            m.items.forEach(i => { if(window.db.stock[i.k]) window.db.stock[i.k].can += i.cant; }); 
+        }
+        if((m.m||'').includes("CUENTA CORRIENTE") && m.cliKey && window.db.clientes[m.cliKey]) { 
+            window.db.clientes[m.cliKey].saldo -= m.v; 
+            window.db.clientes[m.cliKey].deudas = (window.db.clientes[m.cliKey].deudas||[]).filter(d => d.v !== m.v); 
+        } 
+        delete window.db.caja[id]; 
+        await window.syncDB("", window.db); 
+    };
+    
+    // -------------------------------------------------------------
+    // BALANCE
+    // -------------------------------------------------------------
+    window.formatMayorMoney = function(val) { 
+        if (val === 0) return ""; 
+        if (val < 0) return `<span class="text-haber">(${Math.abs(val).toLocaleString('es-AR')})</span>`; 
+        return val.toLocaleString('es-AR'); 
+    };
 
     window.actualizarSubcuentasBalance = function() {
-        let tipo = document.getElementById('a-filtro-tipo-cuenta').value; let subSelect = document.getElementById('a-filtro-subcuenta'); let html = "";
-        if (tipo === 'GENERAL') { html = `<option value="TODAS">CAJA GLOBAL (Todas)</option><option value="EFECTIVO">EFECTIVO</option><option value="TRANSFERENCIA">TRANSFERENCIAS (Todas)</option><option value="TARJETA">TARJETAS (Todas)</option><option value="CUENTA CORRIENTE">CUENTAS A COBRAR (Clientes)</option><option value="CTA CTE PROVEEDOR">CUENTAS A PAGAR (Proveedores)</option>`; } 
-        else if (tipo === 'BILLETERAS') { (window.db.medios.transferencia || []).forEach(m => { html += `<option value="MEDIO_${m}">${m}</option>`; }); if(!window.db.medios.transferencia || window.db.medios.transferencia.length === 0) html = `<option value="">Sin datos</option>`; } 
-        else if (tipo === 'TARJETAS') { (window.db.medios.tarjeta || []).forEach(m => { html += `<option value="MEDIO_${m}">${m}</option>`; }); if(!window.db.medios.tarjeta || window.db.medios.tarjeta.length === 0) html = `<option value="">Sin datos</option>`; } 
-        else if (tipo === 'CLIENTES') { html = `<option value="CLI_CF">CONSUMIDOR FINAL</option>`; Object.entries(window.db.clientes).forEach(([k,v]) => { html += `<option value="CLI_${k}">${v.nom}</option>`; }); } 
-        else if (tipo === 'PROVEEDORES') { html = `<option value="PROV_OCASIONAL">PROV. OCASIONAL</option>`; Object.entries(window.db.proveedores).forEach(([k,v]) => { html += `<option value="PROV_${k}">${v.nom}</option>`; }); }
-        subSelect.innerHTML = html; window.renderArqueo();
+        let tipo = document.getElementById('a-filtro-tipo-cuenta').value;
+        let subSelect = document.getElementById('a-filtro-subcuenta');
+        let html = "";
+
+        if (tipo === 'GENERAL') {
+            html = `<option value="TODAS">CAJA GLOBAL (Todas)</option>
+                    <option value="EFECTIVO">EFECTIVO</option>
+                    <option value="TRANSFERENCIA">TRANSFERENCIAS (Todas)</option>
+                    <option value="TARJETA">TARJETAS (Todas)</option>
+                    <option value="CUENTA CORRIENTE">CUENTAS A COBRAR (Clientes)</option>
+                    <option value="CTA CTE PROVEEDOR">CUENTAS A PAGAR (Proveedores)</option>`;
+        } else if (tipo === 'BILLETERAS') {
+            (window.db.medios.transferencia || []).forEach(m => { html += `<option value="MEDIO_${m}">${m}</option>`; });
+            if(!window.db.medios.transferencia || window.db.medios.transferencia.length === 0) html = `<option value="">Sin datos</option>`;
+        } else if (tipo === 'TARJETAS') {
+            (window.db.medios.tarjeta || []).forEach(m => { html += `<option value="MEDIO_${m}">${m}</option>`; });
+            if(!window.db.medios.tarjeta || window.db.medios.tarjeta.length === 0) html = `<option value="">Sin datos</option>`;
+        } else if (tipo === 'CLIENTES') {
+            html = `<option value="CLI_CF">CONSUMIDOR FINAL</option>`;
+            Object.entries(window.db.clientes).forEach(([k,v]) => { html += `<option value="CLI_${k}">${v.nom}</option>`; });
+        } else if (tipo === 'PROVEEDORES') {
+            html = `<option value="PROV_OCASIONAL">PROV. OCASIONAL</option>`;
+            Object.entries(window.db.proveedores).forEach(([k,v]) => { html += `<option value="PROV_${k}">${v.nom}</option>`; });
+        }
+        subSelect.innerHTML = html; 
+        window.renderArqueo();
     };
     
     window.renderArqueo = function() {
-        let fD = document.getElementById('a-fecha-desde').value; let fH = document.getElementById('a-fecha-hasta').value; let fC = document.getElementById('a-filtro-subcuenta').value; let tI = 0, tE = 0; let htmlM = ""; let saldoA = 0; let totalD = 0; let totalH = 0;
-        let movs = Object.entries(window.db.caja).sort((a,b) => { let dateA = a[1].f || ""; let dateB = b[1].f || ""; if (dateA !== dateB) return dateA.localeCompare(dateB); let timeA = a[1].h || ""; let timeB = b[1].h || ""; if (timeA !== timeB) return timeA.localeCompare(timeB); return a[0].localeCompare(b[0]); });
+        let fD = document.getElementById('a-fecha-desde').value; 
+        let fH = document.getElementById('a-fecha-hasta').value; 
+        let fC = document.getElementById('a-filtro-subcuenta').value; 
+        let tI = 0, tE = 0; let htmlM = ""; let saldoA = 0; let totalD = 0; let totalH = 0;
+        
+        let movs = Object.entries(window.db.caja).sort((a,b) => {
+            let dateA = a[1].f || ""; let dateB = b[1].f || ""; 
+            if (dateA !== dateB) return dateA.localeCompare(dateB);
+            let timeA = a[1].h || ""; let timeB = b[1].h || ""; 
+            if (timeA !== timeB) return timeA.localeCompare(timeB);
+            return a[0].localeCompare(b[0]);
+        });
 
         movs.forEach(([id, x]) => { 
-            if (!x || !x.f) return; if (fD && x.f < fD) return; if (fH && x.f > fH) return; 
+            if (!x || !x.f) return; 
+            if (fD && x.f < fD) return; 
+            if (fH && x.f > fH) return; 
+            
             let monto = x.v || 0; let m = x.m || ''; let c = x.c || ''; let debe = 0; let haber = 0;
-            let isVentaCtaCte = m.includes('CUENTA CORRIENTE'); let isPagoRecibido = c.includes('PAGO RECIBIDO'); let isDeudaManual = c.includes('DEUDA MANUAL:');
-            let isCompraCtaCte = m.includes('CTA CTE PROVEEDOR'); let isPagoAProv = c.includes('PAGO A PROVEEDOR'); let isDeudaManualProv = c.includes('DEUDA MANUAL PROV');
+            let isVentaCtaCte = m.includes('CUENTA CORRIENTE'); 
+            let isPagoRecibido = c.includes('PAGO RECIBIDO'); 
+            let isDeudaManual = c.includes('DEUDA MANUAL:');
+            let isCompraCtaCte = m.includes('CTA CTE PROVEEDOR'); 
+            let isPagoAProv = c.includes('PAGO A PROVEEDOR'); 
+            let isDeudaManualProv = c.includes('DEUDA MANUAL PROV');
+
             if (!fC) return;
 
             if (fC.startsWith('CLI_')) {
-                let keyBuscada = fC.replace('CLI_', ''); if (keyBuscada === 'CF' && x.cliKey !== "null") return; if (keyBuscada !== 'CF' && x.cliKey !== keyBuscada) return;
+                let keyBuscada = fC.replace('CLI_', '');
+                if (keyBuscada === 'CF' && x.cliKey !== "null") return;
+                if (keyBuscada !== 'CF' && x.cliKey !== keyBuscada) return;
                 if (!isVentaCtaCte && !isPagoRecibido && !isDeudaManual) return; 
-                if (isVentaCtaCte || isDeudaManual) { debe = monto; tI += monto; } else if (isPagoRecibido) { haber = monto; tE += monto; }
-            } else if (fC.startsWith('PROV_')) {
-                let keyBuscada = fC.replace('PROV_', ''); if (keyBuscada === 'OCASIONAL' && x.cliKey !== "null") return; if (keyBuscada !== 'OCASIONAL' && x.cliKey !== keyBuscada) return;
+                if (isVentaCtaCte || isDeudaManual) { debe = monto; tI += monto; } 
+                else if (isPagoRecibido) { haber = monto; tE += monto; }
+            }
+            else if (fC.startsWith('PROV_')) {
+                let keyBuscada = fC.replace('PROV_', '');
+                if (keyBuscada === 'OCASIONAL' && x.cliKey !== "null") return;
+                if (keyBuscada !== 'OCASIONAL' && x.cliKey !== keyBuscada) return;
                 if (!isCompraCtaCte && !isPagoAProv && !isDeudaManualProv) return; 
-                if (isCompraCtaCte || isDeudaManualProv) { haber = monto; tE += monto; } else if (isPagoAProv) { debe = monto; tI += monto; }
-            } else if (fC === 'CUENTA CORRIENTE') {
+                if (isCompraCtaCte || isDeudaManualProv) { haber = monto; tE += monto; } 
+                else if (isPagoAProv) { debe = monto; tI += monto; }
+            }
+            else if (fC === 'CUENTA CORRIENTE') {
                 if (!isVentaCtaCte && !isPagoRecibido && !isDeudaManual) return; 
-                if (isVentaCtaCte || isDeudaManual) { debe = monto; tI += monto; } else if (isPagoRecibido) { haber = monto; tE += monto; }
-            } else if (fC === 'CTA CTE PROVEEDOR') {
+                if (isVentaCtaCte || isDeudaManual) { debe = monto; tI += monto; } 
+                else if (isPagoRecibido) { haber = monto; tE += monto; }
+            } 
+            else if (fC === 'CTA CTE PROVEEDOR') {
                 if (!isCompraCtaCte && !isPagoAProv && !isDeudaManualProv) return; 
-                if (isCompraCtaCte || isDeudaManualProv) { haber = monto; tE += monto; } else if (isPagoAProv) { debe = monto; tI += monto; }
-            } else {
-                let medioFiltro = fC.startsWith('MEDIO_') ? fC.replace('MEDIO_', '') : fC; let montoAplicable = monto;
-                if (medioFiltro !== 'TODAS') { if (m.includes("DIVIDIDO")) { const regex = new RegExp(medioFiltro + "\\s*\\$(\\d+)"); const match = m.match(regex); if (match && match[1]) { montoAplicable = parseInt(match[1]); } else return; } else if (!m.includes(medioFiltro)) return;
-                } else { if (isVentaCtaCte || isDeudaManual || isCompraCtaCte || isDeudaManualProv) return; }
-                if (x.tp === 'ING') { debe = montoAplicable; tI += montoAplicable; } else { haber = montoAplicable; tE += montoAplicable; }
+                if (isCompraCtaCte || isDeudaManualProv) { haber = monto; tE += monto; } 
+                else if (isPagoAProv) { debe = monto; tI += monto; }
+            }
+            else {
+                let medioFiltro = fC.startsWith('MEDIO_') ? fC.replace('MEDIO_', '') : fC;
+                let montoAplicable = monto;
+
+                if (medioFiltro !== 'TODAS') {
+                    if (m.includes("DIVIDIDO")) {
+                        const regex = new RegExp(medioFiltro + "\\s*\\$(\\d+)"); 
+                        const match = m.match(regex);
+                        if (match && match[1]) { montoAplicable = parseInt(match[1]); } else return;
+                    } else if (!m.includes(medioFiltro)) return;
+                } else {
+                    if (isVentaCtaCte || isDeudaManual || isCompraCtaCte || isDeudaManualProv) return; 
+                }
+                
+                if (x.tp === 'ING') { debe = montoAplicable; tI += montoAplicable; } 
+                else { haber = montoAplicable; tE += montoAplicable; }
             }
             
-            totalD += debe; totalH += haber; saldoA += (debe - haber); let fechaArg = x.f.split('-').reverse().join('/'); 
+            totalD += debe; totalH += haber; saldoA += (debe - haber);
+            let fechaArg = x.f.split('-').reverse().join('/'); 
+            
             htmlM += `<tr class="hover:bg-[var(--brand-light)] transition-colors bg-white"><td class="text-slate-500 text-[10px] pl-6">${fechaArg}</td><td class="font-bold text-[var(--brand-main)] text-[10px]">${id.substring(7, 12)}</td><td class="font-semibold text-slate-700 text-[10px]">${x.cli || '-'}</td><td class="uppercase text-slate-800 text-[10px] font-semibold">${x.c}</td><td class="uppercase text-[10px] font-semibold text-slate-500 text-left">${x.m || '-'}</td><td class="text-debe font-bold text-sm">${debe > 0 ? '$'+debe.toLocaleString('es-AR') : ''}</td><td class="text-haber font-bold text-sm">${haber > 0 ? '$'+haber.toLocaleString('es-AR') : ''}</td><td class="text-slate-900 font-bold text-sm pr-6">${window.formatMayorMoney(saldoA)}</td></tr>`; 
         });
         
@@ -959,41 +1819,166 @@
         document.getElementById('a-mayor-total').innerHTML = `<tr><td colspan="5" class="py-4 text-right text-[var(--brand-dark)] uppercase text-[10px] font-bold tracking-widest pl-6">Total Período:</td><td class="py-4 text-[var(--brand-dark)] text-sm font-bold">$${totalD.toLocaleString('es-AR')}</td><td class="py-4 text-haber text-sm font-bold">$${totalH.toLocaleString('es-AR')}</td><td class="py-4 pr-6 text-[var(--brand-dark)] font-black text-lg">${window.formatMayorMoney(saldoA)}</td></tr>`;
     };
     
-    // AJUSTES Y BACKUP
-    window.agregarMedio = async function(tipo) { let inputI = tipo === 'transferencia' ? 'nueva-billetera' : 'nueva-tarjeta'; let val = document.getElementById(inputI).value.trim().toUpperCase(); if(!val) return; window.db.medios[tipo].push(val); document.getElementById(inputI).value = ''; await window.syncDB("medios", window.db.medios); };
-    window.elimMedio = async function(tipo, idx) { if(confirm("¿Eliminar?")) { window.db.medios[tipo].splice(idx, 1); await window.syncDB("medios", window.db.medios); } };
+    // -------------------------------------------------------------
+    // AJUSTES, BACKUP Y EXCEL
+    // -------------------------------------------------------------
+    window.agregarMedio = async function(tipo) { 
+        let inputI = tipo === 'transferencia' ? 'nueva-billetera' : 'nueva-tarjeta'; 
+        let val = document.getElementById(inputI).value.trim().toUpperCase(); 
+        if(!val) return; 
+        window.db.medios[tipo].push(val); 
+        document.getElementById(inputI).value = ''; 
+        await window.syncDB("medios", window.db.medios); 
+    };
+
+    window.elimMedio = async function(tipo, idx) { 
+        if(confirm("¿Eliminar?")) { 
+            window.db.medios[tipo].splice(idx, 1); 
+            await window.syncDB("medios", window.db.medios); 
+        } 
+    };
+
     window.renderMedios = function() {
-        let bt = document.getElementById('lista-billeteras'), tt = document.getElementById('lista-tarjetas');
+        let bt = document.getElementById('lista-billeteras');
+        let tt = document.getElementById('lista-tarjetas');
+        
         bt.innerHTML = window.db.medios.transferencia.map((m, i) => `<li class="flex justify-between items-center bg-white border border-slate-200 p-3 rounded-lg shadow-sm font-semibold text-[var(--brand-dark)]"><span class="text-xs">${m}</span><button onclick="window.elimMedio('transferencia', ${i})" class="text-slate-300 hover:text-[var(--brand-accent)] font-light text-base">✕</button></li>`).join('');
         tt.innerHTML = window.db.medios.tarjeta.map((m, i) => `<li class="flex justify-between items-center bg-white border border-slate-200 p-3 rounded-lg shadow-sm font-semibold text-[var(--brand-dark)]"><span class="text-xs">${m}</span><button onclick="window.elimMedio('tarjeta', ${i})" class="text-slate-300 hover:text-[var(--brand-accent)] font-light text-base">✕</button></li>`).join('');
-        const selects = ['v-medio-1', 'v-medio-2', 'x-egr-medio']; selects.forEach(sId => { const s = document.getElementById(sId); const currentV = s.value; s.innerHTML = '<option value="EFECTIVO">EFECTIVO</option>' + window.db.medios.transferencia.map(m=>`<option value="${m}">${m}</option>`).join('') + window.db.medios.tarjeta.map(m=>`<option value="${m}">${m}</option>`).join(''); s.value = currentV || "EFECTIVO"; });
+        
+        const selects = ['v-medio-1', 'v-medio-2', 'x-egr-medio']; 
+        selects.forEach(sId => { 
+            const s = document.getElementById(sId); 
+            const currentV = s.value; 
+            s.innerHTML = '<option value="EFECTIVO">EFECTIVO</option>' + window.db.medios.transferencia.map(m=>`<option value="${m}">${m}</option>`).join('') + window.db.medios.tarjeta.map(m=>`<option value="${m}">${m}</option>`).join(''); 
+            s.value = currentV || "EFECTIVO"; 
+        });
         
         let selectPagoCompra = document.getElementById('p-pago');
-        if(selectPagoCompra) { let currentP = selectPagoCompra.value; selectPagoCompra.innerHTML = '<option value="EFECTIVO">EFECTIVO</option><option value="TRANSFERENCIA">TRANSFERENCIA</option><option value="TARJETA">TARJETA</option><option value="CTA CTE PROVEEDOR">CUENTA CORRIENTE (FIADO)</option>'; selectPagoCompra.value = currentP || "EFECTIVO"; }
+        if(selectPagoCompra) { 
+            let currentP = selectPagoCompra.value; 
+            selectPagoCompra.innerHTML = '<option value="EFECTIVO">EFECTIVO</option><option value="TRANSFERENCIA">TRANSFERENCIA</option><option value="TARJETA">TARJETA</option><option value="CTA CTE PROVEEDOR">CUENTA CORRIENTE (FIADO)</option>'; 
+            selectPagoCompra.value = currentP || "EFECTIVO"; 
+        }
+        
         if(document.getElementById('a').classList.contains('activa')) window.actualizarSubcuentasBalance();
     };
     
-    window.descargarBackup = function() { const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(window.db)); const a = document.createElement('a'); a.setAttribute("href", dataStr); a.setAttribute("download", "backup_sofia.json"); document.body.appendChild(a); a.click(); a.remove(); };
-    window.exportarExcel = function(tipo) {
-        let data = [], nom = "";
-        if (tipo === 'mayor') {
-            let fC = document.getElementById('a-filtro-subcuenta').value; nom = fC === "TODAS" ? "LIBRO_MAYOR" : `MAYOR_${fC}`; let fD = document.getElementById('a-fecha-desde').value; let fH = document.getElementById('a-fecha-hasta').value; let movs = Object.entries(window.db.caja).sort((a,b) => { let dA = a[1].f || ""; let dB = b[1].f || ""; if (dA !== dB) return dA.localeCompare(dB); let tA = a[1].h || ""; let tB = b[1].h || ""; if (tA !== tB) return tA.localeCompare(tB); return a[0].localeCompare(b[0]); }); let saldoA = 0;
-            
-            movs.forEach(([id, x]) => {
-                if (!x || !x.f) return; if (fD && x.f < fD) return; if (fH && x.f > fH) return; let monto = x.v || 0; let m = x.m || ''; let c = x.c || ''; let debe = 0; let haber = 0; let isVentaCtaCte = m.includes('CUENTA CORRIENTE'); let isPagoRecibido = c.includes('PAGO RECIBIDO'); let isDeudaManual = c.includes('DEUDA MANUAL:'); let isCompraCtaCte = m.includes('CTA CTE PROVEEDOR'); let isPagoAProv = c.includes('PAGO A PROVEEDOR'); let isDeudaManualProv = c.includes('DEUDA MANUAL PROV');
-                if (!fC) return;
-                if (fC.startsWith('CLI_')) { let kb = fC.replace('CLI_', ''); if (kb === 'CF' && x.cliKey !== "null") return; if (kb !== 'CF' && x.cliKey !== kb) return; if (!isVentaCtaCte && !isPagoRecibido && !isDeudaManual) return; if (isVentaCtaCte || isDeudaManual) debe = monto; else if (isPagoRecibido) haber = monto; } else if (fC.startsWith('PROV_')) { let kb = fC.replace('PROV_', ''); if (kb === 'OCASIONAL' && x.cliKey !== "null") return; if (kb !== 'OCASIONAL' && x.cliKey !== kb) return; if (!isCompraCtaCte && !isPagoAProv && !isDeudaManualProv) return; if (isCompraCtaCte || isDeudaManualProv) haber = monto; else if (isPagoAProv) debe = monto; } else if (fC === 'CUENTA CORRIENTE') { if (!isVentaCtaCte && !isPagoRecibido && !isDeudaManual) return; if (isVentaCtaCte || isDeudaManual) debe = monto; else if (isPagoRecibido) haber = monto; } else if (fC === 'CTA CTE PROVEEDOR') { if (!isCompraCtaCte && !isPagoAProv && !isDeudaManualProv) return; if (isCompraCtaCte || isDeudaManualProv) haber = monto; else if (isPagoAProv) debe = monto; } else { let mF = fC.startsWith('MEDIO_') ? fC.replace('MEDIO_', '') : fC; let mA = monto; if (mF !== 'TODAS') { if (m.includes("DIVIDIDO")) { const rx = new RegExp(mF + "\\s*\\$(\\d+)"); const mt = m.match(rx); if (mt && mt[1]) { mA = parseInt(mt[1]); } else { return; } } else { if (!m.includes(mF)) return; } } else { if (isVentaCtaCte || isDeudaManual || isCompraCtaCte || isDeudaManualProv) return; } if (x.tp === 'ING') debe = mA; else haber = mA; }
-                saldoA += (debe - haber); data.push({ "Fecha": x.f.split('-').reverse().join('/'), "Asiento": id.substring(7, 12), "Cliente/Prov": x.cli || "-", "Concepto": x.c, "Medio": x.m || "-", "Debe": debe > 0 ? debe : "", "Haber": haber > 0 ? haber : "", "Saldo": saldoA });
-            });
-        } else if (tipo === 'stock') { nom = "STOCK"; data = Object.values(window.db.stock).map(s => ({ CODIGO: s.cod, PRODUCTO: s.nom, CANT: s.can, VENTA: s.pre })); }
-        else if (tipo === 'clientes') { nom = "CLIENTES"; data = Object.values(window.db.clientes).map(c => ({ NOMBRE: c.nom, SALDO: c.saldo || 0 })); }
-        else { nom = "CAJA"; data = Object.values(window.db.caja).map(x => ({ FECHA: x.f, CONCEPTO: x.c, MONTO: x.v, MEDIO: x.m })); }
-        const ws = XLSX.utils.json_to_sheet(data); const wb = XLSX.utils.book_new(); XLSX.utils.book_append_sheet(wb, ws, "Reporte"); XLSX.writeFile(wb, `${nom}_${new Date().toLocaleDateString()}.xlsx`);
+    window.descargarBackup = function() { 
+        const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(window.db)); 
+        const a = document.createElement('a'); 
+        a.setAttribute("href", dataStr); 
+        a.setAttribute("download", "backup_sofia.json"); 
+        document.body.appendChild(a); 
+        a.click(); 
+        a.remove(); 
     };
 
-    window.ir = function(id, btn) { document.querySelectorAll('.seccion').forEach(s => s.classList.remove('activa')); document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active')); document.getElementById(id).classList.add('activa'); btn.classList.add('active'); if(id === 'a') window.actualizarSubcuentasBalance(); };
-    window.renderVUI = function() { document.getElementById('v-cli').innerHTML = '<option value="null">CONSUMIDOR FINAL</option>' + Object.entries(window.db.clientes).map(([k,v])=>`<option value="${k}">${v.nom}</option>`).join(''); };
-    window.limpiarInputs = function(p) { document.querySelectorAll(`input[id^="${p}-"]`).forEach(i => i.value = ''); };
+    window.exportarExcel = function(tipo) {
+        let data = [], nom = "";
+        
+        if (tipo === 'mayor') {
+            let fC = document.getElementById('a-filtro-subcuenta').value; 
+            nom = fC === "TODAS" ? "LIBRO_MAYOR" : `MAYOR_${fC}`;
+            let fD = document.getElementById('a-fecha-desde').value; 
+            let fH = document.getElementById('a-fecha-hasta').value;
+            
+            let movs = Object.entries(window.db.caja).sort((a,b) => { 
+                let dA = a[1].f || ""; let dB = b[1].f || ""; 
+                if (dA !== dB) return dA.localeCompare(dB); 
+                let tA = a[1].h || ""; let tB = b[1].h || ""; 
+                if (tA !== tB) return tA.localeCompare(tB); 
+                return a[0].localeCompare(b[0]); 
+            }); 
+            let saldoA = 0;
+            
+            movs.forEach(([id, x]) => {
+                if (!x || !x.f) return; 
+                if (fD && x.f < fD) return; 
+                if (fH && x.f > fH) return;
+                
+                let monto = x.v || 0; let m = x.m || ''; let c = x.c || ''; let debe = 0; let haber = 0;
+                let isVentaCtaCte = m.includes('CUENTA CORRIENTE'); 
+                let isPagoRecibido = c.includes('PAGO RECIBIDO'); 
+                let isDeudaManual = c.includes('DEUDA MANUAL:'); 
+                let isCompraCtaCte = m.includes('CTA CTE PROVEEDOR'); 
+                let isPagoAProv = c.includes('PAGO A PROVEEDOR'); 
+                let isDeudaManualProv = c.includes('DEUDA MANUAL PROV');
+
+                if (!fC) return;
+                if (fC.startsWith('CLI_')) { 
+                    let kb = fC.replace('CLI_', ''); 
+                    if (kb === 'CF' && x.cliKey !== "null") return; 
+                    if (kb !== 'CF' && x.cliKey !== kb) return; 
+                    if (!isVentaCtaCte && !isPagoRecibido && !isDeudaManual) return; 
+                    if (isVentaCtaCte || isDeudaManual) debe = monto; else if (isPagoRecibido) haber = monto; 
+                } 
+                else if (fC.startsWith('PROV_')) { 
+                    let kb = fC.replace('PROV_', ''); 
+                    if (kb === 'OCASIONAL' && x.cliKey !== "null") return; 
+                    if (kb !== 'OCASIONAL' && x.cliKey !== kb) return; 
+                    if (!isCompraCtaCte && !isPagoAProv && !isDeudaManualProv) return; 
+                    if (isCompraCtaCte || isDeudaManualProv) haber = monto; else if (isPagoAProv) debe = monto; 
+                } 
+                else if (fC === 'CUENTA CORRIENTE') { 
+                    if (!isVentaCtaCte && !isPagoRecibido && !isDeudaManual) return; 
+                    if (isVentaCtaCte || isDeudaManual) debe = monto; else if (isPagoRecibido) haber = monto; 
+                } 
+                else if (fC === 'CTA CTE PROVEEDOR') { 
+                    if (!isCompraCtaCte && !isPagoAProv && !isDeudaManualProv) return; 
+                    if (isCompraCtaCte || isDeudaManualProv) haber = monto; else if (isPagoAProv) debe = monto; 
+                } 
+                else {
+                    let medioFiltro = fC.startsWith('MEDIO_') ? fC.replace('MEDIO_', '') : fC; let mA = monto;
+                    if (medioFiltro !== 'TODAS') { 
+                        if (m.includes("DIVIDIDO")) { 
+                            const rgx = new RegExp(medioFiltro + "\\s*\\$(\\d+)"); 
+                            const mtc = m.match(rgx); 
+                            if (mtc && mtc[1]) { mA = parseInt(mtc[1]); } else { return; } 
+                        } else { 
+                            if (!m.includes(medioFiltro)) return; 
+                        }
+                    } else { 
+                        if (isVentaCtaCte || isDeudaManual || isCompraCtaCte || isDeudaManualProv) return; 
+                    }
+                    if (x.tp === 'ING') debe = mA; else haber = mA;
+                }
+                
+                saldoA += (debe - haber); 
+                data.push({ "Fecha": x.f.split('-').reverse().join('/'), "Asiento": id.substring(7, 12), "Cliente/Prov": x.cli || "-", "Concepto": x.c, "Medio": x.m || "-", "Debe": debe > 0 ? debe : "", "Haber": haber > 0 ? haber : "", "Saldo": saldoA });
+            });
+            
+        } else if (tipo === 'stock') { 
+            nom = "STOCK"; 
+            data = Object.values(window.db.stock).map(s => ({ CODIGO: s.cod, PRODUCTO: s.nom, CANT: s.can, VENTA: s.pre })); 
+        } else if (tipo === 'clientes') { 
+            nom = "CLIENTES"; 
+            data = Object.values(window.db.clientes).map(c => ({ NOMBRE: c.nom, SALDO: c.saldo || 0 })); 
+        } else { 
+            nom = "CAJA"; 
+            data = Object.values(window.db.caja).map(x => ({ FECHA: x.f, CONCEPTO: x.c, MONTO: x.v, MEDIO: x.m })); 
+        }
+        
+        const ws = XLSX.utils.json_to_sheet(data); 
+        const wb = XLSX.utils.book_new(); 
+        XLSX.utils.book_append_sheet(wb, ws, "Reporte"); 
+        XLSX.writeFile(wb, `${nom}_${new Date().toLocaleDateString()}.xlsx`);
+    };
+
+    window.ir = function(id, btn) { 
+        document.querySelectorAll('.seccion').forEach(s => s.classList.remove('activa')); 
+        document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active')); 
+        document.getElementById(id).classList.add('activa'); 
+        btn.classList.add('active'); 
+        if(id === 'a') window.actualizarSubcuentasBalance(); 
+    };
+
+    window.renderVUI = function() { 
+        document.getElementById('v-cli').innerHTML = '<option value="null">CONSUMIDOR FINAL</option>' + Object.entries(window.db.clientes).map(([k,v])=>`<option value="${k}">${v.nom}</option>`).join(''); 
+    };
+
+    window.limpiarInputs = function(p) { 
+        document.querySelectorAll(`input[id^="${p}-"]`).forEach(i => i.value = ''); 
+    };
 
 </script>
 </body>
