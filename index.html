@@ -245,6 +245,8 @@
             <button onclick="window.ir('c', this)" class="nav-btn px-4 py-2 text-[11px] rounded-lg">Clientes</button>
             <button onclick="window.ir('x', this)" class="nav-btn px-4 py-2 text-[11px] rounded-lg">Caja</button>
             <button onclick="window.ir('a', this)" class="nav-btn px-4 py-2 text-[11px] rounded-lg">Balance</button>
+            <button onclick="window.ir('d', this)" class="nav-btn px-4 py-2 text-[11px] rounded-lg">Devoluciones</button>
+            <button onclick="window.ir('i', this)" class="nav-btn px-4 py-2 text-[11px] rounded-lg">Informes</button>
             <button onclick="window.ir('j', this)" class="nav-btn px-4 py-2 text-[11px] rounded-lg">Ajustes</button>
             <button onclick="window.loadDB()" class="bg-white/10 px-4 py-2 rounded-lg text-[10px] font-bold hover:bg-white/20 text-white transition-all uppercase ml-2 border border-white/10">Sync</button>
         </div>
@@ -312,7 +314,17 @@
                     <tbody id="v-t" class="divide-y text-[var(--brand-dark)] uppercase font-semibold"></tbody>
                 </table>
             </div>
-            
+
+            <div class="flex justify-end gap-6 mb-6">
+                <div class="w-32">
+                    <label class="text-[var(--brand-main)] text-right block mb-1">Descuento $</label>
+                    <input type="number" id="v-descuento" value="0" min="0" oninput="window.renderV()" class="w-full text-right font-bold text-[var(--brand-accent)] bg-white h-[42px] shadow-sm">
+                </div>
+                <div class="w-32">
+                    <label class="text-[var(--brand-main)] text-right block mb-1">Recargo $</label>
+                    <input type="number" id="v-recargo" value="0" min="0" oninput="window.renderV()" class="w-full text-right font-bold text-[var(--brand-main)] bg-white h-[42px] shadow-sm">
+                </div>
+            </div>
             <div class="flex flex-col md:flex-row justify-between items-center pt-6 border-t border-slate-100 gap-6">
                 <div class="h-title text-4xl text-[var(--brand-dark)]">TOTAL <span class="text-[var(--brand-main)] ml-2">$</span><span id="v-tot" class="text-[var(--brand-main)]">0</span></div>
                 <button onclick="window.finalizarVenta()" class="btn-brand w-full md:w-auto px-16 py-4 text-lg shadow-lg">Finalizar Venta</button>
@@ -523,7 +535,11 @@
         <div class="card-solid border-t-4 border-[var(--brand-main)]">
             <div class="flex justify-between items-center mb-6">
                 <h2 class="h-title text-2xl text-[var(--brand-dark)]">Gestión de Clientes</h2>
-                <button onclick="window.exportarExcel('clientes')" class="btn-excel">📥 Descargar Clientes</button>
+                <div class="flex gap-2">
+                    <input type="file" id="c-import-file" class="hidden" accept=".xlsx, .xls" onchange="window.importarExcelClientes(this)">
+                    <button onclick="document.getElementById('c-import-file').click()" class="btn-excel text-[var(--brand-main)] border-[var(--brand-main)]">📂 Importar Excel</button>
+                    <button onclick="window.exportarExcel('clientes')" class="btn-excel">📥 Descargar Clientes</button>
+                </div>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4 mb-6 bg-[var(--brand-light)] p-5 rounded-2xl border border-[var(--brand-main)]">
                 <input type="hidden" id="c-key">
@@ -621,6 +637,31 @@
                     </div>
                 </div>
             </div>
+
+            <div class="px-6 pb-6 pt-4 bg-[var(--brand-light)] border-b border-[var(--brand-main)]">
+                <div class="flex flex-col md:flex-row gap-4 items-end bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                    <div class="flex-1 w-full">
+                        <label class="text-[var(--brand-main)]">Cuenta de Fondo</label>
+                        <select id="a-ajuste-medio" class="w-full text-xs font-bold bg-white border-slate-300"></select>
+                    </div>
+                    <div class="flex-1 w-full">
+                        <label class="text-[var(--brand-main)]">Concepto</label>
+                        <input type="text" id="a-ajuste-concepto" value="SALDO INICIAL" class="w-full uppercase bg-white border-slate-300">
+                    </div>
+                    <div class="w-full md:w-32">
+                        <label class="text-[var(--brand-main)]">Monto $</label>
+                        <input type="number" id="a-ajuste-monto" placeholder="Ej. 15000" class="w-full font-bold text-[var(--brand-dark)] bg-white border-[var(--brand-main)]">
+                    </div>
+                    <div class="w-full md:w-36">
+                        <label class="text-[var(--brand-main)]">Tipo de Ajuste</label>
+                        <select id="a-ajuste-tipo" class="w-full text-xs font-bold bg-white border-slate-300">
+                            <option value="ING">INGRESO (+)</option>
+                            <option value="EGR">EGRESO (-)</option>
+                        </select>
+                    </div>
+                    <button onclick="window.pushAjusteBalance()" class="btn-brand py-0 px-6 text-xs h-[42px] shadow-sm">Registrar Saldo</button>
+                </div>
+            </div>
             
             <div class="overflow-x-auto bg-white">
                 <table class="w-full text-right table-mayor text-sm">
@@ -643,6 +684,75 @@
             <div class="bg-slate-50 p-6 border-t border-slate-200">
                  <h3 class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3 text-center">Resumen del Período Seleccionado</h3>
                  <div id="a-resumen-global" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="d" class="seccion space-y-8">
+        <div class="card-solid border-t-4 border-rose-500">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="h-title text-2xl text-[var(--brand-dark)]">Buscador de Prendas Vendidas / Devoluciones</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 bg-slate-50 p-5 rounded-2xl border border-slate-200">
+                <div><label>Fecha Desde</label><input type="date" id="d-fecha-desde" onchange="window.renderDevoluciones()" class="w-full bg-white"></div>
+                <div><label>Fecha Hasta</label><input type="date" id="d-fecha-hasta" onchange="window.renderDevoluciones()" class="w-full bg-white"></div>
+                <div><label>Buscar Prenda o Cliente</label><input type="text" id="d-filtro-texto" oninput="window.renderDevoluciones()" placeholder="Nombre de prenda, cliente o N° Ticket..." class="w-full bg-white"></div>
+            </div>
+            <div class="overflow-x-auto border border-slate-200 rounded-xl">
+                <table class="w-full text-sm text-left table-custom">
+                    <thead class="bg-slate-100">
+                        <tr>
+                            <th class="pl-4">Fecha / Hora</th>
+                            <th>N° Ticket</th>
+                            <th>Cliente</th>
+                            <th>Prenda Vendida</th>
+                            <th class="text-center">Cant.</th>
+                            <th>Medio de Pago</th>
+                            <th class="text-right">Subtotal</th>
+                            <th class="text-right pr-4">Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody id="d-t" class="divide-y text-[var(--brand-dark)] font-medium bg-white"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div id="i" class="seccion space-y-8">
+        <div class="card-solid border-t-4 border-amber-500">
+            <h2 class="h-title text-2xl text-[var(--brand-dark)] mb-6">Estadísticas del Negocio</h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                    <h3 class="text-sm font-bold text-amber-600 uppercase tracking-widest mb-4">🏆 Top 10 Artículos Más Vendidos</h3>
+                    <div class="overflow-x-auto rounded-xl border border-slate-100">
+                        <table class="w-full text-left text-xs table-custom">
+                            <thead class="bg-amber-50 text-amber-800">
+                                <tr>
+                                    <th class="pl-4">Producto</th>
+                                    <th class="text-center">Cant.</th>
+                                    <th class="text-right pr-4">Recaudado</th>
+                                </tr>
+                            </thead>
+                            <tbody id="i-top-productos" class="divide-y text-[var(--brand-dark)] font-medium"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                    <h3 class="text-sm font-bold text-emerald-600 uppercase tracking-widest mb-4">💎 Top 10 Mejores Clientes</h3>
+                    <div class="overflow-x-auto rounded-xl border border-slate-100">
+                        <table class="w-full text-left text-xs table-custom">
+                            <thead class="bg-emerald-50 text-emerald-800">
+                                <tr>
+                                    <th class="pl-4">Cliente</th>
+                                    <th class="text-right pr-4">Total Ingresado</th>
+                                </tr>
+                            </thead>
+                            <tbody id="i-top-clientes" class="divide-y text-[var(--brand-dark)] font-medium"></tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -675,6 +785,17 @@
                 <h3 class="text-sm font-black text-[var(--brand-main)] uppercase tracking-widest mb-2">Respaldo de Base de Datos</h3>
                 <p class="text-xs text-slate-600 mb-4">Descarga una copia completa de toda tu información para mantenerla segura ante cualquier eventualidad.</p>
                 <button onclick="window.descargarBackup()" class="btn-brand bg-[var(--brand-dark)] hover:bg-black px-8 py-3 text-xs shadow-md">💾 Descargar Backup Completo</button>
+            </div>
+            
+            <div class="p-6 border-2 border-rose-400 bg-rose-50 rounded-2xl text-center shadow-sm mt-8">
+                <h3 class="text-sm font-black text-rose-600 uppercase tracking-widest mb-2">Zona Peligrosa: Borrado de Datos</h3>
+                <p class="text-xs text-slate-700 mb-4 font-semibold">Atención: Estas acciones borran permanentemente tu base de datos en Firebase. Te recomendamos descargar un Backup primero.</p>
+                <div class="flex flex-wrap justify-center gap-3">
+                    <button onclick="window.borrarDatos('caja')" class="btn-brand bg-white text-rose-600 border border-rose-300 hover:bg-rose-100 hover:text-rose-700 px-4 py-3 text-[10px] shadow-sm">🗑️ Borrar Historial de Caja/Ventas</button>
+                    <button onclick="window.borrarDatos('stock')" class="btn-brand bg-white text-rose-600 border border-rose-300 hover:bg-rose-100 hover:text-rose-700 px-4 py-3 text-[10px] shadow-sm">🗑️ Borrar Todo el Stock</button>
+                    <button onclick="window.borrarDatos('contactos')" class="btn-brand bg-white text-rose-600 border border-rose-300 hover:bg-rose-100 hover:text-rose-700 px-4 py-3 text-[10px] shadow-sm">🗑️ Borrar Clientes y Proveedores</button>
+                    <button onclick="window.borrarDatos('todo')" class="btn-brand bg-rose-600 text-white hover:bg-rose-700 border-none px-6 py-3 text-[10px] shadow-md">⚠️ RESETEAR TODO EL SISTEMA</button>
+                </div>
             </div>
         </div>
     </div>
@@ -813,7 +934,7 @@
     import { getDatabase, ref, set, get } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
 
     // -------------------------------------------------------------
-    // CONFIGURACIÓN DE FIREBASE (Datos exactos de tu imagen)
+    // CONFIGURACIÓN DE FIREBASE
     // -------------------------------------------------------------
     const firebaseConfig = {
         apiKey: "AIzaSyAmlDbh-XZrihJg5Z7j4VxSdcbch6t-pIw",
@@ -916,10 +1037,92 @@
         window.renderV(); 
         window.renderPCarro();
         window.renderVentasHoy(); 
+        window.renderInformes();
+        window.renderDevoluciones();
     };
 
     // -------------------------------------------------------------
-    // FUNCIONES DE EXCEL (IMPORTAR)
+    // FUNCIONES DE INFORMES Y ESTADÍSTICAS
+    // -------------------------------------------------------------
+    window.renderInformes = function() {
+        let productosAgrupados = {};
+        let clientesAgrupados = {};
+
+        // Recorrer todos los movimientos de la caja
+        Object.values(window.db.caja).forEach(mov => {
+            if (mov.tp === "ING") { // Solo nos importan los INGRESOS
+                
+                // 1. Procesar artículos vendidos (si el movimiento tiene detalle de items)
+                if (mov.items && Array.isArray(mov.items)) {
+                    mov.items.forEach(item => {
+                        // Rescate de datos para tickets antiguos mal guardados
+                        let precioItem = parseFloat(item.pre);
+                        let nombreItem = item.nom;
+
+                        // Si no hay precio en el historial, lo buscamos en el stock actual
+                        if (isNaN(precioItem) || precioItem === 0) {
+                            precioItem = window.db.stock[item.k] ? parseFloat(window.db.stock[item.k].pre) : 0;
+                        }
+
+                        // Si no hay nombre en el historial, lo buscamos en el stock o le ponemos por defecto
+                        if (!nombreItem || String(nombreItem).toLowerCase() === "undefined") {
+                            nombreItem = window.db.stock[item.k] ? window.db.stock[item.k].nom : "ARTÍCULO ELIMINADO/DESCONOCIDO";
+                        }
+
+                        if (!productosAgrupados[item.k]) {
+                            productosAgrupados[item.k] = { nom: nombreItem, cant: 0, total: 0 };
+                        }
+                        
+                        let cantidad = parseInt(item.cant) || 0;
+                        productosAgrupados[item.k].cant += cantidad;
+                        productosAgrupados[item.k].total += (cantidad * (precioItem || 0));
+                    });
+                }
+
+                // 2. Procesar ingresos por cliente
+                let cliKey = mov.cliKey;
+                let cliNom = mov.cli;
+                
+                // Agrupar todas las ventas de mostrador bajo "CONSUMIDOR FINAL"
+                if (!cliKey || cliKey === "null") {
+                    cliKey = "CF";
+                    cliNom = "CONSUMIDOR FINAL";
+                }
+
+                // Descartar "Ajustes Internos" para no ensuciar la estadística de clientes
+                if (cliNom !== "AJUSTE INTERNO") {
+                    if (!clientesAgrupados[cliKey]) {
+                        clientesAgrupados[cliKey] = { nom: cliNom, total: 0 };
+                    }
+                    clientesAgrupados[cliKey].total += mov.v;
+                }
+            }
+        });
+
+        // Ordenar de mayor a menor y tomar el top 10
+        let topProductos = Object.values(productosAgrupados)
+                                 .sort((a, b) => b.cant - a.cant)
+                                 .slice(0, 10);
+                                 
+        let topClientes = Object.values(clientesAgrupados)
+                                .sort((a, b) => b.total - a.total)
+                                .slice(0, 10);
+
+        // Renderizar Productos
+        let htmlProd = topProductos.length > 0 
+            ? topProductos.map(p => `<tr><td class="pl-4 py-3 font-semibold">${p.nom}</td><td class="text-center font-bold text-amber-600">${p.cant}</td><td class="text-right pr-4 font-bold text-[var(--brand-dark)]">$${p.total.toLocaleString('es-AR')}</td></tr>`).join('') 
+            : `<tr><td colspan="3" class="text-center py-6 text-slate-400 italic">No hay ventas registradas</td></tr>`;
+        document.getElementById('i-top-productos').innerHTML = htmlProd;
+
+        // Renderizar Clientes
+        let htmlCli = topClientes.length > 0 
+            ? topClientes.map(c => `<tr><td class="pl-4 py-3 font-semibold">${c.nom}</td><td class="text-right pr-4 font-bold text-emerald-600 text-sm">$${c.total.toLocaleString('es-AR')}</td></tr>`).join('') 
+            : `<tr><td colspan="2" class="text-center py-6 text-slate-400 italic">No hay ingresos registrados</td></tr>`;
+        document.getElementById('i-top-clientes').innerHTML = htmlCli;
+    };
+
+    // -------------------------------------------------------------
+    // FUNCIONES DE EXCEL (IMPORTAR STOCK)
     // -------------------------------------------------------------
     window.importarExcelStock = async function(input) {
         if (!input.files || !input.files[0]) return;
@@ -1094,10 +1297,16 @@
             return `<tr class="border-b hover:bg-[var(--brand-light)] transition-colors"><td class="p-4 font-semibold text-[var(--brand-dark)] text-sm pl-6">${i.nom}</td><td class="text-slate-500 text-[11px] font-medium">T: ${i.tal}</td><td class="text-center"><input type="number" value="${i.cant}" min="1" class="input-cant-carrito" onchange="window.actualizarCantidad(${idx}, this.value)"></td><td class="font-mono text-slate-500 font-semibold text-xs">$${i.pre.toLocaleString('es-AR')}</td><td class="text-[var(--brand-main)] font-bold text-lg">$${sub.toLocaleString('es-AR')}</td><td class="text-right pr-6"><button onclick="window.quitarDelCarro(${idx})" class="text-slate-300 hover:text-[var(--brand-accent)] font-bold text-xl transition-all">✕</button></td></tr>`; 
         }).join('');
         
-        document.getElementById('v-tot').innerText = t.toLocaleString('es-AR'); 
+        let recargo = parseFloat(document.getElementById('v-recargo')?.value) || 0;
+        let descuento = parseFloat(document.getElementById('v-descuento')?.value) || 0;
+        
+        let totalFinal = t + recargo - descuento;
+        if (totalFinal < 0) totalFinal = 0; 
+
+        document.getElementById('v-tot').innerText = totalFinal.toLocaleString('es-AR'); 
         
         if(!document.getElementById('v-multi-pago-container').classList.contains('hidden')) { 
-            document.getElementById('v-monto-1').value = t; 
+            document.getElementById('v-monto-1').value = totalFinal; 
             document.getElementById('v-monto-2').value = 0; 
         }
     };
@@ -1118,7 +1327,9 @@
         const met = document.getElementById('v-pago').value; 
         const multiC = document.getElementById('v-multi-pago-container'); 
         const detS = document.getElementById('v-pago-detalle'); 
-        const total = window.calcularTotalCarro();
+        
+        // El total ya está calculado en renderV y reflejado en #v-tot
+        const total = parseFloat(document.getElementById('v-tot').innerText.replace(/\./g, '')) || 0;
         
         if (met === 'DIVIDIDO') { 
             multiC.classList.remove('hidden'); 
@@ -1146,7 +1357,7 @@
     // -------------------------------------------------------------
     // FUNCIONES DE TICKETS
     // -------------------------------------------------------------
-    window.imprimirTicketVenta = function(tot, items, met, cliNom) {
+    window.imprimirTicketVenta = function(tot, items, met, cliNom, subtotal = 0, recargo = 0, descuento = 0) {
         let fecha = new Date().toLocaleString();
         let html = `<div style="width:300px; padding:10px; font-family:monospace; margin:0 auto; font-size:12px; color:black;">
             <h2 style="text-align:center; margin-bottom:5px; text-transform:uppercase; font-size:16px; font-weight:bold;">SOFIA SHOWROOM</h2>
@@ -1158,6 +1369,10 @@
             <table style="width:100%; font-size:12px; margin-bottom:10px;">
                 ${items.map(i => `<tr><td style="padding:3px 0;">${i.cant}x ${i.nom}</td><td style="text-align:right; padding:3px 0;">$${(i.pre*i.cant).toLocaleString('es-AR')}</td></tr>`).join('')}
             </table>
+            ${recargo > 0 || descuento > 0 ? `<hr style="border-top:1px dashed black; margin:5px 0;">
+            <p style="text-align:right; margin:3px 0; font-size:11px;">Subtotal: $${subtotal.toLocaleString('es-AR')}</p>
+            ${recargo > 0 ? `<p style="text-align:right; margin:3px 0; font-size:11px;">Recargo: $${recargo.toLocaleString('es-AR')}</p>` : ''}
+            ${descuento > 0 ? `<p style="text-align:right; margin:3px 0; font-size:11px;">Descuento: -$${descuento.toLocaleString('es-AR')}</p>` : ''}` : ''}
             <hr style="border-top:1px dashed black; margin:10px 0;">
             <h3 style="text-align:right; font-size:16px; font-weight:bold;">TOTAL: $${tot.toLocaleString('es-AR')}</h3>
             <p style="text-align:center; margin-top:20px; font-size:11px;">¡Gracias por su compra!</p>
@@ -1186,20 +1401,31 @@
 
     window.finalizarVenta = async function() {
         if(!window.carro.length) return; 
-        let tot = window.calcularTotalCarro(); 
+        
+        let subtotal = window.calcularTotalCarro(); 
+        let recargo = parseFloat(document.getElementById('v-recargo').value) || 0;
+        let descuento = parseFloat(document.getElementById('v-descuento').value) || 0;
+        
+        let tot = subtotal + recargo - descuento;
+        if (tot < 0) tot = 0;
+
         let met = document.getElementById('v-pago').value; 
         let cliK = document.getElementById('v-cli').value; 
         let cliNom = cliK !== "null" ? window.db.clientes[cliK].nom : "C. FINAL"; 
+        
         let detC = "VENTA: " + window.carro.map(c => `(${c.cant}) ${c.nom}`).join(', '); 
+        if (recargo > 0) detC += ` | Recargo: $${recargo}`;
+        if (descuento > 0) detC += ` | Bonific.: -$${descuento}`;
+
         const fHoy = new Date().toISOString().split('T')[0]; 
         const hHoy = new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'}); 
         let medioF = met;
         let pDet = document.getElementById('v-pago-detalle').value;
         
         if (met === "DIVIDIDO") { 
-            let m1 = parseInt(document.getElementById('v-monto-1').value); 
+            let m1 = parseInt(document.getElementById('v-monto-1').value) || 0; 
             let t1 = document.getElementById('v-medio-1').value; 
-            let m2 = parseInt(document.getElementById('v-monto-2').value); 
+            let m2 = parseInt(document.getElementById('v-monto-2').value) || 0; 
             let t2 = document.getElementById('v-medio-2').value; 
             if ((m1 + m2) !== tot) { alert("Los montos divididos no suman el total de la venta."); return; }
             medioF = `DIV. (${t1} $${m1} + ${t2} $${m2})`; 
@@ -1225,18 +1451,32 @@
         let carroCopia = [...window.carro]; 
         window.carro = []; 
         document.getElementById('v-pago').value = "EFECTIVO"; 
+        
+        // Limpiamos los inputs
+        document.getElementById('v-recargo').value = "";
+        document.getElementById('v-descuento').value = "";
+
         window.toggleMultiPago(); 
         window.renderV(); 
         await window.syncDB("", window.db);
         
         if(confirm("Venta Registrada ✅\n\n¿Deseas imprimir un comprobante?")) { 
-            window.imprimirTicketVenta(tot, carroCopia, medioF, cliNom); 
+            window.imprimirTicketVenta(tot, carroCopia, medioF, cliNom, subtotal, recargo, descuento); 
         }
     };
 
     window.renderVentasHoy = function() { 
         const hoy = new Date().toISOString().split('T')[0]; 
-        document.getElementById('v-historial').innerHTML = Object.values(window.db.caja).filter(x => x.f === hoy && x.tp === "ING").reverse().map(x => `<tr class="bg-white"><td class="text-slate-400 font-mono text-[10px] pl-4 py-3">${x.h}</td><td class="font-medium text-[var(--brand-dark)]">${x.cli}</td><td class="text-slate-500 italic text-[10px]">${x.c}</td><td class="text-slate-500 text-[10px]">${x.m||''}</td><td class="text-right font-semibold text-[var(--brand-dark)] text-[13px] pr-4">$${x.v.toLocaleString('es-AR')}</td></tr>`).join(''); 
+        let movs = Object.values(window.db.caja)
+            .filter(x => x.f === hoy && x.tp === "ING")
+            .sort((a,b) => { 
+                let dA = a.f || ""; let dB = b.f || ""; 
+                if(dA !== dB) return dA.localeCompare(dB); 
+                let tA = a.h || ""; let tB = b.h || ""; 
+                return tA.localeCompare(tB); 
+            });
+            
+        document.getElementById('v-historial').innerHTML = movs.map(x => `<tr class="bg-white"><td class="text-slate-400 font-mono text-[10px] pl-4 py-3">${x.h}</td><td class="font-medium text-[var(--brand-dark)]">${x.cli}</td><td class="text-slate-500 italic text-[10px]">${x.c}</td><td class="text-slate-500 text-[10px]">${x.m||''}</td><td class="text-right font-semibold text-[var(--brand-dark)] text-[13px] pr-4">$${x.v.toLocaleString('es-AR')}</td></tr>`).join(''); 
     };
 
     // -------------------------------------------------------------
@@ -1310,7 +1550,15 @@
             return `<div class="bg-white p-3 rounded-xl border border-indigo-100 flex justify-between items-center text-[11px] uppercase font-bold shadow-sm"><div><p class="text-[var(--brand-dark)]">${d.c}</p><p class="text-[9px] text-slate-400 mt-0.5">${d.f} <span class="${cC} ml-1 font-bold">${tC}</span></p></div><p class="font-bold text-indigo-600 text-sm">$${d.saldo.toLocaleString('es-AR')}</p></div>`; 
         }).join('') || '<p class="text-[10px] italic text-slate-400 text-center py-4 bg-white rounded-xl border border-dashed border-slate-200">Sin deudas registradas</p>';
         
-        const movs = Object.values(window.db.caja).filter(x => x.cliKey === k).reverse(); 
+        const movs = Object.values(window.db.caja)
+            .filter(x => x.cliKey === k)
+            .sort((a,b) => { 
+                let dA = a.f || ""; let dB = b.f || ""; 
+                if(dA !== dB) return dA.localeCompare(dB); 
+                let tA = a.h || ""; let tB = b.h || ""; 
+                return tA.localeCompare(tB); 
+            });
+            
         document.getElementById('ficha-movimientos-prov').innerHTML = movs.map(x => `<tr><td class="py-2.5 text-slate-400 font-mono text-[9px] border-b border-slate-100 pl-2">${x.f}</td><td class="py-2.5 text-[9px] uppercase font-semibold text-slate-700 border-b border-slate-100">${x.c}</td><td class="py-2.5 text-right font-bold text-xs ${x.c.includes('PAGO') ? 'text-indigo-600' : 'text-slate-800'} border-b border-slate-100 pr-2">$${x.v.toLocaleString('es-AR')}</td></tr>`).join(''); 
         
         document.getElementById('ficha-prov-pago-monto').value = ""; 
@@ -1387,7 +1635,7 @@
         const div = document.getElementById('p-sugerencias');
         if (val.length < 1) { div.classList.add('hidden'); return; }
         const matches = Object.entries(window.db.stock).filter(([k, s]) => (s.nom||'').toUpperCase().includes(val.toUpperCase()) || (s.cod||'').toUpperCase().includes(val.toUpperCase()));
-        div.innerHTML = matches.map(([k, s]) => `<div class="sugerencia-item p-3 border-b border-indigo-100" onclick="window.seleccionarProdCompra('${s.cod}', ${s.cos})"><div class="text-[9px] font-bold text-indigo-500 font-mono">${s.cod}</div><div class="text-xs font-semibold text-slate-800">${s.nom}</div><div class="text-slate-500 text-[10px]">Costo actual: $${s.cos}</div></div>`).join('');
+        div.innerHTML = matches.map(([k, s]) => `<div class="sugerencia-item p-3 border-b border-indigo-500" onclick="window.seleccionarProdCompra('${s.cod}', ${s.cos})"><div class="text-[9px] font-bold text-indigo-500 font-mono">${s.cod}</div><div class="text-xs font-semibold text-slate-800">${s.nom}</div><div class="text-slate-500 text-[10px]">Costo actual: $${s.cos}</div></div>`).join('');
         div.classList.remove('hidden');
     };
 
@@ -1498,6 +1746,65 @@
     // -------------------------------------------------------------
     // CLIENTES
     // -------------------------------------------------------------
+    window.importarExcelClientes = async function(input) {
+        if (!input.files || !input.files[0]) return;
+        const file = input.files[0]; 
+        const reader = new FileReader();
+        
+        reader.onload = async function(e) {
+            const data = new Uint8Array(e.target.result);
+            const workbook = XLSX.read(data, { type: 'array' });
+            const firstSheetName = workbook.SheetNames[0];
+            const worksheet = workbook.Sheets[firstSheetName];
+            const jsonData = XLSX.utils.sheet_to_json(worksheet);
+            
+            if (jsonData.length === 0) { 
+                alert("El archivo está vacío."); 
+                return; 
+            }
+            
+            if (confirm(`¿Importar o actualizar ${jsonData.length} clientes en el sistema?`)) {
+                jsonData.forEach(row => {
+                    let nom = String(row["NOMBRE"] || row["Nombre"] || row["nombre"] || "").trim().toUpperCase();
+                    let dni = String(row["DNI"] || row["dni"] || "").trim();
+                    let cel = String(row["CELULAR"] || row["Celular"] || row["celular"] || row["CEL"] || "").trim();
+                    let dir = String(row["DIRECCION"] || row["Dirección"] || row["Direccion"] || row["direccion"] || "").trim();
+                    let saldo = parseFloat(row["SALDO"] || row["Saldo"] || row["saldo"]) || 0;
+                    
+                    let rec = String(row["FACTURACION"] || row["Facturacion"] || row["facturacion"] || row["RECIBO"] || row["Recibo"] || row["recibo"] || "").trim().toUpperCase();
+                    if (rec !== "SI" && rec !== "NO") rec = "NO"; 
+
+                    if (!nom) return; 
+                    
+                    let k = null;
+                    if (dni !== "") {
+                        k = Object.keys(window.db.clientes).find(key => window.db.clientes[key].dni === dni);
+                    }
+                    
+                    if (!k) k = "C" + Date.now() + Math.floor(Math.random() * 10000); 
+                    
+                    let clienteExistente = window.db.clientes[k] || {};
+
+                    window.db.clientes[k] = {
+                        ...clienteExistente,
+                        nom: nom,
+                        dni: dni,
+                        cel: cel,
+                        dir: dir,
+                        rec: rec, 
+                        saldo: clienteExistente.saldo || saldo 
+                    };
+                });
+                
+                await window.syncDB("clientes", window.db.clientes); 
+                window.renderClientes();
+                alert("¡Importación completada con éxito!");
+            }
+            input.value = ""; 
+        };
+        reader.readAsArrayBuffer(file);
+    };
+
     window.pushCli = async function() { 
         const k = document.getElementById('c-key').value || "L" + Date.now(); 
         window.db.clientes[k] = { 
@@ -1517,6 +1824,7 @@
         const txt = document.getElementById('c-search').value.toLowerCase(); 
         document.getElementById('c-list').innerHTML = Object.entries(window.db.clientes)
             .filter(([k,v]) => (v.nom||'').toLowerCase().includes(txt) || (v.dni||'').toLowerCase().includes(txt)) 
+            .sort((a, b) => (b[1].saldo || 0) - (a[1].saldo || 0)) 
             .map(([k,v]) => `<div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm relative overflow-hidden group hover:border-[var(--brand-main)] transition-all"><div class="absolute top-0 left-0 w-1.5 h-full ${v.saldo>0?'bg-[var(--brand-accent)]':'bg-[var(--brand-main)]'} opacity-80"></div><div class="flex justify-between font-bold uppercase text-xs mb-4 pl-2"><span class="text-[var(--brand-dark)]">${v.nom||'--'}</span><div class="flex gap-2 text-sm opacity-0 group-hover:opacity-100 transition-opacity"><button onclick="window.editarCli('${k}')" class="text-slate-300 hover:text-[var(--brand-dark)]">✏️</button><button onclick="window.elimCli('${k}')" class="text-slate-300 hover:text-[var(--brand-accent)]">✕</button></div></div><div class="flex justify-between items-end pl-2"><div><p class="text-[9px] uppercase text-slate-400 font-bold tracking-widest">Deuda Total</p><p class="text-2xl font-bold ${v.saldo>0?'text-[var(--brand-accent)]':'text-slate-400'} tracking-tight">$${(v.saldo || 0).toLocaleString('es-AR')}</p></div><button onclick="window.verFicha('${k}')" class="bg-slate-50 text-[var(--brand-dark)] px-4 py-2 rounded-lg text-[10px] font-bold uppercase tracking-widest hover:bg-[var(--brand-dark)] hover:text-white transition-colors border border-slate-200 shadow-sm">Ver Ficha</button></div></div>`).join(''); 
     };
 
@@ -1538,7 +1846,15 @@
             return `<div class="bg-white p-3 rounded-xl border border-slate-100 flex justify-between items-center text-[11px] uppercase font-bold shadow-sm"><div><p class="text-[var(--brand-dark)]">${d.c}</p><p class="text-[9px] text-slate-400 mt-0.5">${d.f} <span class="${cC} ml-1 font-bold">${tC}</span></p></div><p class="font-bold text-[var(--brand-accent)] text-sm">$${d.saldo.toLocaleString('es-AR')}</p></div>`; 
         }).join('') || '<p class="text-[10px] italic text-slate-400 text-center py-4 bg-white rounded-xl border border-dashed border-slate-200">Sin deudas de plazo activo</p>';
         
-        const movs = Object.values(window.db.caja).filter(x => x.cliKey === k).reverse(); 
+        const movs = Object.values(window.db.caja)
+            .filter(x => x.cliKey === k)
+            .sort((a,b) => { 
+                let dA = a.f || ""; let dB = b.f || ""; 
+                if(dA !== dB) return dA.localeCompare(dB); 
+                let tA = a.h || ""; let tB = b.h || ""; 
+                return tA.localeCompare(tB); 
+            });
+            
         document.getElementById('ficha-movimientos').innerHTML = movs.map(x => `<tr><td class="py-2.5 text-slate-400 font-mono text-[9px] border-b border-slate-100 pl-2">${x.f}</td><td class="py-2.5 text-[9px] uppercase font-semibold text-slate-700 border-b border-slate-100">${x.c}</td><td class="py-2.5 text-right font-bold text-xs ${x.c.includes('PAGO') ? 'text-[var(--brand-main)]' : 'text-[var(--brand-dark)]'} border-b border-slate-100 pr-2">$${x.v.toLocaleString('es-AR')}</td></tr>`).join(''); 
         
         document.getElementById('ficha-cobro-monto').value = ""; 
@@ -1630,8 +1946,43 @@
     };
 
     // -------------------------------------------------------------
-    // CAJA DIARIA
+    // CAJA DIARIA Y AJUSTES DE SALDO INICIAL
     // -------------------------------------------------------------
+    window.pushAjusteBalance = async function() {
+        const pass = prompt("Contraseña de seguridad requerida para ajustar saldos:");
+        if (pass !== window.STOCK_PASS) {
+            alert("Contraseña incorrecta. Acción cancelada.");
+            return;
+        }
+
+        const m = parseInt(document.getElementById('a-ajuste-monto').value);
+        const med = document.getElementById('a-ajuste-medio').value;
+        const c = document.getElementById('a-ajuste-concepto').value.toUpperCase() || "AJUSTE DE SALDO";
+        const tp = document.getElementById('a-ajuste-tipo').value;
+
+        if(isNaN(m) || m <= 0) { alert("Por favor, ingrese un monto válido mayor a 0."); return; }
+
+        const fH = new Date().toISOString().split('T')[0];
+        const hH = new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
+
+        window.db.caja["A" + Date.now()] = {
+            f: fH,
+            h: hH,
+            c: c,
+            cli: "AJUSTE INTERNO",
+            cliKey: null,
+            v: m,
+            tp: tp,
+            m: med
+        };
+
+        await window.syncDB("", window.db);
+        document.getElementById('a-ajuste-monto').value = '';
+        window.renderArqueo();
+        window.renderCaja();
+        alert("✅ Saldo/Ajuste registrado correctamente en la cuenta: " + med);
+    };
+
     window.pushEgreso = async function() { 
         const c = document.getElementById('x-egr-concepto').value.toUpperCase(); 
         const m = parseInt(document.getElementById('x-egr-monto').value); 
@@ -1660,7 +2011,7 @@
             let timeA = a[1].h || ""; let timeB = b[1].h || ""; 
             if (timeA !== timeB) return timeA.localeCompare(timeB); 
             return a[0].localeCompare(b[0]); 
-        }).reverse(); 
+        }); 
 
         movsCaja.filter(([id, x]) => { 
             if(!x) return false; 
@@ -1845,12 +2196,14 @@
         bt.innerHTML = window.db.medios.transferencia.map((m, i) => `<li class="flex justify-between items-center bg-white border border-slate-200 p-3 rounded-lg shadow-sm font-semibold text-[var(--brand-dark)]"><span class="text-xs">${m}</span><button onclick="window.elimMedio('transferencia', ${i})" class="text-slate-300 hover:text-[var(--brand-accent)] font-light text-base">✕</button></li>`).join('');
         tt.innerHTML = window.db.medios.tarjeta.map((m, i) => `<li class="flex justify-between items-center bg-white border border-slate-200 p-3 rounded-lg shadow-sm font-semibold text-[var(--brand-dark)]"><span class="text-xs">${m}</span><button onclick="window.elimMedio('tarjeta', ${i})" class="text-slate-300 hover:text-[var(--brand-accent)] font-light text-base">✕</button></li>`).join('');
         
-        const selects = ['v-medio-1', 'v-medio-2', 'x-egr-medio']; 
+        const selects = ['v-medio-1', 'v-medio-2', 'x-egr-medio', 'a-ajuste-medio']; 
         selects.forEach(sId => { 
             const s = document.getElementById(sId); 
-            const currentV = s.value; 
-            s.innerHTML = '<option value="EFECTIVO">EFECTIVO</option>' + window.db.medios.transferencia.map(m=>`<option value="${m}">${m}</option>`).join('') + window.db.medios.tarjeta.map(m=>`<option value="${m}">${m}</option>`).join(''); 
-            s.value = currentV || "EFECTIVO"; 
+            if(s) {
+                const currentV = s.value; 
+                s.innerHTML = '<option value="EFECTIVO">EFECTIVO</option>' + window.db.medios.transferencia.map(m=>`<option value="${m}">${m}</option>`).join('') + window.db.medios.tarjeta.map(m=>`<option value="${m}">${m}</option>`).join(''); 
+                s.value = currentV || "EFECTIVO"; 
+            }
         });
         
         let selectPagoCompra = document.getElementById('p-pago');
@@ -1955,7 +2308,14 @@
             data = Object.values(window.db.clientes).map(c => ({ NOMBRE: c.nom, SALDO: c.saldo || 0 })); 
         } else { 
             nom = "CAJA"; 
-            data = Object.values(window.db.caja).map(x => ({ FECHA: x.f, CONCEPTO: x.c, MONTO: x.v, MEDIO: x.m })); 
+            data = Object.values(window.db.caja)
+                .sort((a,b) => { 
+                    let dA = a.f || ""; let dB = b.f || ""; 
+                    if(dA !== dB) return dA.localeCompare(dB); 
+                    let tA = a.h || ""; let tB = b.h || ""; 
+                    return tA.localeCompare(tB); 
+                })
+                .map(x => ({ FECHA: x.f, HORA: x.h||'', CONCEPTO: x.c, MONTO: x.v, MEDIO: x.m })); 
         }
         
         const ws = XLSX.utils.json_to_sheet(data); 
@@ -1970,6 +2330,135 @@
         document.getElementById(id).classList.add('activa'); 
         btn.classList.add('active'); 
         if(id === 'a') window.actualizarSubcuentasBalance(); 
+    };
+
+    window.borrarDatos = async function(tipo) { 
+        let mensaje = "";
+        if (tipo === 'caja') mensaje = "todo el HISTORIAL DE VENTAS Y CAJA";
+        if (tipo === 'stock') mensaje = "todo tu INVENTARIO/STOCK";
+        if (tipo === 'contactos') mensaje = "todos tus CLIENTES y PROVEEDORES";
+        if (tipo === 'todo') mensaje = "ABSOLUTAMENTE TODO EL SISTEMA (Reset de fábrica)";
+
+        let confirmacion = prompt(`ESTÁS A PUNTO DE BORRAR ${mensaje}.\n\nEsta acción NO se puede deshacer.\nPara confirmar, escribe exactamente la palabra: BORRAR`);
+        
+        if (confirmacion !== "BORRAR") { 
+            alert("Acción cancelada. Tus datos están a salvo."); 
+            return; 
+        }
+
+        try {
+            if (tipo === 'caja' || tipo === 'todo') { 
+                window.db.caja = {}; 
+                await window.syncDB("caja", window.db.caja); 
+            }
+            if (tipo === 'stock' || tipo === 'todo') { 
+                window.db.stock = {}; 
+                await window.syncDB("stock", window.db.stock); 
+            }
+            if (tipo === 'contactos' || tipo === 'todo') { 
+                window.db.clientes = {}; 
+                window.db.proveedores = {}; 
+                await window.syncDB("clientes", window.db.clientes); 
+                await window.syncDB("proveedores", window.db.proveedores); 
+            }
+            
+            alert("✅ Los datos seleccionados han sido borrados con éxito.");
+            window.render(); // Actualiza la pantalla para mostrar todo en blanco
+        } catch (error) {
+            alert("Hubo un error al intentar borrar los datos de Firebase.");
+            console.error(error);
+        }
+    };
+
+    // -------------------------------------------------------------
+    // HISTORIAL DE PRENDAS Y DEVOLUCIONES
+    // -------------------------------------------------------------
+    window.renderDevoluciones = function() {
+        const fDesde = document.getElementById('d-fecha-desde').value;
+        const fHasta = document.getElementById('d-fecha-hasta').value;
+        const txt = document.getElementById('d-filtro-texto').value.toLowerCase();
+
+        let html = "";
+        let movs = Object.entries(window.db.caja)
+            .filter(([id, x]) => x.tp === "ING" && x.items && x.items.length > 0)
+            .sort((a,b) => {
+                let dA = a[1].f || ""; let dB = b[1].f || "";
+                if (dA !== dB) return dB.localeCompare(dA); // Fecha descendente
+                let tA = a[1].h || ""; let tB = b[1].h || "";
+                if (tA !== tB) return tB.localeCompare(tA);
+                return b[0].localeCompare(a[0]);
+            });
+
+        movs.forEach(([id, x]) => {
+            if (fDesde && x.f < fDesde) return;
+            if (fHasta && x.f > fHasta) return;
+
+            let matchGlobal = (x.cli || "").toLowerCase().includes(txt) || id.toLowerCase().includes(txt);
+
+            x.items.forEach((item) => {
+                // LOGICA DE RESCATE PARA TICKETS ANTIGUOS
+                let nombreItem = item.nom;
+                let precioItem = parseFloat(item.pre);
+
+                // Si no hay nombre o es "undefined", lo buscamos en el stock actual
+                if (!nombreItem || String(nombreItem).toLowerCase() === "undefined") {
+                    nombreItem = window.db.stock[item.k] ? window.db.stock[item.k].nom : "ARTÍCULO ELIMINADO/DESCONOCIDO";
+                }
+                
+                // Si no hay precio o es 0, lo buscamos en el stock actual
+                if (isNaN(precioItem) || precioItem === 0) {
+                    precioItem = window.db.stock[item.k] ? parseFloat(window.db.stock[item.k].pre) : 0;
+                }
+
+                let matchItem = (nombreItem || "").toLowerCase().includes(txt);
+
+                if (txt === "" || matchGlobal || matchItem) {
+                    let subtotal = precioItem * (item.cant || 1);
+                    let idCorto = id.substring(1, 10);
+                    
+                    html += `<tr class="hover:bg-rose-50 transition-colors">
+                        <td class="p-3 pl-4 text-slate-500 font-mono text-[10px]">${x.f.split('-').reverse().join('/')} <br> ${x.h}</td>
+                        <td class="p-3 font-bold text-[var(--brand-main)] text-[10px]">${idCorto}</td>
+                        <td class="p-3 font-semibold text-[var(--brand-dark)] text-[11px]">${x.cli || '-'}</td>
+                        <td class="p-3 text-[var(--brand-dark)] text-[11px] font-bold">${nombreItem}</td>
+                        <td class="p-3 text-center font-bold text-[11px] text-rose-600">${item.cant}</td>
+                        <td class="p-3 text-slate-500 text-[9px]">${x.m || '-'}</td>
+                        <td class="p-3 text-right text-[var(--brand-dark)] font-bold text-xs">$${subtotal.toLocaleString('es-AR')}</td>
+                        <td class="p-3 text-right pr-4">
+                            <button onclick="window.anularVentaDetalle('${id}')" class="bg-white border border-rose-300 text-rose-600 px-3 py-1.5 rounded-lg hover:bg-rose-600 hover:border-rose-600 hover:text-white transition-all text-[9px] font-bold tracking-widest uppercase shadow-sm">Anular Venta</button>
+                        </td>
+                    </tr>`;
+                }
+            });
+        });
+
+        document.getElementById('d-t').innerHTML = html || '<tr><td colspan="8" class="text-center py-8 text-slate-400 italic font-medium text-xs bg-white rounded-lg">No se encontraron prendas con los filtros aplicados.</td></tr>';
+    };
+
+    window.anularVentaDetalle = async function(id) {
+        const m = window.db.caja[id];
+        if(!m) return;
+        
+        // Confirmación de seguridad
+        if(!confirm(`⚠️ ATENCIÓN: Estás por anular la venta completa (Ticket: ${id.substring(1,10)}).\n\nEsto devolverá TODOS los artículos de este ticket al stock y revertirá el dinero de caja (o la deuda en Cta. Cte.).\n\n¿Estás seguro de que deseas anular esta venta?`)) return;
+
+        // 1. Restituir el stock
+        if(m.items) {
+            m.items.forEach(i => { if(window.db.stock[i.k]) window.db.stock[i.k].can += i.cant; });
+        }
+
+        // 2. Revertir deuda si fue en Cuenta Corriente
+        if((m.m||'').includes("CUENTA CORRIENTE") && m.cliKey && window.db.clientes[m.cliKey]) {
+            window.db.clientes[m.cliKey].saldo -= m.v;
+            window.db.clientes[m.cliKey].deudas = (window.db.clientes[m.cliKey].deudas||[]).filter(d => d.v !== m.v);
+        }
+
+        // 3. Eliminar el movimiento de la caja
+        delete window.db.caja[id];
+
+        // Sincronizar y actualizar vista
+        await window.syncDB("", window.db);
+        alert("✅ Venta anulada con éxito. Las prendas han vuelto al stock y la caja se ha actualizado.");
     };
 
     window.renderVUI = function() { 
