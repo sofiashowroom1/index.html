@@ -315,16 +315,29 @@
                 </table>
             </div>
 
-            <div class="flex justify-end gap-6 mb-6">
-                <div class="w-32">
-                    <label class="text-[var(--brand-main)] text-right block mb-1">Descuento $</label>
-                    <input type="number" id="v-descuento" value="0" min="0" oninput="window.renderV()" class="w-full text-right font-bold text-[var(--brand-accent)] bg-white h-[42px] shadow-sm">
+            <div class="flex flex-wrap justify-end gap-6 mb-6">
+                <div class="flex items-end gap-2">
+                    <div class="w-20">
+                        <label class="text-[var(--brand-main)] text-center block mb-1">% Desc.</label>
+                        <input type="number" id="v-descuento-pct" placeholder="0" min="0" max="100" oninput="window.sincronizarMontos('desc', 'pct')" class="w-full text-center font-bold text-[var(--brand-accent)] bg-white h-[42px] shadow-sm">
+                    </div>
+                    <div class="w-32">
+                        <label class="text-[var(--brand-main)] text-right block mb-1">Descuento $</label>
+                        <input type="number" id="v-descuento" placeholder="0" min="0" oninput="window.sincronizarMontos('desc', 'monto')" class="w-full text-right font-bold text-[var(--brand-accent)] bg-white h-[42px] shadow-sm">
+                    </div>
                 </div>
-                <div class="w-32">
-                    <label class="text-[var(--brand-main)] text-right block mb-1">Recargo $</label>
-                    <input type="number" id="v-recargo" value="0" min="0" oninput="window.renderV()" class="w-full text-right font-bold text-[var(--brand-main)] bg-white h-[42px] shadow-sm">
+                <div class="flex items-end gap-2">
+                    <div class="w-20">
+                        <label class="text-[var(--brand-main)] text-center block mb-1">% Rec.</label>
+                        <input type="number" id="v-recargo-pct" placeholder="0" min="0" max="100" oninput="window.sincronizarMontos('rec', 'pct')" class="w-full text-center font-bold text-[var(--brand-main)] bg-white h-[42px] shadow-sm">
+                    </div>
+                    <div class="w-32">
+                        <label class="text-[var(--brand-main)] text-right block mb-1">Recargo $</label>
+                        <input type="number" id="v-recargo" placeholder="0" min="0" oninput="window.sincronizarMontos('rec', 'monto')" class="w-full text-right font-bold text-[var(--brand-main)] bg-white h-[42px] shadow-sm">
+                    </div>
                 </div>
             </div>
+
             <div class="flex flex-col md:flex-row justify-between items-center pt-6 border-t border-slate-100 gap-6">
                 <div class="h-title text-4xl text-[var(--brand-dark)]">TOTAL <span class="text-[var(--brand-main)] ml-2">$</span><span id="v-tot" class="text-[var(--brand-main)]">0</span></div>
                 <button onclick="window.finalizarVenta()" class="btn-brand w-full md:w-auto px-16 py-4 text-lg shadow-lg">Finalizar Venta</button>
@@ -354,7 +367,6 @@
     </div>
 
     <div id="p" class="seccion space-y-8">
-        
         <div class="card-solid border-t-4 border-indigo-500">
             <div class="flex justify-between items-center mb-6">
                 <h2 class="h-title text-2xl text-[var(--brand-dark)]">Directorio de Proveedores</h2>
@@ -754,6 +766,40 @@
                     </div>
                 </div>
             </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-8">
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                    <h3 class="text-sm font-bold text-rose-500 uppercase tracking-widest mb-4">📉 Top 10 Artículos Menos Vendidos</h3>
+                    <div class="overflow-x-auto rounded-xl border border-slate-100">
+                        <table class="w-full text-left text-xs table-custom">
+                            <thead class="bg-rose-50 text-rose-800">
+                                <tr>
+                                    <th class="pl-4">Producto</th>
+                                    <th class="text-center">Cant.</th>
+                                    <th class="text-right pr-4">Recaudado</th>
+                                </tr>
+                            </thead>
+                            <tbody id="i-bottom-productos" class="divide-y text-[var(--brand-dark)] font-medium"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                    <h3 class="text-sm font-bold text-rose-600 uppercase tracking-widest mb-4">🚨 Top 10 Clientes Más Deudores</h3>
+                    <div class="overflow-x-auto rounded-xl border border-slate-100">
+                        <table class="w-full text-left text-xs table-custom">
+                            <thead class="bg-rose-50 text-rose-800">
+                                <tr>
+                                    <th class="pl-4">Cliente</th>
+                                    <th class="text-right pr-4">Deuda Actual</th>
+                                </tr>
+                            </thead>
+                            <tbody id="i-deudores-clientes" class="divide-y text-[var(--brand-dark)] font-medium"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 
@@ -933,9 +979,6 @@
     import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
     import { getDatabase, ref, set, get } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
 
-    // -------------------------------------------------------------
-    // CONFIGURACIÓN DE FIREBASE
-    // -------------------------------------------------------------
     const firebaseConfig = {
         apiKey: "AIzaSyAmlDbh-XZrihJg5Z7j4VxSdcbch6t-pIw",
         authDomain: "sofia-sistema.firebaseapp.com",
@@ -954,7 +997,6 @@
     const usuarioAdmin = "rociolive040@gmail.com"; 
     const contraseniaAdmin = "41143006Rocio";
 
-    // SINCRONIZACIÓN DE BASE DE DATOS
     window.syncDB = async function(path, data) { 
         try { 
             const dbRef = path === "" ? ref(database) : ref(database, path); 
@@ -989,12 +1031,10 @@
         if (auth.currentUser) {
             window.loadDB_internal();
         } else {
-            // Si las reglas son ".read: true", esto cargará igual.
             window.loadDB_internal();
         }
     };
 
-    // LOGIN AUTOMÁTICO SILENCIOSO
     signInWithEmailAndPassword(auth, usuarioAdmin, contraseniaAdmin)
         .then(() => {
             console.log("¡Autenticación exitosa con Firebase!");
@@ -1002,7 +1042,7 @@
         })
         .catch((error) => {
             console.warn("No se pudo iniciar sesión. (Si abriste el archivo desde la PC sin servidor, esto es normal por seguridad).", error.message);
-            window.loadDB_internal(); // Intenta cargar igual si la BD está en true
+            window.loadDB_internal();
         });
 </script>
 
@@ -1048,23 +1088,24 @@
         let productosAgrupados = {};
         let clientesAgrupados = {};
 
-        // Recorrer todos los movimientos de la caja
+        // 1. Inicializar con todos los productos del stock para atrapar los de 0 ventas
+        Object.entries(window.db.stock).forEach(([k, s]) => {
+            productosAgrupados[k] = { nom: s.nom, cant: 0, total: 0 };
+        });
+
+        // 2. Recorrer todos los movimientos de la caja
         Object.values(window.db.caja).forEach(mov => {
-            if (mov.tp === "ING") { // Solo nos importan los INGRESOS
+            if (mov.tp === "ING") { 
                 
-                // 1. Procesar artículos vendidos (si el movimiento tiene detalle de items)
+                // Procesar artículos vendidos
                 if (mov.items && Array.isArray(mov.items)) {
                     mov.items.forEach(item => {
-                        // Rescate de datos para tickets antiguos mal guardados
                         let precioItem = parseFloat(item.pre);
                         let nombreItem = item.nom;
 
-                        // Si no hay precio en el historial, lo buscamos en el stock actual
                         if (isNaN(precioItem) || precioItem === 0) {
                             precioItem = window.db.stock[item.k] ? parseFloat(window.db.stock[item.k].pre) : 0;
                         }
-
-                        // Si no hay nombre en el historial, lo buscamos en el stock o le ponemos por defecto
                         if (!nombreItem || String(nombreItem).toLowerCase() === "undefined") {
                             nombreItem = window.db.stock[item.k] ? window.db.stock[item.k].nom : "ARTÍCULO ELIMINADO/DESCONOCIDO";
                         }
@@ -1079,17 +1120,15 @@
                     });
                 }
 
-                // 2. Procesar ingresos por cliente
+                // Procesar ingresos por cliente
                 let cliKey = mov.cliKey;
                 let cliNom = mov.cli;
                 
-                // Agrupar todas las ventas de mostrador bajo "CONSUMIDOR FINAL"
                 if (!cliKey || cliKey === "null") {
                     cliKey = "CF";
                     cliNom = "CONSUMIDOR FINAL";
                 }
 
-                // Descartar "Ajustes Internos" para no ensuciar la estadística de clientes
                 if (cliNom !== "AJUSTE INTERNO") {
                     if (!clientesAgrupados[cliKey]) {
                         clientesAgrupados[cliKey] = { nom: cliNom, total: 0 };
@@ -1099,26 +1138,43 @@
             }
         });
 
-        // Ordenar de mayor a menor y tomar el top 10
-        let topProductos = Object.values(productosAgrupados)
-                                 .sort((a, b) => b.cant - a.cant)
-                                 .slice(0, 10);
-                                 
-        let topClientes = Object.values(clientesAgrupados)
-                                .sort((a, b) => b.total - a.total)
-                                .slice(0, 10);
+        let todosLosProductos = Object.values(productosAgrupados);
 
-        // Renderizar Productos
-        let htmlProd = topProductos.length > 0 
-            ? topProductos.map(p => `<tr><td class="pl-4 py-3 font-semibold">${p.nom}</td><td class="text-center font-bold text-amber-600">${p.cant}</td><td class="text-right pr-4 font-bold text-[var(--brand-dark)]">$${p.total.toLocaleString('es-AR')}</td></tr>`).join('') 
+        // 🏆 Ordenar listas
+        let topProductos = [...todosLosProductos].sort((a, b) => b.cant - a.cant).slice(0, 10);
+        let bottomProductos = [...todosLosProductos].sort((a, b) => a.cant - b.cant).slice(0, 10);
+        let topClientes = Object.values(clientesAgrupados).sort((a, b) => b.total - a.total).slice(0, 10);
+        
+        let deudores = Object.values(window.db.clientes)
+                             .filter(c => c.saldo > 0)
+                             .sort((a, b) => b.saldo - a.saldo)
+                             .slice(0, 10);
+
+        // ---------------- RENDERIZADOS ----------------
+
+        // Más Vendidos
+        let htmlProd = topProductos.length > 0 && topProductos[0].cant > 0
+            ? topProductos.filter(p => p.cant > 0).map(p => `<tr><td class="pl-4 py-3 font-semibold">${p.nom}</td><td class="text-center font-bold text-amber-600">${p.cant}</td><td class="text-right pr-4 font-bold text-[var(--brand-dark)]">$${p.total.toLocaleString('es-AR')}</td></tr>`).join('') 
             : `<tr><td colspan="3" class="text-center py-6 text-slate-400 italic">No hay ventas registradas</td></tr>`;
         document.getElementById('i-top-productos').innerHTML = htmlProd;
 
-        // Renderizar Clientes
-        let htmlCli = topClientes.length > 0 
+        // Menos Vendidos (Atrapa los de cantidad = 0)
+        let htmlBottomProd = bottomProductos.length > 0 
+            ? bottomProductos.map(p => `<tr><td class="pl-4 py-3 font-semibold text-slate-500">${p.nom}</td><td class="text-center font-bold text-rose-500">${p.cant}</td><td class="text-right pr-4 font-bold text-[var(--brand-dark)]">$${p.total.toLocaleString('es-AR')}</td></tr>`).join('') 
+            : `<tr><td colspan="3" class="text-center py-6 text-slate-400 italic">No hay productos en inventario</td></tr>`;
+        document.getElementById('i-bottom-productos').innerHTML = htmlBottomProd;
+
+        // Mejores Clientes
+        let htmlCli = topClientes.length > 0 && topClientes[0].total > 0
             ? topClientes.map(c => `<tr><td class="pl-4 py-3 font-semibold">${c.nom}</td><td class="text-right pr-4 font-bold text-emerald-600 text-sm">$${c.total.toLocaleString('es-AR')}</td></tr>`).join('') 
             : `<tr><td colspan="2" class="text-center py-6 text-slate-400 italic">No hay ingresos registrados</td></tr>`;
         document.getElementById('i-top-clientes').innerHTML = htmlCli;
+
+        // Clientes Más Deudores
+        let htmlDeudores = deudores.length > 0 
+            ? deudores.map(c => `<tr><td class="pl-4 py-3 font-semibold text-slate-600">${c.nom}</td><td class="text-right pr-4 font-bold text-rose-600 text-sm">$${c.saldo.toLocaleString('es-AR')}</td></tr>`).join('') 
+            : `<tr><td colspan="2" class="text-center py-6 text-emerald-500 font-bold italic">¡Excelente! Ningún cliente tiene deudas.</td></tr>`;
+        document.getElementById('i-deudores-clientes').innerHTML = htmlDeudores;
     };
 
     // -------------------------------------------------------------
@@ -1290,6 +1346,30 @@
         return window.carro.reduce((suma, item) => suma + (item.pre * item.cant), 0); 
     };
 
+    window.sincronizarMontos = function(tipo, origen) {
+        let subtotal = window.calcularTotalCarro();
+        if (subtotal === 0) return;
+
+        if (tipo === 'desc') {
+            if (origen === 'pct') {
+                let pct = parseFloat(document.getElementById('v-descuento-pct').value) || 0;
+                document.getElementById('v-descuento').value = pct > 0 ? Math.round(subtotal * (pct / 100)) : '';
+            } else {
+                let monto = parseFloat(document.getElementById('v-descuento').value) || 0;
+                document.getElementById('v-descuento-pct').value = monto > 0 ? ((monto / subtotal) * 100).toFixed(1).replace('.0', '') : '';
+            }
+        } else if (tipo === 'rec') {
+            if (origen === 'pct') {
+                let pct = parseFloat(document.getElementById('v-recargo-pct').value) || 0;
+                document.getElementById('v-recargo').value = pct > 0 ? Math.round(subtotal * (pct / 100)) : '';
+            } else {
+                let monto = parseFloat(document.getElementById('v-recargo').value) || 0;
+                document.getElementById('v-recargo-pct').value = monto > 0 ? ((monto / subtotal) * 100).toFixed(1).replace('.0', '') : '';
+            }
+        }
+        window.renderV();
+    };
+
     window.renderV = function() {
         let t = 0; 
         document.getElementById('v-t').innerHTML = window.carro.map((i, idx) => { 
@@ -1297,8 +1377,17 @@
             return `<tr class="border-b hover:bg-[var(--brand-light)] transition-colors"><td class="p-4 font-semibold text-[var(--brand-dark)] text-sm pl-6">${i.nom}</td><td class="text-slate-500 text-[11px] font-medium">T: ${i.tal}</td><td class="text-center"><input type="number" value="${i.cant}" min="1" class="input-cant-carrito" onchange="window.actualizarCantidad(${idx}, this.value)"></td><td class="font-mono text-slate-500 font-semibold text-xs">$${i.pre.toLocaleString('es-AR')}</td><td class="text-[var(--brand-main)] font-bold text-lg">$${sub.toLocaleString('es-AR')}</td><td class="text-right pr-6"><button onclick="window.quitarDelCarro(${idx})" class="text-slate-300 hover:text-[var(--brand-accent)] font-bold text-xl transition-all">✕</button></td></tr>`; 
         }).join('');
         
-        let recargo = parseFloat(document.getElementById('v-recargo')?.value) || 0;
-        let descuento = parseFloat(document.getElementById('v-descuento')?.value) || 0;
+        // Auto-recalcular los $ fijos si el carrito cambia pero los % se mantuvieron.
+        let descPct = parseFloat(document.getElementById('v-descuento-pct')?.value) || 0;
+        let descInput = document.getElementById('v-descuento');
+        if(descPct > 0) { descInput.value = Math.round(t * (descPct / 100)) || ''; }
+
+        let recPct = parseFloat(document.getElementById('v-recargo-pct')?.value) || 0;
+        let recInput = document.getElementById('v-recargo');
+        if(recPct > 0) { recInput.value = Math.round(t * (recPct / 100)) || ''; }
+
+        let recargo = parseFloat(recInput?.value) || 0;
+        let descuento = parseFloat(descInput?.value) || 0;
         
         let totalFinal = t + recargo - descuento;
         if (totalFinal < 0) totalFinal = 0; 
@@ -1328,7 +1417,6 @@
         const multiC = document.getElementById('v-multi-pago-container'); 
         const detS = document.getElementById('v-pago-detalle'); 
         
-        // El total ya está calculado en renderV y reflejado en #v-tot
         const total = parseFloat(document.getElementById('v-tot').innerText.replace(/\./g, '')) || 0;
         
         if (met === 'DIVIDIDO') { 
@@ -1455,6 +1543,8 @@
         // Limpiamos los inputs
         document.getElementById('v-recargo').value = "";
         document.getElementById('v-descuento').value = "";
+        document.getElementById('v-recargo-pct').value = "";
+        document.getElementById('v-descuento-pct').value = "";
 
         window.toggleMultiPago(); 
         window.renderV(); 
